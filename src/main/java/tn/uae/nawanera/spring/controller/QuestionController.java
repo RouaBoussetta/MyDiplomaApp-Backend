@@ -31,11 +31,11 @@ public class QuestionController {
 	
 	@PreAuthorize("hasAuthority('HR_MANAGER')")
 	@PostMapping("/new-question-of/{sk}")
-	public String addQuestion(@RequestBody Question question, @PathVariable("sk") int sk) {
+	public Question addQuestion(@RequestBody Question question, @PathVariable("sk") int sk) {
 
- 		questionservice.createQuestion(question, sk);
+ 	return	questionservice.createQuestion(question, sk);
 
- 		return "the question has been added successfuly ";
+ 		 
 
 	}
 

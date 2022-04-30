@@ -1,8 +1,6 @@
 package tn.uae.nawanera.spring.services;
 
  import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import tn.uae.nawanera.spring.config.FileUploadUtil;
 import tn.uae.nawanera.spring.entities.Application;
-import tn.uae.nawanera.spring.entities.Notification;
 import tn.uae.nawanera.spring.entities.User;
 import tn.uae.nawanera.spring.entities.Vacancy;
 import tn.uae.nawanera.spring.repositories.ApplicationRepository;
@@ -37,6 +34,8 @@ public class ApplicationService implements IApplicationService {
 	INotificationRepository iNotificationRepository;
 	@Autowired
 	SkillAssessmentRepository skillAssessmentRepository;
+	@Autowired
+	INotificationService inotifService;
 	@Override
 	public Application apply(Application app,  MultipartFile file,int idvacancy)  {
 
@@ -53,23 +52,13 @@ public class ApplicationService implements IApplicationService {
  		app.setIsAffected(false);
  		
  		applicationRepository.save(app);
- 		addAppNotif(app);
- 		
+ 		inotifService.addNotification(app.getIntern(), userService.currentUser(), "New Internship Vacancy Application", "Apply for "+app.getVacancy().getTitle()+" internship which you posted.");
+
 		return  app;
 
 	}
 	
-	@Override	
-	  public Notification addAppNotif (Application app) {
-		Notification notif = new Notification();
-		notif.setSubject(app.getIntern().getFirstname()+" "+app.getIntern().getLastname()+" Applied for the internship vacancy that you published");
-		notif.setDate(LocalDate.now());
-		notif.setTime(LocalTime.now());
-		notif.setSender(app.getIntern());
-		notif.setReceiver(app.getVacancy().getPostedby());
-		iNotificationRepository.save(notif);
-		return (notif);}
-
+	
 	@Override
 	public List<User> getAllInternByVacancy(int vacancyId) {
 
@@ -135,6 +124,18 @@ public class ApplicationService implements IApplicationService {
 		}
 		return vacancies;
  	 
+	}
+
+
+	@Override
+	public Boolean isAppliedByIntern(int idIntern,int idVacancy) {
+		User intern=userRepository.findById(idIntern);
+		Vacancy vacancy=vacancyRepository.findById(idVacancy);
+		
+ 		  if(!applicationRepository.isAppliedByUserAndVacancy(intern,vacancy).equals(null))
+ 		  return true;
+ 		  else
+ 			  return false;
 	}
 
 }

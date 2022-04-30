@@ -1,6 +1,7 @@
 package tn.uae.nawanera.spring.controller;
 
  
+import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.security.PermitAll;
@@ -15,8 +16,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import tn.uae.nawanera.spring.config.FileUploadUtil;
 import tn.uae.nawanera.spring.entities.Degree;
 import tn.uae.nawanera.spring.entities.Status;
 import tn.uae.nawanera.spring.entities.Vacancy;
@@ -38,8 +46,22 @@ public class VacancyController {
 
 	@PreAuthorize("hasAuthority('HR_MANAGER')")
 	@PostMapping("/addVacancy")
-	public ResponseEntity<MessageResponse> createVacancy(@RequestBody Vacancy vacancy)   {
- 
+	public ResponseEntity<MessageResponse> createVacancy(@RequestPart String v,
+			@RequestParam(value = "file", required = false) MultipartFile file)   {
+		Vacancy vacancy = new Vacancy();
+		ObjectMapper objectMapper = new ObjectMapper();
+		try {
+			vacancy = objectMapper.readValue(v, Vacancy.class);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		try {
+			FileUploadUtil.saveFile(file);
+			vacancy.setImage(file.getOriginalFilename());
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		ivacancyService.createVacancy(vacancy);
 		return ResponseEntity.ok(new MessageResponse("Vacancy Published successfully!"));
 	}

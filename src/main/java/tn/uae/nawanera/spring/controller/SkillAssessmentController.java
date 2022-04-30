@@ -5,7 +5,6 @@ import java.security.GeneralSecurityException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import tn.uae.nawanera.spring.entities.SkillAssessment;
 import tn.uae.nawanera.spring.entities.skillassessment.Response;
 import tn.uae.nawanera.spring.entities.skillassessment.Result;
-import tn.uae.nawanera.spring.payload.response.MessageResponse;
 import tn.uae.nawanera.spring.services.ISkillAssessmentService;
 
 @RestController
@@ -34,23 +32,13 @@ public class SkillAssessmentController {
 	@PreAuthorize("hasAuthority('HR_MANAGER')")
 	@PostMapping(value = "/create-skill-assessment")
 	@ResponseBody
-	public ResponseEntity<MessageResponse> createSkillAssessment(@RequestBody SkillAssessment skillAssessment)   {
-		if (skillAssessment == null) {
-			return ResponseEntity.badRequest().body(new MessageResponse("Error: please add values!"));
-		}
-
-		if (skillAssessment.getTitle().equals("")) {
-			return ResponseEntity.badRequest().body(new MessageResponse("Error: please add skill Assessment title!"));
-		}
-		if (skillAssessment.getDescription().equals("")) {
-			return ResponseEntity.badRequest()
-					.body(new MessageResponse("Error: please add skill Assessment description!"));
-		}
+	public SkillAssessment createSkillAssessment(@RequestBody SkillAssessment skillAssessment)   {
+	 
 
 
 		iSkillAssessmentService.save(skillAssessment);
 
-		return ResponseEntity.ok(new MessageResponse("skill Assessment successfully created!"));
+		return skillAssessment;
 	}
 
 	

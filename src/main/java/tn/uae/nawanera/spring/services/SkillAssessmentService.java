@@ -54,24 +54,26 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 	ApplicationRepository applicationRepository;
 	@Autowired
 	IUserservice iuserService;
-
+	@Autowired
+	INotificationService inotifService;
 	@Autowired
 	private EmailService emailService;
- 
+
 	private static final String APPLICATION_NAME = "serviceCal";
 	private static final JsonFactory JSON_FACTORY = new JacksonFactory();
 	private static com.google.api.services.calendar.Calendar client;
 
-	URL url = getClass().getResource("mydiploma-343611-3634a6519669.p12");
+	URL url = getClass().getResource("mydiploma-343611-542489b7a769.p12");
+
 	File keyFile = new File(url.getPath());
 	GoogleClientSecrets clientSecrets;
 	GoogleAuthorizationCodeFlow flow;
 	Credential credential;
 
 	HttpTransport transport;
-	private String serviceAccount = "calendar@mydiploma-343611.iam.gserviceaccount.com";
+	private String serviceAccount = "calendar-mydiploma-app@mydiploma-343611.iam.gserviceaccount.com";
 
-	public SkillAssessment save(SkillAssessment skillassessment, List<Question> questions)  {
+	public SkillAssessment save(SkillAssessment skillassessment, List<Question> questions) {
 
 		List<Question> questionlist = new ArrayList<>();
 		for (Question q : questions) {
@@ -93,7 +95,7 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 	public SkillAssessment save(SkillAssessment skillassessment) {
 
 		skillassessment.setCreatedAt(LocalDateTime.now());
-		 skillassessment.setCreatedBy(iuserService.currentUser());
+		skillassessment.setCreatedBy(iuserService.currentUser());
 		return skillAssessmentRepository.save(skillassessment);
 	}
 
@@ -101,12 +103,11 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 	public List<SkillAssessment> retreiveAll() {
 		return skillAssessmentRepository.findAll();
 	}
+
 	@Override
 	public List<SkillAssessment> retreiveOwnSkillAssessments() {
 		return skillAssessmentRepository.findByCreatedBy(iuserService.currentUser());
 	}
-	
-
 
 	@Override
 	public List<SkillAssessment> retrieveAllPublished() {
@@ -126,15 +127,15 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 	}
 
 	@Override
-	public SkillAssessment update(int id,SkillAssessment skillassessment) {
-		
-		SkillAssessment sa=skillAssessmentRepository.findById(id);
-		if(!skillassessment.getTitle().equals(sa.getTitle())) 
+	public SkillAssessment update(int id, SkillAssessment skillassessment) {
+
+		SkillAssessment sa = skillAssessmentRepository.findById(id);
+		if (!skillassessment.getTitle().equals(sa.getTitle()))
 			sa.setTitle(skillassessment.getTitle());
-		
-		if(!skillassessment.getDescription().equals(sa.getDescription())) 
+
+		if (!skillassessment.getDescription().equals(sa.getDescription()))
 			sa.setDescription(skillassessment.getDescription());
-		
+
 		return skillAssessmentRepository.save(sa);
 
 	}
@@ -151,8 +152,6 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 		int questions = sa.getQuestions().size();
 		Application app = applicationRepository.findBySkillAssessment(sa);
 		int score = 0;
-
-	 
 
 		for (Question question : sa.getQuestions()) {
 
@@ -176,21 +175,18 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 		return results;
 	}
 
-	
 	@Override
 	public void publishSkillAssessment(int skillassessment) {
-		SkillAssessment sk = skillAssessmentRepository.findById(skillassessment) ;
- 
-			sk.setIsPublished(true);
+		SkillAssessment sk = skillAssessmentRepository.findById(skillassessment);
+
+		sk.setIsPublished(true);
 		skillAssessmentRepository.save(sk);
 
 	}
 
-	 
-
 	@Override
 	public SkillAssessment find(int id) {
-		return skillAssessmentRepository.findById(id) ;
+		return skillAssessmentRepository.findById(id);
 	}
 
 	@Transactional
@@ -198,14 +194,18 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 	public void assignSAToIntern(int saId, int internId) throws GeneralSecurityException, IOException {
 
 		User intern = userRepository.findById(internId);
-		SkillAssessment sa = skillAssessmentRepository.findById(saId) ;
+		SkillAssessment sa = skillAssessmentRepository.findById(saId);
 		Application app = applicationRepository.findByIntern(intern);
 
 		if (app.getSkillAssessment() == null) {
 			app.setSkillAssessment(sa);
 			calendar();
-			String description = "you are invited to do a qualification test Due to your interest in the internship offer posted by the company nawanera llc";
-			attacheSa(sa.getTitle(), "MyDiploma App", description);
+			String description = "you are invited to do a qualification test Due to your interest in the internship offer posted by the company "
+					+ iuserService.currentUser().getCompanyName();
+			attacheSa(intern.getEmail(), sa.getTitle(), "MyDiploma App", description);
+			inotifService.addNotification(intern, iuserService.currentUser(), "Qualifying Test",
+					"you are invited to do a qualification test Due to your interest in the internship offer posted by "
+							+ iuserService.currentUser().getCompanyName() + " company.");
 
 			SimpleMailMessage email = new SimpleMailMessage();
 			email.setTo(intern.getEmail());
@@ -225,7 +225,6 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 	}
 
 	public void calendar() throws GeneralSecurityException, IOException {
- 		 
 
 		Preconditions.checkArgument(!Strings.isNullOrEmpty(APPLICATION_NAME),
 				"applicationName cannot be null or empty!");
@@ -239,13 +238,12 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 
 				.build();
 		credential.refreshToken();
-		  new com.google.api.services.calendar.Calendar.Builder(transport, JSON_FACTORY, credential)
+		new com.google.api.services.calendar.Calendar.Builder(transport, JSON_FACTORY, credential)
 				.setApplicationName(APPLICATION_NAME).build();
-		 
-		 
- 	}
 
-	public void attacheSa(String summary, String location, String description) throws IOException {
+	}
+
+	public void attacheSa(String email, String summary, String location, String description) throws IOException {
 
 		Event event = new Event().setSummary(summary).setLocation(location).setDescription(description);
 
@@ -266,13 +264,8 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 		Event.Reminders reminders = new Event.Reminders().setUseDefault(false)
 				.setOverrides(Arrays.asList(reminderOverrides));
 		event.setReminders(reminders);
-		 client.events().insert("boussettaroua@gmail.com", event).execute();
- 
+		client.events().insert(email, event).execute();
+
 	}
-
- 
-
-
-
 
 }

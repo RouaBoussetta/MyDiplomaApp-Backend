@@ -11,7 +11,7 @@ import tn.uae.nawanera.spring.entities.SkillAssessment;
 @Repository
 public interface QuestionRepository  extends JpaRepository<Question, Integer> {
 
-
+	Question  findById(int id);
 	int countBySkillAssessment(SkillAssessment skillAssessment);
 
 	List<Question> findBySkillAssessment(SkillAssessment sk);

@@ -11,6 +11,8 @@
 	<groupId>tn.uae.nawanera.spring</groupId>
 	<artifactId>MyDiplomaApp</artifactId>
 	<version>1.0</version>
+ 
+	<packaging>war</packaging>
 	<name>MyDiplomaApp</name>
 	<description>MyDiploma is a complete one top solution ( cross platform Mobile application + web version ) designated for companies to organize and manage from A to Z the process of recruiting interns within the company</description>
 	<properties>

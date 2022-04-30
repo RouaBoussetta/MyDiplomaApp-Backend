@@ -36,6 +36,15 @@ public class ApplicationController {
 	@Autowired
 	ISkillAssessmentService iSkillAssessmentService;
 	
+	
+	@PreAuthorize("hasAuthority('HR_MANAGER')or hasAuthority('INTERN')")
+	@GetMapping(value = "getAllapps-by-Intern-and-vacancy/{idintern}/{idvacancy}")
+	@ResponseBody
+	public Boolean isAppliedByInternandVacancy(@PathVariable("idintern") int idintern,@PathVariable("idvacancy") int idvacancy) {
+
+		return iapplicationService.isAppliedByIntern(idintern, idvacancy);
+	}
+	
 	@PreAuthorize("hasAuthority('HR_MANAGER')")
 	@GetMapping(value = "getAllInternByVacancy/{idvacancy}")
 	@ResponseBody

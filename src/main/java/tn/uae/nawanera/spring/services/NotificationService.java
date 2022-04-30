@@ -1,5 +1,7 @@
 package tn.uae.nawanera.spring.services;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,6 +64,26 @@ public class NotificationService implements INotificationService{
 	public List<Notification> getMyNotifs()  {
 		return iNotificationRepository.findByReceiver(iuserService.currentUser());
 
+	}
+
+	@Override
+	public void deleteNotifbyUser(int idreceiver) {
+		 
+		  iNotificationRepository.deleteAllByReceiver(idreceiver);
+	}
+
+	@Override
+	public Notification addNotification(User receiver,User sender,String subject,String description) {
+		Notification notification=new Notification();
+		notification.setReceiver(receiver);
+		notification.setSender(sender);
+		notification.setDescription(description);
+		notification.setSubject(subject);
+		notification.setRead(false);
+		notification.setDate(LocalDate.now());
+		notification.setTime(LocalTime.now());
+		
+		return iNotificationRepository.save(notification);
 	}
 
 }

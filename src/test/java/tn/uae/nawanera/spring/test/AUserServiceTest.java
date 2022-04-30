@@ -176,7 +176,7 @@ public class AUserServiceTest {
 
 		assertEquals("Roua_Boussetta", result.getResponse().getContentAsString());
 	}
- */
+  
 	@Test
 	@WithMockUser(username = "Daryl_See", password = "azerty123", authorities = "HR_MANAGER")
  	public void testGEditProfile() throws Exception {
@@ -202,7 +202,7 @@ public class AUserServiceTest {
 
 	}
  
-	 
+	 */
 	@Test
 	@WithMockUser(username = "Roua_Boussetta", password = "azerty123", authorities = "ADMINISTRATOR")
  	public void testBGetAllUsers() throws Exception {
@@ -293,7 +293,7 @@ public class AUserServiceTest {
 		assertEquals(200, result.getResponse().getStatus());
 
 	}
- 
+ /*
 	@Test
 	@WithMockUser(username = "Ahmed_Ahmed", password = "azerty123", authorities = "TRAINER")
  	public void testlockCompanyService() throws Exception {
@@ -333,7 +333,7 @@ public class AUserServiceTest {
 	}
 	
 	 
-	
+	*/
  
  
 	

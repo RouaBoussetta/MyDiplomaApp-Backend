@@ -28,7 +28,7 @@ public class AnswerService implements IAnswerService {
 	@Override
 	public Answer addAnswerQuestion(Answer a, int question) {
 
-		Question q = questionrepository.findById(question).get();
+		Question q = questionrepository.findById(question) ;
 		a.setQuestion(q);
 		return answerrepository.save(a);
 	}
@@ -50,7 +50,7 @@ public class AnswerService implements IAnswerService {
 	
 	@Override
 	public void removeAnswer(int id) {
-		Answer a = answerrepository.findById(id).get();
+		Answer a = answerrepository.findById(id) ;
 		answerrepository.delete(a);
 		 
 
@@ -59,7 +59,7 @@ public class AnswerService implements IAnswerService {
 	@Override
 	public void removeAnswerByQuestion(int id) {
 		
-		Question q=questionrepository.findById(id).get();
+		Question q=questionrepository.findById(id) ;
 		List<Answer> a = answerrepository.findByQuestion(q ) ;
 		answerrepository.deleteAll(a);
 		 
@@ -70,19 +70,19 @@ public class AnswerService implements IAnswerService {
 
 	@Override
 	public Answer getAnswerById(int id) {
-		return answerrepository.findById(id).get();
+		return answerrepository.findById(id) ;
 	}
 
 	@Override
 	public List<Answer> getAnswersInQuestion(int question) {
-		Question q = questionrepository.findById(question).get();
+		Question q = questionrepository.findById(question) ;
 
 		return answerrepository.findByQuestion(q);
 	}
 
 	@Override
 	public void removeCorrectAnswer(int idquestion) {
-		Question q = questionrepository.findById(idquestion).get();
+		Question q = questionrepository.findById(idquestion) ;
 		q.setCorrectAnswer(null);
 		questionrepository.save(q);
 
@@ -121,7 +121,7 @@ public class AnswerService implements IAnswerService {
 	@Override
 	public Answer update(int id,Answer answer) {
 		
-		Answer 	a=answerrepository.findById(id).get();
+		Answer 	a=answerrepository.findById(id) ;
 		if(!answer.getText().equals(a.getText())) 
 			a.setText(answer.getText());
 		

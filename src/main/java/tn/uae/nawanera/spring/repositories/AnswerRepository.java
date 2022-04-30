@@ -30,6 +30,7 @@ public interface AnswerRepository extends JpaRepository<Answer,Integer>{
 
 
 	List<Answer> findByQuestion(Question q);
+	Answer findById(int id);
 
 
 

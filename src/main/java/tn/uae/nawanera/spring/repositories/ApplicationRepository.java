@@ -67,4 +67,9 @@ public Application getApplicationByInternAndVacancy(@Param("intern")User intern,
 			+ "where  "
 			+ "a.intern=:intern and a.isAffected=true")
 	Application getAffectedApplication(  @Param("intern")User intern);
+	
+	@Query("select a from Application a "
+			+ "where  "
+			+ "a.intern=:intern and a.vacancy=:vacancy")
+	Application isAppliedByUserAndVacancy( @Param("intern")User intern,@Param("vacancy")Vacancy vacancy);
 }

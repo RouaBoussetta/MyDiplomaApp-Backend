@@ -61,7 +61,8 @@ public class Vacancy {
 	@ManyToOne(cascade = CascadeType.DETACH)
 	@JoinColumn(name = "postedby")
 	private User postedby;
-	
+	@Column(columnDefinition = "TEXT")
+	private String image;
 	@ToString.Exclude
 	@ManyToOne(cascade = CascadeType.DETACH)
 	@JoinColumn(name = "trainedby")

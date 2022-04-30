@@ -5,6 +5,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 import javax.annotation.security.PermitAll;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -174,10 +175,12 @@ public class AuthController {
 
 	@PermitAll
 	@PostMapping("/logout")
-	public ResponseEntity<MessageResponse> logoutUser() {
+	public ResponseEntity<MessageResponse> logoutUser(HttpServletRequest http) throws ServletException {
 
-		refreshTokenService.deleteByUserId(iuserservice.currentUser().getId());
-		SecurityContextHolder.getContext().setAuthentication(null);
+		//refreshTokenService.deleteByUserId(iuserservice.currentUser().getId());
+		
+		http.logout() ;
+		//SecurityContextHolder.getContext().setAuthentication(null);
 		return ResponseEntity.ok(new MessageResponse("Log out successful!"));
 	}
 

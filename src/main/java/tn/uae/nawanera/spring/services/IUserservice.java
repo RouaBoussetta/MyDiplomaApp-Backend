@@ -52,6 +52,7 @@ public interface IUserservice {
 	public List<User> findCompanyHRs(String companyName);
 
 	public List<User> findCompanyTrainers(String companyName);
+	public List<User> findUsersByCompanyName(String companyName);
 
 	void unlockCompanyService(int company);
 
@@ -67,6 +68,11 @@ public interface IUserservice {
 	List<User> getProjectInterns(int idproject);
 
 	List<User> getTrainerInterns();
+	List<User> getAllInterns();
+	List<User> getAllTrainers();
+	List<User> getAllCompanies();
+	List<User> getAllhrManagers();
+
 
  
 	User createUser(User user);

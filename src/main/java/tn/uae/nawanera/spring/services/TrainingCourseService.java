@@ -33,6 +33,8 @@ public class TrainingCourseService implements ITrainingCourse {
 	
 	@Autowired
 	 ProjectRepository  projectRepository;
+	@Autowired
+	INotificationService inotifService;
 	
 	@Autowired
 	IUserservice iuserService;
@@ -47,8 +49,12 @@ public class TrainingCourseService implements ITrainingCourse {
 		} catch (IOException e) {
  			e.printStackTrace();
 		}
-		
- 		return trainingCourseRepository.save(trainingcourse);
+		trainingCourseRepository.save(trainingcourse);
+		List<User> users=userRepository.findAllByCompanyName(iuserService.currentUser().getCompanyName());
+		for (User u:users) {
+			inotifService.addNotification(u, iuserService.currentUser(), "Training Course", "Post a New Training Course.");
+		}
+ 		return trainingcourse;
 	}
 
 	@Override

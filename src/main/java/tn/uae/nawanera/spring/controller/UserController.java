@@ -52,6 +52,30 @@ public class UserController {
 	public List<User> getAllUsers() {
 		return iuserservice.getAllUsers();
 	}
+	
+	@PreAuthorize("hasAuthority('ADMINISTRATOR')")
+	@GetMapping("/findall-interns")
+	public List<User> getAllInterns() {
+		return iuserservice.getAllInterns();
+	}
+	
+	@PreAuthorize("hasAuthority('ADMINISTRATOR')")
+	@GetMapping("/findall-trainers")
+	public List<User> getAllTrainers() {
+		return iuserservice.getAllTrainers();
+	}
+	
+	@PreAuthorize("hasAuthority('ADMINISTRATOR')")
+	@GetMapping("/findall-companies")
+	public List<User> getAllCompanies() {
+		return iuserservice.getAllCompanies();
+	}
+	
+	@PreAuthorize("hasAuthority('ADMINISTRATOR')")
+	@GetMapping("/findall-hr-managers")
+	public List<User> getAllHrManagers() {
+		return iuserservice.getAllhrManagers();
+	}
 
 	@PermitAll
 	@GetMapping("/findUserLastname/{lastname}")
@@ -298,6 +322,14 @@ public class UserController {
 		iuserservice.unlockCompanyService(id);
 	}
 	
+	
+	@PermitAll
+	@GetMapping("/company-users/{companyName}")
+	public List<User> findCompanyusers(@PathVariable("companyName") String companyName) {
+		return iuserservice.findUsersByCompanyName(companyName);
+	}
+	
+	
 	@PermitAll
 	@GetMapping("/notifs")
 	public List<Notification> notifs( ) {
@@ -310,4 +342,28 @@ public class UserController {
 		return inotifservice.getMyNotifs();
 	}
 
+	
+	@PermitAll
+	@GetMapping("/myNotifs/{id}")
+	public List<Notification> myNotifs(@PathVariable("id") int id) {
+		return inotifservice.getNotifByReceiver(id);
+	}
+	
+	
+	@PermitAll
+	@GetMapping("/count-myNotifs/{id}")
+	public int countmyNotifs(@PathVariable("id") int id) {
+		return inotifservice.getNotifByReceiver(id).size();
+	}
+	
+	@PermitAll
+	@DeleteMapping("/delete-notifs/{idcurrent}")
+	public String removeNotifs(@PathVariable("idcurrent") int idcurrent) {
+		 
+
+		inotifservice.deleteNotifbyUser(idcurrent);
+
+		return "All user notifs has been removed successfuly";
+	}
+	
 }

@@ -30,7 +30,7 @@ public class QuestionService implements IQuestionService {
 	@Override
 	public Question createQuestion(Question q, int skillAssessment) {
 
-		SkillAssessment sk = skrepository.findById(skillAssessment) ;
+		SkillAssessment sk = skrepository.findById(skillAssessment);
 
 		q.setSkillAssessment(sk);
 		int count = questionrepository.countBySkillAssessment(q.getSkillAssessment());
@@ -42,24 +42,23 @@ public class QuestionService implements IQuestionService {
 
 	}
 
-	
 	@Override
-	public Question update(int id,Question question) {
-		
-		Question q=questionrepository.findById(id).get();
-		if(!question.getText().equals(q.getText())) 
+	public Question update(int id, Question question) {
+
+		Question q = questionrepository.findById(id);
+		if (!question.getText().equals(q.getText()))
 			q.setText(question.getText());
-		
-		if(question.getQuestionScore()!=q.getQuestionScore()) 
+
+		if (question.getQuestionScore() != q.getQuestionScore())
 			q.setQuestionScore(question.getQuestionScore());
-		
-		
-		if(!question.getCorrectAnswer().equals(q.getCorrectAnswer())) 
+
+		if (!question.getCorrectAnswer().equals(q.getCorrectAnswer()))
 			q.setCorrectAnswer(question.getCorrectAnswer());
-		
+
 		return questionrepository.save(q);
 
 	}
+
 	@Override
 	public List<Question> getAllQuestions() {
 
@@ -68,23 +67,21 @@ public class QuestionService implements IQuestionService {
 
 	@Override
 	public void removeQuestion(int id) {
-		Question question = questionrepository.findById(id).get();
+		Question question = questionrepository.findById(id);
 		answerSerice.removeAnswerByQuestion(id);
 		questionrepository.delete(question);
 
 	}
-	
-	 
 
 	@Override
 	public Question getQuestionById(int id) {
 
-		return questionrepository.findById(id).get();
+		return questionrepository.findById(id);
 	}
 
 	@Override
 	public int countQuestionsInSkillAssessment(int skillAssessment) {
-		SkillAssessment sk = skrepository.findById(skillAssessment) ;
+		SkillAssessment sk = skrepository.findById(skillAssessment);
 
 		List<Question> questions = questionrepository.findBySkillAssessment(sk);
 
@@ -93,7 +90,7 @@ public class QuestionService implements IQuestionService {
 
 	@Override
 	public List<Question> getQuestionByskillAssessment(int skillAssessment) {
-		SkillAssessment sk = skrepository.findById(skillAssessment) ;
+		SkillAssessment sk = skrepository.findById(skillAssessment);
 
 		return questionrepository.findBySkillAssessment(sk);
 	}

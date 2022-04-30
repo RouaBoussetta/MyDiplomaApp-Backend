@@ -5,7 +5,6 @@ package tn.uae.nawanera.spring.services;
 import org.springframework.web.multipart.MultipartFile;
 
 import tn.uae.nawanera.spring.entities.Application;
-import tn.uae.nawanera.spring.entities.Notification;
 import tn.uae.nawanera.spring.entities.User;
 import tn.uae.nawanera.spring.entities.Vacancy;
 
@@ -22,9 +21,10 @@ public interface IApplicationService {
  
 	Application findApplicationById(int id);
 	Application apply(Application app, MultipartFile file, int idvacancy) ;
-	Notification addAppNotif(Application app);
-	List<Application> retreiveApplicantSkillAssessments();
+ 	List<Application> retreiveApplicantSkillAssessments();
 	List<Vacancy> retreiveAllAssignedVacancies();
+	
+ 	Boolean isAppliedByIntern(int idIntern, int idVacancy);
  	
 	
  

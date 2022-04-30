@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import tn.uae.nawanera.spring.entities.Degree;
 import tn.uae.nawanera.spring.entities.Status;
+import tn.uae.nawanera.spring.entities.User;
 import tn.uae.nawanera.spring.entities.Vacancy;
 import tn.uae.nawanera.spring.entities.VacancyCategory;
 import tn.uae.nawanera.spring.repositories.UserRepository;
@@ -22,6 +23,8 @@ public class VacancyService implements IVacancyService {
 	UserRepository userRepository;
 	@Autowired
 	IUserservice iuserService;
+	@Autowired
+	INotificationService inotifService;
 
 	@Override
 	public Vacancy createVacancy(Vacancy vacancy) {
@@ -32,7 +35,12 @@ public class VacancyService implements IVacancyService {
 		vacancy.setCompanyName(iuserService.currentUser().getCompanyName());
 		vacancy.setPostedby(iuserService.currentUser());
 		vacancy.setPostedAt(LocalDateTime.now());
-		return vacancyRepository.save(vacancy);
+		vacancyRepository.save(vacancy);
+		List<User> users=userRepository.findAllByCompanyName(iuserService.currentUser().getCompanyName());
+		for (User u:users) {
+			inotifService.addNotification(u, iuserService.currentUser(), "New Internship Vacancy", "Post a New Internship Vacancy.");
+		}
+		return vacancy;
 	}
 
 	@Override
@@ -81,14 +89,26 @@ public class VacancyService implements IVacancyService {
 			existvacany.setQualification(vacancy.getQualification());
 		
 		existvacany.setUpdatedOn(LocalDateTime.now());
-		return vacancyRepository.save(existvacany);
+		vacancyRepository.save(existvacany);
+		List<User> users=userRepository.findAllByCompanyName(iuserService.currentUser().getCompanyName());
+		for (User u:users) {
+			inotifService.addNotification(u, iuserService.currentUser(), "Update", "The Internship Vacancy which is titled "+existvacany.getTitle()+" was updated.");
+		}
+		return existvacany;
+		
 
 	}
 
 	@Override
 	public void deleteVacancyById(int vacancyId) {
 		Vacancy v = vacancyRepository.findById(vacancyId);
+		List<User> users=userRepository.findAllByCompanyName(iuserService.currentUser().getCompanyName());
+		for (User u:users) {
+			inotifService.addNotification(u, iuserService.currentUser(), "Removing Internship Vacancy", "The Internship Vacancy which is titled "+v.getTitle()+" was removed.");
+		}
+		
 		vacancyRepository.delete(v);
+	 
 
 	}
 

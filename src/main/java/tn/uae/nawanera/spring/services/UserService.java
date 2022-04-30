@@ -404,4 +404,30 @@ public class UserService implements IUserservice {
 		
 	}
 
+	@Override
+	public List<User> findUsersByCompanyName(String companyName) {
+		 
+		return userRepository.findAllByCompanyName(companyName);
+	}
+
+	@Override
+	public List<User> getAllInterns() {
+ 		return userRepository.findAllByRole(RoleType.INTERN);
+	}
+
+	@Override
+	public List<User> getAllTrainers() {
+ 		return userRepository.findAllByRole(RoleType.TRAINER);
+	}
+
+	@Override
+	public List<User> getAllCompanies() {
+  		return userRepository.findAllByRole(RoleType.COMPANY);
+	}
+
+	@Override
+	public List<User> getAllhrManagers() {
+ 		return userRepository.findAllByRole(RoleType.HR_MANAGER);
+	}
+
 }
