@@ -14,6 +14,7 @@ public interface IVacancyService {
 	public List<Vacancy> retreiveAllVacancies();
 
 	public Vacancy getVacancyById(int id);
+	public Vacancy getVacancyByCompany(String companyName);
 
 	public void deleteVacancyById(int vacancyId);
 

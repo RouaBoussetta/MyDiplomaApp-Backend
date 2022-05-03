@@ -15,5 +15,6 @@ public interface QuestionRepository  extends JpaRepository<Question, Integer> {
 	int countBySkillAssessment(SkillAssessment skillAssessment);
 
 	List<Question> findBySkillAssessment(SkillAssessment sk);
+	Question findByText(String question);
 
 }

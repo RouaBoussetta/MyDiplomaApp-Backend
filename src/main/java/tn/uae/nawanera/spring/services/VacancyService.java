@@ -54,6 +54,12 @@ public class VacancyService implements IVacancyService {
 
 		return vacancyRepository.findById(id);
 	}
+	
+	@Override
+	public Vacancy getVacancyByCompany(String companyName) {
+	 
+		return vacancyRepository.findByCompanyName(companyName);
+	}
 
 	@Override
 	public Vacancy updateVacancy(Vacancy vacancy,int id) {
@@ -235,5 +241,9 @@ public class VacancyService implements IVacancyService {
 		return vacancyRepository.findVacanciesByTrainedby(iuserService.currentUser());
 
 	}
+
+	 
+
+	
 	
 }

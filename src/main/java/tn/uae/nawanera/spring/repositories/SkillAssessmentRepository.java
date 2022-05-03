@@ -21,6 +21,9 @@ public interface SkillAssessmentRepository extends JpaRepository<SkillAssessment
 
 	
 	List<SkillAssessment> findByCreatedBy(User createdBy);
+	
+	
+	SkillAssessment findByTitle(String title);
 
 
 

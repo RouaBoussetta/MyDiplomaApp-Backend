@@ -58,17 +58,51 @@ public class ApplicationService implements IApplicationService {
 
 	}
 	
+	@Override
+	public Application apply(Application app,  MultipartFile file,String titleVacancy)  {
+
+ 		Vacancy v = vacancyRepository.findByTitle(titleVacancy);
+ 		try {
+			FileUploadUtil.saveFile(file);
+			app.setCv(file.getOriginalFilename());
+		} catch (IOException e) {
+ 			e.printStackTrace();
+		}
+		
+ 		app.setVacancy(v);
+		app.setIntern(userService.currentUser());
+ 		app.setIsAffected(false);
+ 		
+ 		applicationRepository.save(app);
+ 		inotifService.addNotification(app.getIntern(), userService.currentUser(), "New Internship Vacancy Application", "Apply for "+app.getVacancy().getTitle()+" internship which you posted.");
+
+		return  app;
+
+	}
 	
 	@Override
 	public List<User> getAllInternByVacancy(int vacancyId) {
 
 		return applicationRepository.getAllInternByVacancy(vacancyId);
 	}
+	
+	@Override
+	public List<User> getAllInternByVacancyTitle(String title) {
+
+		return applicationRepository.getAllInternByVacancyTitle(title);
+	}
+
 
 	@Override
 	public List<Vacancy> findVacanciesByIntern(int internId) {
 
 		return applicationRepository.findVacanciesByIntern(internId);
+	}
+	
+	@Override
+	public List<Vacancy> findVacanciesByInternUsername(String username) {
+
+		return applicationRepository.findVacanciesByInternUsername(username);
 	}
 	
 	@Override
@@ -83,6 +117,14 @@ public class ApplicationService implements IApplicationService {
 		 
 
 		return applicationRepository.getApplicationByVacancy(vacancy);
+	}
+	
+	@Override
+	public List<Application> findApplicationsByVacancyTitle(String title) {
+
+		 
+
+		return applicationRepository.getApplicationByVacancyTitle(title);
 	}
 	
 	@Override

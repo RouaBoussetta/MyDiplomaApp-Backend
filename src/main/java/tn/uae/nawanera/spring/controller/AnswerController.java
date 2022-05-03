@@ -33,7 +33,18 @@ public class AnswerController {
 	public String addAnswerToQuestion(@RequestBody Answer answer, @PathVariable("q") int question) {
 
 		
-		answerservice.addAnswerToQuestion(answer, question);
+		answerservice.addAnswerQuestion(answer, question);
+
+		return "The answer to question " + question + " of '" + answer.getQuestion().getSkillAssessment().getTitle()
+				+ "' is well recorded   ";
+	}
+	
+	@PreAuthorize("hasAuthority('HR_MANAGER')")
+	@PostMapping("/add-answer-to-question-text/{q}")
+	public String addAnswerToQuestion(@RequestBody Answer answer, @PathVariable("q") String question) {
+
+		
+		answerservice.addAnswerQuestion(answer, question);
 
 		return "The answer to question " + question + " of '" + answer.getQuestion().getSkillAssessment().getTitle()
 				+ "' is well recorded   ";

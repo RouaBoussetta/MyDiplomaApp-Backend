@@ -38,6 +38,10 @@ public interface AnswerRepository extends JpaRepository<Answer,Integer>{
 
 
 
+	Answer findByText(String a);
+
+
+
 
 	
 	

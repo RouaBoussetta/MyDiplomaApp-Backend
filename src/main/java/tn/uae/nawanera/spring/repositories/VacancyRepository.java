@@ -41,6 +41,8 @@ public interface VacancyRepository extends JpaRepository<Vacancy, Integer> {
 
 	List<Vacancy> findVacanciesByTrainedby(User trainer);
 	List<Vacancy> findVacanciesByPostedby(User hr);
+	Vacancy findByTitle(String titleVacancy);
+	Vacancy findByCompanyName(String companyName);
 	
 	
 

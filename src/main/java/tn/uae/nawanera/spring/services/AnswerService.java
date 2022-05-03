@@ -1,6 +1,5 @@
 package tn.uae.nawanera.spring.services;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +32,14 @@ public class AnswerService implements IAnswerService {
 		return answerrepository.save(a);
 	}
 
+	@Override
+	public Answer addAnswerQuestion(Answer a, String question) {
+
+		Question q = questionrepository.findByText(question) ;
+		a.setQuestion(q);
+		return answerrepository.save(a);
+	}
+	
 	@Override
 	public List<Answer> getAllUserAnswers(int user) {
 
@@ -72,6 +79,12 @@ public class AnswerService implements IAnswerService {
 	public Answer getAnswerById(int id) {
 		return answerrepository.findById(id) ;
 	}
+	
+	@Override
+	public Answer getAnswerByText(String string) {
+ 
+		return answerrepository.findByText(string) ;
+	}
 
 	@Override
 	public List<Answer> getAnswersInQuestion(int question) {
@@ -101,16 +114,7 @@ public class AnswerService implements IAnswerService {
 	}
 	
 	
-	@Override
-	public Answer addAnswerToQuestion(Answer answer, int q ) {
-		
-		Question question=questionrepository.getById(q);
-		int count =  countAnswersInQuestion(question);
-		answer.setCreatedAt(LocalDateTime.now());
-
-		return updateAndSaveAnswer(answer, question, count);
-	}
-	
+ 
 	
 	private Answer updateAndSaveAnswer(Answer answer, Question question, int count) {
 		answer.setAnswerorder(count + 1);
@@ -130,6 +134,10 @@ public class AnswerService implements IAnswerService {
 		return answerrepository.save(a);
 
 	}
+
+ 
+
+	 
 	
 	
 	 

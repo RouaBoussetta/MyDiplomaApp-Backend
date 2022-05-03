@@ -35,6 +35,7 @@ import tn.uae.nawanera.spring.entities.Application;
 import tn.uae.nawanera.spring.entities.Question;
 import tn.uae.nawanera.spring.entities.SkillAssessment;
 import tn.uae.nawanera.spring.entities.User;
+import tn.uae.nawanera.spring.entities.Vacancy;
 import tn.uae.nawanera.spring.entities.skillassessment.Response;
 import tn.uae.nawanera.spring.entities.skillassessment.Result;
 import tn.uae.nawanera.spring.repositories.ApplicationRepository;
@@ -63,7 +64,7 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 	private static final JsonFactory JSON_FACTORY = new JacksonFactory();
 	private static com.google.api.services.calendar.Calendar client;
 
-	URL url = getClass().getResource("mydiploma-343611-542489b7a769.p12");
+	URL url = getClass().getResource("mydiploma-343611-bd9f7bcc397c.p12");
 
 	File keyFile = new File(url.getPath());
 	GoogleClientSecrets clientSecrets;
@@ -185,16 +186,63 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 	}
 
 	@Override
+	public void publishSkillAssessment(String title) {
+		SkillAssessment sk = skillAssessmentRepository.findByTitle(title);
+
+		sk.setIsPublished(true);
+		skillAssessmentRepository.save(sk);
+
+	}
+
+	@Override
 	public SkillAssessment find(int id) {
 		return skillAssessmentRepository.findById(id);
 	}
 
 	@Transactional
 	@Override
-	public void assignSAToIntern(int saId, int internId) throws GeneralSecurityException, IOException {
+	public void assignSAToIntern(int saId, int internId ) throws GeneralSecurityException, IOException {
 
 		User intern = userRepository.findById(internId);
-		SkillAssessment sa = skillAssessmentRepository.findById(saId);
+		
+ 		SkillAssessment sa = skillAssessmentRepository.findById(saId);
+ 		
+		Application app = applicationRepository.findByIntern(intern);
+ 
+ 		 app.setSkillAssessment(sa);
+		calendar();
+		String description = "you are invited to do a qualification test Due to your interest in the internship offer posted by the company "
+				+ iuserService.currentUser().getCompanyName();
+		
+
+
+	 //  attacheSa(intern.getEmail(), sa.getTitle(), "MyDiploma App", description);
+ 		  applicationRepository.save(app);
+		inotifService.addNotification(intern, iuserService.currentUser(), "Qualifying Test",
+				"you are invited to do a qualification test Due to your interest in the internship offer posted by "
+						+ iuserService.currentUser().getCompanyName() + " company.");
+ 
+		SimpleMailMessage email = new SimpleMailMessage();
+		email.setTo(intern.getEmail());
+		email.setSubject("Qualifying Test");
+		email.setText(
+
+				intern.getUserImage() + "Dear " + intern.getFirstname() + ":\n"
+						+ "Due to your interest in the internship offer posted by the company nawanera llc, you are required to do a qualification test.  \n"
+						+ "please take your test as soon as possible."
+
+		);
+
+		emailService.sendEmail(email);
+
+	}
+
+	@Transactional
+	@Override
+	public void assignSAToIntern(String skTitle, String internUsername) throws GeneralSecurityException, IOException {
+
+		User intern = userRepository.findByUsername(internUsername);
+		SkillAssessment sa = skillAssessmentRepository.findByTitle(skTitle);
 		Application app = applicationRepository.findByIntern(intern);
 
 		if (app.getSkillAssessment() == null) {
@@ -202,11 +250,11 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 			calendar();
 			String description = "you are invited to do a qualification test Due to your interest in the internship offer posted by the company "
 					+ iuserService.currentUser().getCompanyName();
-			attacheSa(intern.getEmail(), sa.getTitle(), "MyDiploma App", description);
+		//	attacheSa("boussettaroua@gmail.com", sa.getTitle(), "MyDiploma App", description);
 			inotifService.addNotification(intern, iuserService.currentUser(), "Qualifying Test",
 					"you are invited to do a qualification test Due to your interest in the internship offer posted by "
 							+ iuserService.currentUser().getCompanyName() + " company.");
-
+/*
 			SimpleMailMessage email = new SimpleMailMessage();
 			email.setTo(intern.getEmail());
 			email.setSubject("Qualifying Test");
@@ -219,7 +267,7 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 			);
 
 			emailService.sendEmail(email);
-
+*/
 		}
 
 	}
@@ -266,6 +314,12 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 		event.setReminders(reminders);
 		client.events().insert(email, event).execute();
 
+	}
+
+	@Override
+	public SkillAssessment getSkillAssessmentByTitle(String string) {
+
+		return skillAssessmentRepository.findByTitle(string);
 	}
 
 }

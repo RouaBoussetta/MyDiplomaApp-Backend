@@ -34,5 +34,15 @@ public interface ISkillAssessmentService {
 
 	List<SkillAssessment> retreiveOwnSkillAssessments();
 
+	void publishSkillAssessment(String title);
+
+ 
+	void assignSAToIntern(String skTitle, String internUsername) throws GeneralSecurityException, IOException;
+
+	SkillAssessment getSkillAssessmentByTitle(String string);
+
+ 
+	//void assignSAToIntern(int saId, int internId, int idVacancy) throws GeneralSecurityException, IOException;
+
  
 }

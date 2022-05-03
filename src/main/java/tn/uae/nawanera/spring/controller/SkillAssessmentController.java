@@ -87,7 +87,13 @@ public class SkillAssessmentController {
 		iSkillAssessmentService.assignSAToIntern(sa, intern);
 
 	}
-	
+	@PreAuthorize("hasAuthority('HR_MANAGER')")
+	@PutMapping("/assign-skill-assessment-to-internusername/{sa}/{intern}")
+	public void assignSAToIntern(@PathVariable("sa") String sa, @PathVariable("intern") String intern) throws GeneralSecurityException, IOException {
+
+		iSkillAssessmentService.assignSAToIntern(sa, intern);
+
+	}
 	
 	@PreAuthorize("hasAuthority('INTERN')")
 	@PostMapping(value = "/{saId}/submitAnswers")
@@ -104,7 +110,12 @@ public class SkillAssessmentController {
 		iSkillAssessmentService.publishSkillAssessment(sk);
 	}
 	
-	
+	@PreAuthorize("hasAuthority('HR_MANAGER')")
+	@PutMapping("/publish-SkillAssessment-title/{sk}")
+	public void publishSkillAssessment(@PathVariable("sk") String sk) {
+
+		iSkillAssessmentService.publishSkillAssessment(sk);
+	}
 	@PreAuthorize("hasAuthority('HR_MANAGER')")
 	@DeleteMapping("/delete-SkillAssessment")
 	public void deleteSkillAssessment(@RequestBody SkillAssessment sk) {

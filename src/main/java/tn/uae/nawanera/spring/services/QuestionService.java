@@ -41,6 +41,21 @@ public class QuestionService implements IQuestionService {
 		return questionrepository.save(q);
 
 	}
+	
+	@Override
+	public Question createQuestion(Question q, String title) {
+
+		SkillAssessment sk = skrepository.findByTitle(title);
+
+		q.setSkillAssessment(sk);
+		int count = questionrepository.countBySkillAssessment(q.getSkillAssessment());
+
+		q.setQuestionorder(count + 1);
+		q.setCreatedAt(LocalDateTime.now());
+
+		return questionrepository.save(q);
+
+	}
 
 	@Override
 	public Question update(int id, Question question) {
@@ -78,6 +93,12 @@ public class QuestionService implements IQuestionService {
 
 		return questionrepository.findById(id);
 	}
+	
+	@Override
+	public Question getQuestionByText(String text) {
+
+		return questionrepository.findByText(text);
+	}
 
 	@Override
 	public int countQuestionsInSkillAssessment(int skillAssessment) {
@@ -99,6 +120,16 @@ public class QuestionService implements IQuestionService {
 	public void setCorrectAnswer(Question q, Answer a) {
 		q.setCorrectAnswer(a);
 		questionrepository.save(q);
+
+	}
+	
+	@Override
+	public void setCorrectAnswer(String q, String a) {
+		
+		Answer answer=answerrepository.findByText(a);
+		Question question=questionrepository.findByText(q);
+		question.setCorrectAnswer(answer);
+		questionrepository.save(question);
 
 	}
 

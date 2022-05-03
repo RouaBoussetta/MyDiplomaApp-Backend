@@ -52,6 +52,14 @@ public class ApplicationController {
 
 		return iapplicationService.getAllInternByVacancy(idvacancy);
 	}
+	
+	@PreAuthorize("hasAuthority('HR_MANAGER')")
+	@GetMapping(value = "getAllInternByVacancyTitle/{title}")
+	@ResponseBody
+	public List<User> getAllInternByVacancyTitle(@PathVariable("title") String title) {
+
+		return iapplicationService.getAllInternByVacancyTitle(title);
+	}
 
 	@PreAuthorize("hasAuthority('HR_MANAGER')")
 	@GetMapping(value = "get-vacancies-By-intern/{idintern}")
@@ -61,6 +69,16 @@ public class ApplicationController {
 		return iapplicationService.findVacanciesByIntern(idintern);
 	}
 
+	
+	@PreAuthorize("hasAuthority('HR_MANAGER')")
+	@GetMapping(value = "get-vacancies-By-intern-username/{username}")
+	@ResponseBody
+	public List<Vacancy> getVacanciesByInternusername(@PathVariable("username") String username) {
+
+		return iapplicationService.findVacanciesByInternUsername(username);
+	}
+	
+	
 	@PreAuthorize("hasAuthority('INTERN')")
 
 	@PostMapping("/apply/{idvacancy}")
@@ -72,6 +90,19 @@ public class ApplicationController {
 		return ResponseEntity.ok(new MessageResponse("Application successfully Registred!"));
 	}
 
+	
+	@PreAuthorize("hasAuthority('INTERN')")
+
+	@PostMapping("/apply-by-title/{title}")
+	public ResponseEntity<MessageResponse> apply2(Application app, @RequestParam(value = "file", required = true) MultipartFile file,
+			@PathVariable("title") String title) {
+
+		iapplicationService.apply(app, file, title);
+
+		return ResponseEntity.ok(new MessageResponse("Application successfully Registred!"));
+	}
+	
+	
 	@PreAuthorize("hasAuthority('HR_MANAGER')")
 	@PutMapping("/accept-application/{idapp}")
 	public Application acceptApplication(@PathVariable("idapp") int idapp) {
@@ -95,6 +126,14 @@ public class ApplicationController {
 		return iapplicationService.findApplicationsByVacancy(v);
 	}
 	
+	@PreAuthorize("hasAuthority('HR_MANAGER')")
+	@GetMapping(value = "getAllApplicationsByVacancy-title/{title}")
+	@ResponseBody
+	public List<Application> getAllApplicationsByVacancyTitle(@PathVariable("title") String title) {
+
+		 
+		return iapplicationService.findApplicationsByVacancyTitle(title);
+	}
 	
 	@PreAuthorize("hasAuthority('HR_MANAGER')")
 	@GetMapping(value = "get-application/{id}")

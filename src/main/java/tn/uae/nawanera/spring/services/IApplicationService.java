@@ -25,6 +25,10 @@ public interface IApplicationService {
 	List<Vacancy> retreiveAllAssignedVacancies();
 	
  	Boolean isAppliedByIntern(int idIntern, int idVacancy);
+	Application apply(Application app, MultipartFile file, String titleVacancy);
+	List<Application> findApplicationsByVacancyTitle(String title);
+	List<Vacancy> findVacanciesByInternUsername(String username);
+	List<User> getAllInternByVacancyTitle(String title);
  	
 	
  

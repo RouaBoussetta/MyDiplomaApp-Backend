@@ -30,4 +30,10 @@ public interface IQuestionService {
 
 	Question update(int id, Question question);
 
+	Question createQuestion(Question q, String title);
+
+	void setCorrectAnswer(String q, String a);
+
+	Question getQuestionByText(String text);
+
 }

@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-
+import org.springframework.transaction.annotation.Transactional;
 
 import tn.uae.nawanera.spring.entities.Application;
 import tn.uae.nawanera.spring.entities.SkillAssessment;
@@ -51,8 +51,11 @@ public Application getApplicationByInternAndVacancy(@Param("intern")User intern,
 
 	Application findByVacancy(Vacancy vacancy);
 	Application findById(int id);
-
-	Application findByIntern(User intern);
+	@Transactional
+	@Query("select a from Application a "
+			+ "where  "
+			+ "a.intern=:intern")
+	Application findByIntern( @Param("intern")User intern);
 
 	Application findBySkillAssessment(SkillAssessment sa);
 	
@@ -72,4 +75,24 @@ public Application getApplicationByInternAndVacancy(@Param("intern")User intern,
 			+ "where  "
 			+ "a.intern=:intern and a.vacancy=:vacancy")
 	Application isAppliedByUserAndVacancy( @Param("intern")User intern,@Param("vacancy")Vacancy vacancy);
+	
+	
+	@Query("select a from Application a "
+			+ "where  "
+			+  " a.vacancy.title=:title")
+	List<Application> getApplicationByVacancyTitle( @Param("title")String title);
+	
+	
+	@Query("select DISTINCT v from Vacancy v"
+			+ " join v.applications a"
+			+ " join a.intern u  "
+			+ "where u.username=:username")
+	List<Vacancy> findVacanciesByInternUsername(@Param("username")String username);
+	
+	
+	@Query("select DISTINCT u from User u "
+			+ "join u.applications a "
+			+ "join a.vacancy v "
+			+ "where v.title=:title")
+	List<User> getAllInternByVacancyTitle( @Param("title")String title);
 }

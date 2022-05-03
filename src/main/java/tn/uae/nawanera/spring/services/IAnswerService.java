@@ -9,7 +9,8 @@ public interface IAnswerService {
  
 	Answer addAnswerQuestion(Answer a, int question);
 
-	Answer addAnswerToQuestion(Answer answer, int q);
+
+
 
 	List<Answer> getAllUserAnswers(int user);
 
@@ -30,6 +31,13 @@ public interface IAnswerService {
 	Answer update(int id, Answer answer);
 
 	void removeAnswerByQuestion(int id);
+
+	Answer addAnswerQuestion(Answer a, String question);
+
+
+
+
+	Answer getAnswerByText(String string);
 
  
 }
