@@ -63,7 +63,7 @@ public class ProjectService implements IProjectService {
 	@Override
 	public Project displayVacancyProjectDetailsById(int id) {
 
-		return projectRepository.findById(id).get();
+		return projectRepository.findById(id);
 	}
 
 	@Override
@@ -86,7 +86,7 @@ public class ProjectService implements IProjectService {
 
 	@Override
 	public void removeProject(int projectId) {
-		Project p = projectRepository.findById(projectId).get();
+		Project p = projectRepository.findById(projectId) ;
 		List<Task> tasks = taskService.retreiveAllProjectTasks(projectId);
 		for (Task t : tasks) {
 			taskService.removeProjectTask(t.getId());
@@ -96,7 +96,7 @@ public class ProjectService implements IProjectService {
 
 	@Override
 	public int countProjectInterns(int id) {
-		Project p = projectRepository.findById(id).get();
+		Project p = projectRepository.findById(id) ;
 
 		return p.getInterns().size();
 	}
@@ -104,7 +104,7 @@ public class ProjectService implements IProjectService {
 	@Override
 	public Project update(int id, Project p) {
 
-		Project existProject = projectRepository.findById(id).get();
+		Project existProject = projectRepository.findById(id) ;
 		if (!p.getTitle().equals(existProject.getTitle()))
 			existProject.setTitle(p.getTitle());
 

@@ -117,9 +117,10 @@ public class SkillAssessmentController {
 		iSkillAssessmentService.publishSkillAssessment(sk);
 	}
 	@PreAuthorize("hasAuthority('HR_MANAGER')")
-	@DeleteMapping("/delete-SkillAssessment")
-	public void deleteSkillAssessment(@RequestBody SkillAssessment sk) {
+	@DeleteMapping("/delete-SkillAssessment/{sk}")
+	public void deleteSkillAssessment(@PathVariable("sk") int sk) {
 
+		
 		iSkillAssessmentService.deleteSkillAssessment(sk);
 	}
 

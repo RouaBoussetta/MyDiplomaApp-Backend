@@ -20,15 +20,16 @@ public interface IApplicationService {
 
  
 	Application findApplicationById(int id);
-	Application apply(Application app, MultipartFile file, int idvacancy) ;
  	List<Application> retreiveApplicantSkillAssessments();
 	List<Vacancy> retreiveAllAssignedVacancies();
 	
  	Boolean isAppliedByIntern(int idIntern, int idVacancy);
-	Application apply(Application app, MultipartFile file, String titleVacancy);
 	List<Application> findApplicationsByVacancyTitle(String title);
 	List<Vacancy> findVacanciesByInternUsername(String username);
 	List<User> getAllInternByVacancyTitle(String title);
+	Application applyByTitle(Application app, MultipartFile file, String titleVacancy);
+	Application applyById(Application app, MultipartFile file, int idvacancy);
+	Application findApplicationByVacancy(int idvacancy);
  	
 	
  

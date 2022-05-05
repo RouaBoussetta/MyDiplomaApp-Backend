@@ -9,11 +9,13 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import lombok.extern.slf4j.Slf4j;
 import tn.uae.nawanera.spring.entities.User;
- @Component
+@Slf4j 
+@Component
 public class UserDetailsImpl implements UserDetails {
 	private static final long serialVersionUID = 1L;
-	User user;
+	private transient User user;
 
 	private Collection<? extends GrantedAuthority> authorities;
 
@@ -57,7 +59,8 @@ public class UserDetailsImpl implements UserDetails {
 		try {
 			return user.isValid();
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.info("e :", e);
+
 		}
 		return false;
 	}

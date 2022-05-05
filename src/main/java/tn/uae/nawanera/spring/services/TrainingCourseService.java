@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import lombok.extern.slf4j.Slf4j;
 import tn.uae.nawanera.spring.config.FileUploadUtil;
 import tn.uae.nawanera.spring.entities.Project;
 import tn.uae.nawanera.spring.entities.TrainingCourse;
@@ -17,7 +18,7 @@ import tn.uae.nawanera.spring.repositories.ILikingRepository;
 import tn.uae.nawanera.spring.repositories.ITrainingCourseRepository;
 import tn.uae.nawanera.spring.repositories.ProjectRepository;
 import tn.uae.nawanera.spring.repositories.UserRepository;
-
+@Slf4j
 @Service
 public class TrainingCourseService implements ITrainingCourse {
 	@Autowired
@@ -47,7 +48,8 @@ public class TrainingCourseService implements ITrainingCourse {
 			FileUploadUtil.saveFile(file);
 			trainingcourse.setCourse(file.getOriginalFilename());
 		} catch (IOException e) {
- 			e.printStackTrace();
+			log.info("e :", e);
+
 		}
 		trainingCourseRepository.save(trainingcourse);
 		List<User> users=userRepository.findAllByCompanyName(iuserService.currentUser().getCompanyName());
@@ -117,7 +119,7 @@ public class TrainingCourseService implements ITrainingCourse {
 
 	@Override
 	public TrainingCourse getTrainingCourseById(int id) {
-		return trainingCourseRepository.findById(id).get();
+		return trainingCourseRepository.findById(id) ;
 	}
 
 	@Override
@@ -171,14 +173,14 @@ public class TrainingCourseService implements ITrainingCourse {
 	@Override
 	public List<TrainingCourse> getTrainingCoursesByProject(int id) {
 		
-		Project project=projectRepository.findById(id).get();
+		Project project=projectRepository.findById(id) ;
  		return trainingCourseRepository.findByProject(project);
 	}
 
 	@Override
 	public TrainingCourse update(int id, TrainingCourse tc) {
 		
-		TrainingCourse exist=trainingCourseRepository.findById(id).get();
+		TrainingCourse exist=trainingCourseRepository.findById(id) ;
 		
 		if(!tc.getTitle().equals(exist.getTitle())) {
 			exist.setTitle(tc.getTitle());

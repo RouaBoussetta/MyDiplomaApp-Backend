@@ -28,7 +28,7 @@ public class NotificationService implements INotificationService{
 	
 	@Override
 	public Notification getNotifById(int id) {
-		  return iNotificationRepository.findById(id).get();
+		  return iNotificationRepository.findById(id);
 	}
 
 	@Override

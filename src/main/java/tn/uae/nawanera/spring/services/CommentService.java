@@ -25,7 +25,7 @@ public class CommentService implements ICommentService {
 
 	@Override
 	public Comment addComment(Comment c, int idTc) {
-		TrainingCourse tc = itcRepository.findById(idTc).get();
+		TrainingCourse tc = itcRepository.findById(idTc);
 		c.setUser(iuserService.currentUser());
 		c.setCommentedAt(LocalDateTime.now());
 		c.setTrainingCourse(tc);
@@ -37,7 +37,7 @@ public class CommentService implements ICommentService {
 	public String deleteComment(int id) {
 
 		int iduser = iuserService.currentUser().getId();
-		Comment c = iCommentRepository.findById(id).get();
+		Comment c = iCommentRepository.findById(id) ;
 		if (iduser==c.getUser().getId()){
 		 
 			iCommentRepository.deleteComment(id);
@@ -53,7 +53,7 @@ public class CommentService implements ICommentService {
 	@Override
 	public String updateComment(Comment c, int id) {
 		int iduser = iuserService.currentUser().getId();
-		Comment comment = iCommentRepository.findById(id).get();
+		Comment comment = iCommentRepository.findById(id);
 		if (iduser != comment.getUser().getId()) {
 			return ("You are not allowed to update this comment");
 		} else {
@@ -75,7 +75,7 @@ public class CommentService implements ICommentService {
 
 	@Override
 	public Comment getCommentById(int id) {
-		return iCommentRepository.findById(id).get();
+		return iCommentRepository.findById(id) ;
 	}
 
 	@Override
@@ -96,13 +96,13 @@ public class CommentService implements ICommentService {
 	@Override
 	public List<Comment> getCommentsByTCId(int id) {
 
-		TrainingCourse tc = itcRepository.findById(id).get();
+		TrainingCourse tc = itcRepository.findById(id) ;
 		return iCommentRepository.getCommentsByTrainingCourse(tc);
 	}
 
 	@Override
 	public int countCommentsByTC(int id) {
-		TrainingCourse tc = itcRepository.findById(id).get();
+		TrainingCourse tc = itcRepository.findById(id) ;
 
 		return iCommentRepository.getCommentsByTrainingCourse(tc).size();
 	}

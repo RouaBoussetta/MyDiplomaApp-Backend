@@ -182,21 +182,7 @@ public class User {
 
 	private boolean affected;
 
-	public User(@NotBlank @Size(max = 20) String firstname, @NotBlank @Size(max = 20) String lastname,
-			@NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 20) String companyName,
-			@NotBlank @Size(max = 50) @Email String email, String bio, @NotBlank @Size(max = 120) String password,
-			Role role, boolean valid) {
-		super();
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.username = username;
-		this.companyName = companyName;
-		this.email = email;
-		this.bio = bio;
-		this.password = password;
-		this.role = role;
-		this.valid = valid;
-	}
+	 
 	
 	
 	

@@ -44,7 +44,7 @@ public class CertificateService implements ICertificateService{
 	}
 	@Override
 	public Certificate displayCertificateDetailsById(int id) {
- 		return certificateRepository.findById(id).get();
+ 		return certificateRepository.findById(id);
 	}
 	@Override
 	public List<Certificate> displayCertificatesByAttributer(int hrId) {
@@ -65,14 +65,14 @@ public class CertificateService implements ICertificateService{
 	@Override
 	public String downloadCertificate(int id) {
 
-		Certificate certificate=certificateRepository.findById(id).get();
+		Certificate certificate=certificateRepository.findById(id) ;
 		certificate.setDownloadedAt(LocalDateTime.now());
 		certificateRepository.save(certificate);
 		return "this certificate was successfully downloaded!";
 	}
 	@Override
 	public void removeCertificate(int id) {
-		Certificate certificate=certificateRepository.findById(id).get();
+		Certificate certificate=certificateRepository.findById(id) ;
 		certificateRepository.delete(certificate);
 
 	}

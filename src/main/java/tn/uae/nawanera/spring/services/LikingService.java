@@ -13,46 +13,44 @@ import tn.uae.nawanera.spring.repositories.ILikingRepository;
 import tn.uae.nawanera.spring.repositories.ITrainingCourseRepository;
 
 @Service
-public class LikingService implements ILikingService{
-	@Autowired 
+public class LikingService implements ILikingService {
+	@Autowired
 	ITrainingCourseRepository itcRepository;
-	
-	@Autowired 
+
+	@Autowired
 	ILikingRepository iLikingRepository;
-	
+
 	@Autowired
 	IUserservice iuserService;
-	
-	
+
 	@Override
-	public String deleteLiking(int id)  {
-	
+	public String deleteLiking(int id) {
+
 		int iduser = iuserService.currentUser().getId();
-		Liking l = iLikingRepository.findById(id).get();
-		if (iduser==l.getUser().getId()){
-		iLikingRepository.deleteById(id);
-		return ("Like deleted successfully");
-		}
-		else{
-		return ("You are not allowed to delete this like");	
+		Liking l = iLikingRepository.findById(id);
+		if (iduser == l.getUser().getId()) {
+			iLikingRepository.deleteById(id);
+			return ("Like deleted successfully");
+		} else {
+			return ("You are not allowed to delete this like");
 		}
 	}
 
 	@Override
 	public List<Liking> getAllLikings() {
-		List<Liking>likes = new ArrayList<>();
+		List<Liking> likes = new ArrayList<>();
 		iLikingRepository.findAll().forEach(likes::add);
 		return likes;
 	}
 
 	@Override
 	public Liking getLikingById(int id) {
-		return iLikingRepository.findById(id).get();  
+		return iLikingRepository.findById(id);
 	}
 
 	@Override
 	public int countLikings() {
-		List <Liking> likes= iLikingRepository.findAll();
+		List<Liking> likes = iLikingRepository.findAll();
 		return likes.size();
 	}
 
@@ -63,55 +61,50 @@ public class LikingService implements ILikingService{
 
 	@Override
 	public int countLikingsByUser(int id) {
-		List <Liking> likes= iLikingRepository.getLikesByUserId(id);
+		List<Liking> likes = iLikingRepository.getLikesByUserId(id);
 		return likes.size();
 	}
 
 	@Override
 	public List<Liking> getLikingsByTCId(int id) {
-		TrainingCourse tc=itcRepository.findById(id).get();
+		TrainingCourse tc = itcRepository.findById(id);
 		return iLikingRepository.findByTrainingCourse(tc);
 	}
 
 	@Override
 	public int countLikingsByTC(int id) {
-		TrainingCourse tc=itcRepository.findById(id).get();
+		TrainingCourse tc = itcRepository.findById(id);
 		return iLikingRepository.findByTrainingCourse(tc).size();
 	}
 
 	@Override
 	public boolean isLikeExists(int idu, int idTc) {
-		 int count =iLikingRepository.isLikeExists(idu, idTc);
-		 if (count==0){
-			return false;
-		}
-		 else {
-			 return true;
-		 }
+		int count = iLikingRepository.isLikeExists(idu, idTc);
+
+		return count == 0;
+
 	}
 
-
 	@Override
-	public String addLiking(int idTc)   {
+	public String addLiking(int idTc) {
 		int iduser = iuserService.currentUser().getId();
 		Liking l = new Liking();
-		if (isLikeExists(iduser, idTc)){
+		if (isLikeExists(iduser, idTc)) {
 			return ("You already liked this post");
-		}
-		else{
-		TrainingCourse tc=itcRepository.findById(idTc).get();
-		l.setUser(iuserService.currentUser());
-		l.setTrainingCourse(tc);
-		l.setLikeDate(LocalDateTime.now());
-		 
+		} else {
+			TrainingCourse tc = itcRepository.findById(idTc);
+			l.setUser(iuserService.currentUser());
+			l.setTrainingCourse(tc);
+			l.setLikeDate(LocalDateTime.now());
+
 			iLikingRepository.save(l);
 			return "number of likes on this post: " + countLikingsByTC(idTc);
-		
+
 		}
 	}
 
 	@Override
-	public List<Liking> getOwnLikes()  {
+	public List<Liking> getOwnLikes() {
 		return iLikingRepository.getLikesByUserId(iuserService.currentUser().getId());
 	}
 

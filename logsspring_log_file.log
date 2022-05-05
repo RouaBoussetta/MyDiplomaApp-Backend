@@ -1,4 +1,28 @@
-2022-05-03 20:29:00.010  INFO 12148 --- [scheduling-1] t.u.n.spring.services.UserService        : Method with cron expression
-2022-05-03 20:29:04.893  INFO 12148 --- [scheduling-1] t.u.n.spring.services.UserService        : Method with fixed Rate
-2022-05-03 20:30:00.010  INFO 12148 --- [scheduling-1] t.u.n.spring.services.UserService        : Method with cron expression
-2022-05-03 20:30:04.890  INFO 12148 --- [scheduling-1] t.u.n.spring.services.UserService        : Method with fixed Rate
+2022-05-05 16:13:18.343  INFO 1284 --- [scheduling-1] t.u.n.spring.services.UserService        : Method with fixed Rate
+2022-05-05 16:14:00.006  INFO 1284 --- [scheduling-1] t.u.n.spring.services.UserService        : Method with cron expression
+2022-05-05 16:14:18.350  INFO 1284 --- [scheduling-1] t.u.n.spring.services.UserService        : Method with fixed Rate
+2022-05-05 16:15:00.101  INFO 1284 --- [scheduling-1] t.u.n.spring.services.UserService        : Method with cron expression
+2022-05-05 16:15:18.339  INFO 1284 --- [scheduling-1] t.u.n.spring.services.UserService        : Method with fixed Rate
+2022-05-05 16:16:00.004  INFO 1284 --- [scheduling-1] t.u.n.spring.services.UserService        : Method with cron expression
+2022-05-05 16:16:18.340  INFO 1284 --- [scheduling-1] t.u.n.spring.services.UserService        : Method with fixed Rate
+2022-05-05 16:16:45.172  INFO 1284 --- [Thread-41] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-05-05 16:16:45.175  INFO 1284 --- [Thread-41] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2022-05-05 16:16:45.184  INFO 1284 --- [Thread-41] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+2022-05-05 16:16:46.202  INFO 1284 --- [restartedMain] t.u.n.spring.MyDiplomaAppApplication     : Starting MyDiplomaAppApplication using Java 1.8.0_211 on DESKTOP-4QOM9A3 with PID 1284 (C:\Users\LENOVO\Documents\GitHub\myDiplomaApp\target\classes started by LENOVO in C:\Users\LENOVO\Documents\GitHub\myDiplomaApp)
+2022-05-05 16:16:46.203  INFO 1284 --- [restartedMain] t.u.n.spring.MyDiplomaAppApplication     : No active profile set, falling back to default profiles: default
+2022-05-05 16:16:47.443  INFO 1284 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-05-05 16:16:47.610  INFO 1284 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 166 ms. Found 23 JPA repository interfaces.
+2022-05-05 16:16:47.803  INFO 1284 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@132e042a' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-05 16:16:47.811  INFO 1284 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-05 16:16:48.028  INFO 1284 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8085 (http)
+2022-05-05 16:16:48.028  INFO 1284 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-05-05 16:16:48.028  INFO 1284 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
+2022-05-05 16:16:48.049  INFO 1284 --- [restartedMain] o.a.c.c.C.[.[localhost].[/SpringMVC]     : Initializing Spring embedded WebApplicationContext
+2022-05-05 16:16:48.049  INFO 1284 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1837 ms
+2022-05-05 16:16:48.137  INFO 1284 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2022-05-05 16:16:48.143  INFO 1284 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
+2022-05-05 16:16:48.252  INFO 1284 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-05-05 16:16:48.261  INFO 1284 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-05-05 16:16:51.276  INFO 1284 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-05-05 16:16:51.277  INFO 1284 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-05-05 16:16:53.341  WARN 1284 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning

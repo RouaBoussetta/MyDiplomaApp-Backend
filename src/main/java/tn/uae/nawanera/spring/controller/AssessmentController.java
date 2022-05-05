@@ -22,10 +22,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import lombok.extern.slf4j.Slf4j;
 import tn.uae.nawanera.spring.entities.Assessment;
 import tn.uae.nawanera.spring.entities.Notice;
 import tn.uae.nawanera.spring.services.AssessmentService;
- 
+ @Slf4j
 @RestController
 @RequestMapping("/api/project/assessment")
 public class AssessmentController {
@@ -42,7 +43,8 @@ public class AssessmentController {
 		try {
             assessment=objectMapper.readValue(a,Assessment.class);
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
+			log.info("e :", e);
+
         }
 	return	assessmentservice.addAssessment(assessment, signature, stamp ,  intern);
 

@@ -23,7 +23,7 @@ import tn.uae.nawanera.spring.payload.response.MessageResponse;
 import tn.uae.nawanera.spring.services.IApplicationService;
 import tn.uae.nawanera.spring.services.ISkillAssessmentService;
 import tn.uae.nawanera.spring.services.IVacancyService;
-
+ 
 @RestController
 @RequestMapping("/api/application")
 public class ApplicationController {
@@ -85,7 +85,7 @@ public class ApplicationController {
 	public ResponseEntity<MessageResponse> apply(Application app, @RequestParam(value = "file", required = true) MultipartFile file,
 			@PathVariable("idvacancy") int idvacancy) {
 
-		iapplicationService.apply(app, file, idvacancy);
+		iapplicationService.applyById(app, file, idvacancy);
 
 		return ResponseEntity.ok(new MessageResponse("Application successfully Registred!"));
 	}
@@ -97,7 +97,7 @@ public class ApplicationController {
 	public ResponseEntity<MessageResponse> apply2(Application app, @RequestParam(value = "file", required = true) MultipartFile file,
 			@PathVariable("title") String title) {
 
-		iapplicationService.apply(app, file, title);
+		iapplicationService.applyByTitle(app, file, title);
 
 		return ResponseEntity.ok(new MessageResponse("Application successfully Registred!"));
 	}

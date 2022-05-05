@@ -35,7 +35,7 @@ public class TaskService implements ITaskService {
 
 	@Override
 	public Task addProjectTask(Task t, int idproject) {
-		Project p = projectRepository.findById(idproject).get();
+		Project p = projectRepository.findById(idproject) ;
 		t.setProject(p);
 		t.setCreatedAt(LocalDateTime.now());
 		t.setStatus(TaskStatus.TODO);
@@ -80,14 +80,14 @@ public class TaskService implements ITaskService {
 
 	@Override
 	public List<Task> retreiveAllProjectTasks(int idProject) {
-		Project p = projectRepository.findById(idProject).get();
+		Project p = projectRepository.findById(idProject) ;
 
 		return taskRepository.findByProject(p);
 	}
 
 	@Override
 	public int countProjectTasks(int idProject) {
-		Project p = projectRepository.findById(idProject).get();
+		Project p = projectRepository.findById(idProject) ;
 		List<Task> tasks = taskRepository.findByProject(p);
 		return tasks.size();
 	}
@@ -106,7 +106,7 @@ public class TaskService implements ITaskService {
 
 	@Override
 	public void evaluateProjectTask(Task ta, int project) {
-		Project p = projectRepository.findById(project).get();
+		Project p = projectRepository.findById(project) ;
 
 		List<Task> tasks = taskRepository.findByProject(p);
 
@@ -187,7 +187,7 @@ public class TaskService implements ITaskService {
 	public List<Task> retreiveAssignedTasksByIntern(int idProject, int idIntern) {
 
 		User intern = userRepository.findById(idIntern);
-		Project project = projectRepository.findById(idProject).get();
+		Project project = projectRepository.findById(idProject) ;
 
 		List<Task> tasks = new ArrayList<>();
 
@@ -198,6 +198,13 @@ public class TaskService implements ITaskService {
 			}
 		}
 		return tasks;
+	}
+
+	@Override
+	public Task findbyTaskname(String task) {
+
+
+ return  taskRepository.findByTaskName(task);
 	}
 
  

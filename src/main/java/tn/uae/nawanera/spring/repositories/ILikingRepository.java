@@ -13,6 +13,7 @@ import tn.uae.nawanera.spring.entities.TrainingCourse;
 @Repository
 public interface ILikingRepository extends JpaRepository<Liking, Integer>{
 
+	Liking findById(int id);
 	@Query("SELECT l FROM Liking l WHERE l.user.id =:id order by l.likeDate desc")
 	public List<Liking> getLikesByUserId(@Param("id")int id);
 

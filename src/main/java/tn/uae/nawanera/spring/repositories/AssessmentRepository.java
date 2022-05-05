@@ -17,6 +17,9 @@ public interface AssessmentRepository extends JpaRepository<Assessment, Integer>
 	List<Assessment> findByfinalNotice(Notice notice);
 
 	List<Assessment> findByTrainer(User trainer);
+
+	Assessment findByRemark(String string);
+	Assessment findById(int id);
 	
 
 }

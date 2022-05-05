@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import lombok.extern.slf4j.Slf4j;
 import tn.uae.nawanera.spring.config.FileUploadUtil;
 import tn.uae.nawanera.spring.entities.Application;
 import tn.uae.nawanera.spring.entities.User;
@@ -17,7 +18,7 @@ import tn.uae.nawanera.spring.repositories.INotificationRepository;
 import tn.uae.nawanera.spring.repositories.SkillAssessmentRepository;
 import tn.uae.nawanera.spring.repositories.UserRepository;
 import tn.uae.nawanera.spring.repositories.VacancyRepository;
-
+@Slf4j
 @Service
 public class ApplicationService implements IApplicationService {
 
@@ -37,14 +38,14 @@ public class ApplicationService implements IApplicationService {
 	@Autowired
 	INotificationService inotifService;
 	@Override
-	public Application apply(Application app,  MultipartFile file,int idvacancy)  {
+	public Application applyById(Application app,  MultipartFile file,int idvacancy)  {
 
  		Vacancy v = vacancyRepository.findById(idvacancy);
  		try {
 			FileUploadUtil.saveFile(file);
 			app.setCv(file.getOriginalFilename());
 		} catch (IOException e) {
- 			e.printStackTrace();
+			log.info("e :", e);
 		}
 		
  		app.setVacancy(v);
@@ -59,14 +60,14 @@ public class ApplicationService implements IApplicationService {
 	}
 	
 	@Override
-	public Application apply(Application app,  MultipartFile file,String titleVacancy)  {
+	public Application applyByTitle(Application app,  MultipartFile file,String titleVacancy)  {
 
  		Vacancy v = vacancyRepository.findByTitle(titleVacancy);
  		try {
 			FileUploadUtil.saveFile(file);
 			app.setCv(file.getOriginalFilename());
 		} catch (IOException e) {
- 			e.printStackTrace();
+			log.info("e :", e);
 		}
 		
  		app.setVacancy(v);
@@ -133,6 +134,14 @@ public class ApplicationService implements IApplicationService {
  
 		return applicationRepository.findById(id);
 	}
+	
+	@Override
+	public Application findApplicationByVacancy(int id) {
+ 		Vacancy v = vacancyRepository.findById(id);
+
+ 
+		return applicationRepository.findByVacancy(v);
+	}
 
 	@Override
 	public Application acceptApplication(int idapp)    {
@@ -174,10 +183,8 @@ public class ApplicationService implements IApplicationService {
 		User intern=userRepository.findById(idIntern);
 		Vacancy vacancy=vacancyRepository.findById(idVacancy);
 		
- 		  if(!applicationRepository.isAppliedByUserAndVacancy(intern,vacancy).equals(null))
- 		  return true;
- 		  else
- 			  return false;
+ 		return  applicationRepository.isAppliedByUserAndVacancy(intern,vacancy)!=null;
+ 		
 	}
 
 }

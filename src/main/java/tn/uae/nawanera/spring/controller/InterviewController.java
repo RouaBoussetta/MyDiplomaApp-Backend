@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,6 +43,14 @@ public class InterviewController {
 	@GetMapping("/retreiveAllInterviews")
 	public List<Interview> getAllInteriews() {
 		return iInterviewService.retreiveInterviews();
+	}
+	
+	
+	@PreAuthorize("hasAuthority('HR_MANAGER')")
+	@DeleteMapping("/delete-interview/{id}")  
+	public void delete (@PathVariable("id") int id)   
+	{  
+		iInterviewService.rejectInterview(id);
 	}
 
 }

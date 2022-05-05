@@ -15,6 +15,9 @@ import tn.uae.nawanera.spring.entities.TrainingCourse;
 
 @Repository
 public interface ICommentRepository extends JpaRepository<Comment, Integer> {
+	
+	Comment findById(int id);
+	Comment findByCommentContent(String commentContent);
 	@Query("SELECT c FROM Comment c WHERE c.user.id =:id")
 	List<Comment> getCommentsByUserId(@Param("id") int id);
 

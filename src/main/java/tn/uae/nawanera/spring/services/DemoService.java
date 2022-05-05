@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import lombok.extern.slf4j.Slf4j;
 import tn.uae.nawanera.spring.config.FileUploadUtil;
 import tn.uae.nawanera.spring.entities.Demo;
 import tn.uae.nawanera.spring.entities.Task;
@@ -17,7 +18,7 @@ import tn.uae.nawanera.spring.repositories.DemoRepository;
 import tn.uae.nawanera.spring.repositories.ProjectRepository;
 import tn.uae.nawanera.spring.repositories.TaskRepository;
 import tn.uae.nawanera.spring.repositories.UserRepository;
-
+@Slf4j
 @Service
 public class DemoService implements IDemoService {
 	@Autowired
@@ -39,7 +40,8 @@ public class DemoService implements IDemoService {
 			FileUploadUtil.saveFile(file);
 			demo.setFile(file.getOriginalFilename());
 		} catch (IOException e) {
- 			e.printStackTrace();
+			log.info("e :", e);
+
 		}
 	
 		demo.setTask(task);
@@ -57,7 +59,7 @@ public class DemoService implements IDemoService {
 		 
 		for(Demo d:demos) 
 			if(d.getTask().equals(t)) 
-				return demoRepository.findById(d.getId()).get();
+				return demoRepository.findById(d.getId());
  
 			
 	 
@@ -69,7 +71,7 @@ public class DemoService implements IDemoService {
 	@Override
 	public Demo displayDemoDetailsById(int id) {
 
-		return demoRepository.findById(id).get();
+		return demoRepository.findById(id) ;
 	}
 
 	@Override
@@ -108,7 +110,7 @@ public class DemoService implements IDemoService {
 	@Override
 	public void removeDemo(int demoId) {
 
-		Demo demo=demoRepository.findById(demoId).get();
+		Demo demo=demoRepository.findById(demoId) ;
 		
 		demoRepository.delete(demo);
 

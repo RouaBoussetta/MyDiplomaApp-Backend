@@ -128,6 +128,14 @@ public class UserService implements IUserservice {
 	public void deleteUserById(Integer userId) {
 		userRepository.deleteById(userId);
 	}
+	
+	@Override
+
+	public void removeUsersByCompanyName(String companyName) {
+		
+		userRepository.removeUsersByCompanyName( companyName);
+		
+	}
 
 	@Override
 	public User activateUser(int iduser) {
@@ -267,7 +275,7 @@ public class UserService implements IUserservice {
 
 	public void assignProjectToIntern(int projectId, int internId) {
 		User intern = userRepository.findById(internId);
-		Project project = projectRepository.findById(projectId).get();
+		Project project = projectRepository.findById(projectId) ;
 		List<Project> internProjects = new ArrayList<>();
 		internProjects.add(project);
 		intern.setInternProjects(internProjects);
@@ -380,7 +388,7 @@ public class UserService implements IUserservice {
 
 	@Override
 	public List<User> getProjectInterns(int idproject) {
-		Project p = projectRepository.findById(idproject).get();
+		Project p = projectRepository.findById(idproject);
 		return p.getInterns();
 	}
 

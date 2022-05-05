@@ -18,9 +18,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import lombok.extern.slf4j.Slf4j;
 import tn.uae.nawanera.spring.entities.Certificate;
 import tn.uae.nawanera.spring.services.CertificateService;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/certificate")
 public class CertificateController {
@@ -37,7 +39,8 @@ public class CertificateController {
 		try {
             certificate=objectMapper.readValue(c,Certificate.class);
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
+			log.info("e :", e);
+
         }
 	return	certificateservice.addCertificateDetails(certificate ,idIntern,stamp,signature );
 

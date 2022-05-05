@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import lombok.extern.slf4j.Slf4j;
 import tn.uae.nawanera.spring.config.FileUploadUtil;
 import tn.uae.nawanera.spring.entities.Notification;
 import tn.uae.nawanera.spring.entities.Role;
@@ -34,6 +35,7 @@ import tn.uae.nawanera.spring.services.INotificationService;
 import tn.uae.nawanera.spring.services.IRoleservice;
 import tn.uae.nawanera.spring.services.IUserservice;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
@@ -141,6 +143,14 @@ public class UserController {
 		  iuserservice.deleteUserById(id);
 	}
 
+	 @PreAuthorize("hasAuthority('ADMINISTRATOR')")
+
+	@DeleteMapping("/delete-user-company/{companyName}")
+	public void deleteUserByCompanyName(@PathVariable("companyName") String companyName) {
+		  iuserservice.removeUsersByCompanyName(companyName);
+	}
+	
+	
 	@PermitAll
 	@GetMapping("/project-interns/{id}")
 	public List<User> getProjectInterns(@PathVariable("id") int id ) {
@@ -169,14 +179,16 @@ public class UserController {
 		try {
 			user = objectMapper.readValue(u, User.class);
 		} catch (JsonProcessingException e) {
-			e.printStackTrace();
+			log.info("e :", e);
+
 		}
 		try {
 			FileUploadUtil.saveFile(file);
 			user.setUserImage(file.getOriginalFilename());
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.info("e :", e);
+
 		}
 		return iuserservice.editProfile(id,user);
 	}
@@ -202,7 +214,8 @@ public class UserController {
 		try {
 			user = objectMapper.readValue(u, User.class);
 		} catch (JsonProcessingException e) {
-			e.printStackTrace();
+			log.info("e :", e);
+
 		}
 		
 		try {
@@ -210,7 +223,8 @@ public class UserController {
 			user.setUserImage(file.getOriginalFilename());
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.info("e :", e);
+
 		}
 		user.setAddedBy(iuserservice. currentUser().getUsername());
 
@@ -230,14 +244,16 @@ public class UserController {
 		try {
 			user = objectMapper.readValue(u, User.class);
 		} catch (JsonProcessingException e) {
-			e.printStackTrace();
+			log.info("e :", e);
+
 		}
 		try {
 			FileUploadUtil.saveFile(file);
 			user.setUserImage(file.getOriginalFilename());
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.info("e :", e);
+
 		}
 		user.setAddedBy(iuserservice. currentUser().getUsername());
 
@@ -272,7 +288,8 @@ public class UserController {
 		try {
 			user = objectMapper.readValue(u, User.class);
 		} catch (JsonProcessingException e) {
-			e.printStackTrace();
+			log.info("e :", e);
+
 		}
 		
 		try {
@@ -280,7 +297,8 @@ public class UserController {
 			user.setUserImage(file.getOriginalFilename());
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.info("e :", e);
+
 		}
 		user.setAddedBy(iuserservice. currentUser().getUsername());
 
@@ -365,5 +383,8 @@ public class UserController {
 
 		return "All user notifs has been removed successfuly";
 	}
+	
+ 
+	
 	
 }

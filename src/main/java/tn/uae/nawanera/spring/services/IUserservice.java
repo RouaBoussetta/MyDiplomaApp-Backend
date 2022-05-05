@@ -79,4 +79,6 @@ public interface IUserservice {
 
 	User editProfile(int id, User user);
 
+	void removeUsersByCompanyName(String companyName);
+
 }

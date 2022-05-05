@@ -11,7 +11,6 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
 import com.stripe.model.Customer;
@@ -46,7 +45,7 @@ public class SubscriptionService implements ISubscriptionService{
 
 	@Override
 	public void createStripeCustomer(int idcompany) {
-		Stripe.apiKey =api;
+	 
 		User company = userRepository.findById(idcompany);
 		Map<String, Object> params = new HashMap<>();
 		
@@ -64,7 +63,7 @@ public class SubscriptionService implements ISubscriptionService{
  
 	@Override
 	public String createCardForCustumorStripe(String customerId,Subscription p) throws StripeException {
-		Stripe.apiKey =api;
+		 
 		Customer customer = Customer.retrieve(customerId);
 		Map<String, Object> cardParam = new HashMap<>();
 		cardParam.put("number", p.getCard());
@@ -87,7 +86,7 @@ public class SubscriptionService implements ISubscriptionService{
 	
 	@Override
 	public void chargeCustomer(String customerId,Subscription p,int amount) throws StripeException  {
-		Stripe.apiKey = api;
+	 
 		User company=iuserService.currentUser();
 		List<User> users=userRepository.findAllByCompanyName(company.getCompanyName());
 

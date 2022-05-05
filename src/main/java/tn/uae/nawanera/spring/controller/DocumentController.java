@@ -12,9 +12,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import lombok.extern.slf4j.Slf4j;
 import tn.uae.nawanera.spring.entities.Document;
 import tn.uae.nawanera.spring.services.IDocumentService;
-
+@Slf4j
 @RestController
 @RequestMapping("/api/document")
 public class DocumentController {
@@ -32,7 +33,8 @@ public class DocumentController {
 		try {
 			document=objectMapper.readValue(doc,Document.class);
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
+			log.info("e :", e);
+
         }
 		 return idocService.addDocument(document,file);
 	}

@@ -44,7 +44,7 @@ public class AssessmentService implements IAssessmentService {
 	}
 
 	public Assessment displayAssessmentById(int id) {
-		return assessmentRepository.findById(id).get();
+		return assessmentRepository.findById(id) ;
 
 	}
 
@@ -94,7 +94,7 @@ public class AssessmentService implements IAssessmentService {
 
 	@Override
 	public Assessment update(Assessment assessment, int id) {
-		 Assessment exist=assessmentRepository.findById(id).get();
+		 Assessment exist=assessmentRepository.findById(id) ;
 		 
  			 exist.setFinalNotice(assessment.getFinalNotice());
 		 

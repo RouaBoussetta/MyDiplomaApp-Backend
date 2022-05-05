@@ -116,11 +116,7 @@ public class AnswerService implements IAnswerService {
 	
  
 	
-	private Answer updateAndSaveAnswer(Answer answer, Question question, int count) {
-		answer.setAnswerorder(count + 1);
-		answer.setQuestion(question);
-		return  addAnswerQuestion(answer,question.getId());
-	}
+	
 
 	@Override
 	public Answer update(int id,Answer answer) {

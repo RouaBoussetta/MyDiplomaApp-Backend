@@ -27,7 +27,7 @@ public class PackageService implements IPackageService{
 	@Override
 	public void removePackage(int id) {
 	
-		Package p=packageRepository.findById(id).get();
+		Package p=packageRepository.findById(id);
 		
 		packageRepository.delete(p);
 		
@@ -36,7 +36,7 @@ public class PackageService implements IPackageService{
 	@Override
 	public Package updatePackage(Package p) {
 		 
-		Package pack = packageRepository.findById(p.getId()).get();
+		Package pack = packageRepository.findById(p.getId()) ;
 		 
 		if (p.getName()==null)
 			p.setName(pack.getName());
@@ -60,7 +60,7 @@ public class PackageService implements IPackageService{
 	@Override
 	public Package getPackageDetails(int id) {
  
-		return packageRepository.findById(id).get();
+		return packageRepository.findById(id) ;
 	}
 
  

@@ -2,6 +2,8 @@ package tn.uae.nawanera.spring.repositories;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -66,6 +68,13 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 		
 		@Query("Select u FROM User u where u.trainedBy= :trainedBy")
 		List<User> findTrainerInterns(@Param("trainedBy")String trainedBy);
+		
+		
+		
+		@Transactional
+		@Modifying
+		@Query("delete from User u where  u.companyName=:companyName")
+		void removeUsersByCompanyName(@Param("companyName")String companyName);
 
  
 

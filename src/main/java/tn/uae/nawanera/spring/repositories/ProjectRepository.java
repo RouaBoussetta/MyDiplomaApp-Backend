@@ -12,10 +12,11 @@ import tn.uae.nawanera.spring.entities.Vacancy;
 @Repository
 public interface ProjectRepository extends JpaRepository<Project, Integer>{
 
- 
+Project findByTitle(String title);
 	List<Project> findByTrainer(User trainer);
  
 	Project findByVacancy(Vacancy v);
+	Project findById(int id);
 
 	 
  

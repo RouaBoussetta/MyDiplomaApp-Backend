@@ -22,7 +22,7 @@ public interface ISkillAssessmentService {
 
 	SkillAssessment update(int id, SkillAssessment sa);
 
-	void deleteSkillAssessment(SkillAssessment sa);
+	void deleteSkillAssessment(int sa);
 
 	List<SkillAssessment> searchSkillAssessment(String query);
 
@@ -41,8 +41,9 @@ public interface ISkillAssessmentService {
 
 	SkillAssessment getSkillAssessmentByTitle(String string);
 
+	 
+
  
-	//void assignSAToIntern(int saId, int internId, int idVacancy) throws GeneralSecurityException, IOException;
 
  
 }

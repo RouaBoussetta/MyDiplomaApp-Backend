@@ -34,6 +34,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import lombok.extern.slf4j.Slf4j;
 import tn.uae.nawanera.spring.entities.RefreshToken;
 import tn.uae.nawanera.spring.entities.User;
 import tn.uae.nawanera.spring.exception.TokenRefreshException;
@@ -49,7 +50,7 @@ import tn.uae.nawanera.spring.services.IRoleservice;
 import tn.uae.nawanera.spring.services.IUserservice;
 
 @CrossOrigin(origins = "http://localhost:8081/SpringMVC", maxAge = 3600, allowCredentials = "true")
-
+@Slf4j
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -100,7 +101,8 @@ public class AuthController {
 		try {
 			user = objectMapper.readValue(u, User.class);
 		} catch (JsonProcessingException e) {
-			e.printStackTrace();
+			log.info("e :", e);
+
 		}
 		iuserservice.signUp(user, file);
 
@@ -177,10 +179,9 @@ public class AuthController {
 	@PostMapping("/logout")
 	public ResponseEntity<MessageResponse> logoutUser(HttpServletRequest http) throws ServletException {
 
-		//refreshTokenService.deleteByUserId(iuserservice.currentUser().getId());
 		
 		http.logout() ;
-		//SecurityContextHolder.getContext().setAuthentication(null);
+		SecurityContextHolder.getContext().setAuthentication(null);
 		return ResponseEntity.ok(new MessageResponse("Log out successful!"));
 	}
 

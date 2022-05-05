@@ -43,8 +43,20 @@ public class InterviewService implements IinterviewService{
 		
 		return interviewRepository.findAll();
 	}
-	 
-
+	@Override
+	public  Interview  getInterviewByApplication(int app) {
+		Application a=applicationRepository.findById(app);
+		
+		return interviewRepository.findByApplication(a);
+	}
+	@Override
+	public void rejectInterview (int id) {
+		
+		Interview intervieww=getInterviewByApplication(id);
+		  interviewRepository.delete(intervieww);
+	}
+	
+	
 	
 
 }

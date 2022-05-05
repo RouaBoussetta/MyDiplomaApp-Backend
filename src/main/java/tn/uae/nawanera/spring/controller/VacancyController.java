@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import lombok.extern.slf4j.Slf4j;
 import tn.uae.nawanera.spring.config.FileUploadUtil;
 import tn.uae.nawanera.spring.entities.Degree;
 import tn.uae.nawanera.spring.entities.Status;
@@ -33,7 +34,7 @@ import tn.uae.nawanera.spring.payload.response.MessageResponse;
 import tn.uae.nawanera.spring.services.IUserservice;
 import tn.uae.nawanera.spring.services.IVacancyService;
  
-
+@Slf4j
 @RestController
 @RequestMapping("/api/vacancy")
 public class VacancyController {
@@ -53,14 +54,16 @@ public class VacancyController {
 		try {
 			vacancy = objectMapper.readValue(v, Vacancy.class);
 		} catch (JsonProcessingException e) {
-			e.printStackTrace();
+			log.info("e :", e);
+
 		}
 		try {
 			FileUploadUtil.saveFile(file);
 			vacancy.setImage(file.getOriginalFilename());
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.info("e", e);
+
 		}
 		ivacancyService.createVacancy(vacancy);
 		return ResponseEntity.ok(new MessageResponse("Vacancy Published successfully!"));

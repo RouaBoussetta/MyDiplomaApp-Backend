@@ -20,10 +20,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import lombok.extern.slf4j.Slf4j;
 import tn.uae.nawanera.spring.entities.Demo;
 import tn.uae.nawanera.spring.payload.response.MessageResponse;
 import tn.uae.nawanera.spring.services.IDemoService;
-
+@Slf4j
 @RestController
 @RequestMapping("/api/project/task/demo")
 public class DemoController {
@@ -39,7 +40,7 @@ public class DemoController {
 		try {
             demo=objectMapper.readValue(d,Demo.class);
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
+			log.info("e :", e);
         }
 		idemoService.addDemoDetails(demo,file, idtask);
 		return ResponseEntity.ok(new MessageResponse("Task Demo successfully Registred!"));

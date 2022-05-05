@@ -29,12 +29,29 @@ import org.springframework.web.context.WebApplicationContext;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import tn.uae.nawanera.spring.entities.Answer;
+import tn.uae.nawanera.spring.entities.Application;
+import tn.uae.nawanera.spring.entities.Assessment;
+import tn.uae.nawanera.spring.entities.Comment;
+import tn.uae.nawanera.spring.entities.Demo;
+import tn.uae.nawanera.spring.entities.Project;
 import tn.uae.nawanera.spring.entities.Question;
 import tn.uae.nawanera.spring.entities.SkillAssessment;
+import tn.uae.nawanera.spring.entities.Task;
+import tn.uae.nawanera.spring.entities.TrainingCourse;
 import tn.uae.nawanera.spring.entities.User;
 import tn.uae.nawanera.spring.entities.Vacancy;
 import tn.uae.nawanera.spring.entities.VacancyCategory;
+import tn.uae.nawanera.spring.repositories.ApplicationRepository;
+import tn.uae.nawanera.spring.repositories.AssessmentRepository;
+import tn.uae.nawanera.spring.repositories.DemoRepository;
+import tn.uae.nawanera.spring.repositories.ICommentRepository;
+import tn.uae.nawanera.spring.repositories.ILikingRepository;
+import tn.uae.nawanera.spring.repositories.ITrainingCourseRepository;
+import tn.uae.nawanera.spring.repositories.ProjectRepository;
+import tn.uae.nawanera.spring.repositories.TaskRepository;
 import tn.uae.nawanera.spring.repositories.UserRepository;
+import tn.uae.nawanera.spring.repositories.VacancyRepository;
+import tn.uae.nawanera.spring.services.CommentService;
 import tn.uae.nawanera.spring.services.IAnswerService;
 import tn.uae.nawanera.spring.services.IQuestionService;
 import tn.uae.nawanera.spring.services.ISkillAssessmentService;
@@ -52,8 +69,33 @@ public class MydiplomaAppTest {
 
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	ICommentRepository icomment;
+	@Autowired
+	ILikingRepository iliking;
+	
+	
+	@Autowired
+	CommentService commentService;
 	@Autowired
 	IVacancyCategoryService icategory;
+	@Autowired
+	ApplicationRepository iapp;
+	@Autowired
+	DemoRepository idemo;
+	@Autowired
+	AssessmentRepository iassessment;
+	@Autowired
+	VacancyRepository ivacancyRepo;
+
+	@Autowired
+	ProjectRepository iprojectRepo;
+	@Autowired
+	TaskRepository itaskRepo;
+
+	@Autowired
+	ITrainingCourseRepository itcRepo;
 
 	@Autowired
 	IVacancyService ivacancy;
@@ -73,7 +115,7 @@ public class MydiplomaAppTest {
 
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).apply(springSecurity()).build();
 	}
- 
+/*
 	@Test
 	public void AAtestsignup() throws Exception {
 
@@ -92,7 +134,7 @@ public class MydiplomaAppTest {
 				.andExpect(status().isOk());
 
 	}
-
+*/
 	@Test
 	public void AtestSignupIntern() throws Exception {
 
@@ -210,8 +252,6 @@ public class MydiplomaAppTest {
 	 * }
 	 */
 
-	
- 
 	@Test
 	@WithMockUser(username = "Admin_Admin", password = "azerty123", authorities = "ADMINISTRATOR")
 	public void FtestGetAllUsers() throws Exception {
@@ -288,7 +328,7 @@ public class MydiplomaAppTest {
 	/*****************************************
 	 * Internship Vacancy
 	 *****************************************/
- 
+
 	@Test
 	@WithMockUser(username = "Hr_Manager", password = "azerty123", authorities = "HR_MANAGER")
 	public void EtestCreateCategory() throws Exception {
@@ -505,7 +545,7 @@ public class MydiplomaAppTest {
 	/***************************************
 	 * Application
 	 ***********************************************/
- 
+
 	@Test
 	@WithMockUser(username = "Intern_Intern", password = "azerty123", authorities = "INTERN")
 	public void JJtestApply() throws Exception {
@@ -545,7 +585,6 @@ public class MydiplomaAppTest {
 	 * }
 	 */
 
- 
 	@Test
 	@WithMockUser(username = "Hr_Manager", password = "azerty", authorities = "HR_MANAGER")
 	public void JtestDGetAllVacanciesAppliedByIntern() throws Exception {
@@ -575,7 +614,7 @@ public class MydiplomaAppTest {
 	/*****************************************
 	 * Qualifying Test
 	 **********************************************/
- 
+
 	@Test
 	@WithMockUser(username = "Hr_Manager", password = "azerty123", authorities = "HR_MANAGER")
 	public void KKKKtestACreateSkillAssessment() throws Exception {
@@ -724,7 +763,7 @@ public class MydiplomaAppTest {
 	 * }
 	 * 
 	 */
- 
+
 	@Test
 	@WithMockUser(username = "Hr_Manager", password = "azerty123", authorities = "HR_MANAGER")
 	public void LtestESetCorrectAnswers() throws Exception {
@@ -766,23 +805,21 @@ public class MydiplomaAppTest {
 		assertEquals(200, result1.getResponse().getStatus());
 
 	}
- 
-	
-	  @Test
-	  @WithMockUser(username = "Hr_Manager", password = "azerty123", authorities ="HR_MANAGER")
-	  public void MMtestAssignSAToIntern() throws Exception {
-	  User intern=iuser.findUserBylogin("Intern_Intern");
-	  SkillAssessment sk=isk.getSkillAssessmentByTitle("test");
-	  MockHttpServletRequestBuilder requestBuilder1 = MockMvcRequestBuilders.put(
-	  "/api/skill-assessment/assign-skill-assessment-to-intern/"+sk.getId()+"/"+intern.getId())
-	  .accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
-	  
-	  MvcResult result1 = mockMvc.perform(requestBuilder1).andReturn();
-	  
-	  assertEquals(200, result1.getResponse().getStatus());
 
-	  }
+	@Test
+	@WithMockUser(username = "Hr_Manager", password = "azerty123", authorities = "HR_MANAGER")
+	public void MMtestAssignSAToIntern() throws Exception {
+		User intern = iuser.findUserBylogin("Intern_Intern");
+		SkillAssessment sk = isk.getSkillAssessmentByTitle("test");
+		MockHttpServletRequestBuilder requestBuilder1 = MockMvcRequestBuilders
+				.put("/api/skill-assessment/assign-skill-assessment-to-intern/" + sk.getId() + "/" + intern.getId())
+				.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
 
+		MvcResult result1 = mockMvc.perform(requestBuilder1).andReturn();
+
+		assertEquals(200, result1.getResponse().getStatus());
+
+	}
 
 	@Test
 
@@ -808,7 +845,7 @@ public class MydiplomaAppTest {
 
 		Answer a1 = ianswer.getAnswerByText("option1-q1");
 		Answer a2 = ianswer.getAnswerByText("option2-q2");
-	 
+
 		SkillAssessment sk = isk.getSkillAssessmentByTitle("test");
 		String submit = "[{\"question\":" + q1.getId() + ",\"selectedAnswer\":" + a1.getId() + "},{\"question\":"
 				+ q2.getId() + ",\"selectedAnswer\":" + a2.getId() + "}]";
@@ -823,4 +860,1116 @@ public class MydiplomaAppTest {
 
 	}
 
+	@Test
+	@WithMockUser(username = "Hr_Manager", password = "azerty123", authorities = "HR_MANAGER")
+	public void testAPlannifyInterview() throws Exception {
+		String interview = "{\"interviewDate\":\"2022-01-20\",\"interviewTime\":\"18:00:00\" }";
+		User u = iuser.findUserBylogin("Intern_Intern");
+
+		Application app = iapp.findByIntern(u);
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.post("/api/interview/plannify/" + app.getId()).content(interview).accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Hr_Manager", password = "azerty123", authorities = "HR_MANAGER")
+	public void testCAcceptIntern() throws Exception {
+		User u = iuser.findUserBylogin("Intern_Intern");
+
+		Application app = iapp.findByIntern(u);
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.put("/api/application/accept-application/" + app.getId()).accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Hr_Manager", password = "azerty123", authorities = "HR_MANAGER")
+	public void testDAffectTrainerToIntern() throws Exception {
+		User trainer = iuser.findUserBylogin("Trainer_Trainer");
+		User intern = iuser.findUserBylogin("Intern_Intern");
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.put("/api/user/affectTrainerToIntern/" + trainer.getId() + "/" + intern.getId())
+				.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Admin_Admin", password = "azerty123", authorities = "ADMINISTRATOR")
+	public void testBretreiveAllInterviews() throws Exception {
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/interview/retreiveAllInterviews").accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	/********************* Project ****************************/
+
+	@Test
+	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
+	public void testACreateProjectDetails() throws Exception {
+		Vacancy v = ivacancyRepo.findByTitle("test");
+
+		String project = "{\r\n" + "    \"title\":\"project1\",\r\n"
+				+ "    \"description\":\"In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.\",\r\n"
+				+ "    \"vacancy\":{\r\n" + "\"id\":" + v.getId() + "}\r\n" + "}";
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.post("/api/project/add-project")
+				.content(project).accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
+	public void testBGetVacancyProject() throws Exception {
+		Vacancy v = ivacancyRepo.findByTitle("test");
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/project/retreive-project-by-vacancy/" + v.getId()).accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Intern_Intern", password = "azerty123", authorities = "INTERN")
+	public void testCRetreiveProjectDetails() throws Exception {
+		Vacancy v = ivacancyRepo.findByTitle("test");
+
+		Project p = iprojectRepo.findByVacancy(v);
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/project/retreive-project-details/" + p.getId()).accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Admin_Admin", password = "azerty123", authorities = "ADMINISTRATOR")
+	public void testDRetreiveAllProjects() throws Exception {
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/api/project/retreiveAllprojects")
+				.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
+	public void testEgetOwnProjects() throws Exception {
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/api/project/retreive-own-projects")
+				.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	/********************* Project Task ****************************/
+
+	@Test
+	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
+	public void testACreateProjectTask() throws Exception {
+		String task = "{ \"taskName\":\"task1\",\"deadline\":\"2022-06-01\" }";
+		Vacancy v = ivacancyRepo.findByTitle("test");
+
+		Project p = iprojectRepo.findByVacancy(v);
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.post("/api/project/tasks/add-project-task/" + p.getId()).content(task)
+				.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	/*
+	 * @Test
+	 * 
+	 * @WithMockUser(username = "Trainer_Trainer", password = "azerty123",
+	 * authorities = "TRAINER") public void testBupdateProjectTask() throws
+	 * Exception { String
+	 * task="{ \"taskName\":\"updated\", \"status\": \"TODO\",\"taskIssue\": \"\",\"deadline\":\"2022-06-17\"}"
+	 * ; Vacancy v = ivacancyRepo.findByTitle("test");
+	 * 
+	 * Project p = iprojectRepo.findByVacancy(v); Task t=itaskRepo.fin
+	 * MockHttpServletRequestBuilder requestBuilder =
+	 * MockMvcRequestBuilders.put("/api/project/tasks/Update-project-task/"+p.getId(
+	 * )) .content(task)
+	 * .accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+	 * 
+	 * MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+	 * 
+	 * assertEquals(200, result.getResponse().getStatus());
+	 * 
+	 * }
+	 * 
+	 * 
+	 * @Test
+	 * 
+	 * @WithMockUser(username = "Intern_Intern", password = "azerty123", authorities
+	 * = "INTERN") public void testCupdateProjectTask() throws Exception { String
+	 * task="{ \"taskName\":\"updated\", \"status\": \"DOING\",\"taskIssue\": \"\",\"deadline\":\"2022-06-17\"}"
+	 * ; Vacancy v = ivacancyRepo.findByTitle("test");
+	 * 
+	 * Project p = iprojectRepo.findByVacancy(v); MockHttpServletRequestBuilder
+	 * requestBuilder =
+	 * MockMvcRequestBuilders.put("/api/project/tasks/Update-project-task/"+p.getId(
+	 * )) .content(task)
+	 * .accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+	 * 
+	 * MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+	 * 
+	 * assertEquals(200, result.getResponse().getStatus());
+	 * 
+	 * }
+	 */
+
+	@Test
+	@WithMockUser(username = "Intern_Intern", password = "azerty123", authorities = "INTERN")
+	public void testDgetAllProjectTasks() throws Exception {
+		Vacancy v = ivacancyRepo.findByTitle("test");
+
+		Project p = iprojectRepo.findByVacancy(v);
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/project/tasks/retreiveAllProjectTasks/" + p.getId()).accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
+	public void testEgetProjectTaskDetails() throws Exception {
+		// Vacancy v = ivacancyRepo.findByTitle("test");
+//		Project p = iprojectRepo.findByVacancy(v);
+		Task t = itaskRepo.findByTaskName("task1");
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/project/tasks/retreive-Project-Task-details/" + t.getId()).accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser
+	public void testFcountProjectTasks() throws Exception {
+		Vacancy v = ivacancyRepo.findByTitle("test");
+		Project p = iprojectRepo.findByVacancy(v);
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/project/tasks/count-Project-Tasks/" + p.getId()).accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
+	public void testGretreiveAllProjectTasksByStatus() throws Exception {
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/project/tasks/retreiveAllProjectTasks-byStatus/DOING").accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
+	public void testHassignTask() throws Exception {
+		Task t = itaskRepo.findByTaskName("task1");
+		User intern = iuser.findUserBylogin("Intern_Intern");
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.put("/api/project/tasks/assign-task/" + t.getId() + "/to-intern/" + intern.getId())
+				.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
+	public void testIdisassociateTask() throws Exception {
+		Task t = itaskRepo.findByTaskName("task1");
+		User intern = iuser.findUserBylogin("Intern_Intern");
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.put("/api/project/tasks/disassociate-task/" + t.getId() + "/from-intern/" + intern.getId())
+				.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
+	public void testJcountInternTasks() throws Exception {
+		User intern = iuser.findUserBylogin("Intern_Intern");
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/project/tasks/count-intern-Tasks/" + intern.getId()).accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	/*
+	 * @Test
+	 * 
+	 * @WithMockUser(username = "Trainer_Trainer", password = "azerty123",
+	 * authorities = "TRAINER") public void testKretreiveInternTasks() throws
+	 * Exception { User intern=iuser.findUserBylogin("Intern_Intern");
+	 * 
+	 * MockHttpServletRequestBuilder requestBuilder =
+	 * MockMvcRequestBuilders.get("/api/project/tasks/retreive-intern-Tasks/"+intern
+	 * .getId())
+	 * .accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+	 * 
+	 * MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+	 * 
+	 * assertEquals(200, result.getResponse().getStatus());
+	 * 
+	 * }
+	 */
+
+	/********************* Demo ****************************/
+
+	@Test
+	@WithMockUser(username = "Intern_Intern", password = "azerty123", authorities = "INTERN")
+	public void testAUploadTaskDemo() throws Exception {
+		String demo = "{\"category\":\"DOCUMENT\",\"description\":\"jnkjkjk\"}";
+		Task t = itaskRepo.findByTaskName("task1");
+		User intern = iuser.findUserBylogin("Intern_Intern");
+		MockMultipartFile file = new MockMultipartFile("file", "Triggers.pdf", MediaType.APPLICATION_PDF_VALUE,
+				"".getBytes(StandardCharsets.UTF_8));
+
+		ObjectMapper objectMapper = new ObjectMapper();
+		Demo result = objectMapper.readValue(String.valueOf(demo), Demo.class);
+
+		MockMultipartFile metadata = new MockMultipartFile("d", "demo", MediaType.APPLICATION_JSON_VALUE,
+				objectMapper.writeValueAsString(result).getBytes(StandardCharsets.UTF_8));
+
+		mockMvc.perform(multipart("/api/project/task/demo/add-task-demo/" + t.getId()).file(file).file(metadata)
+				.accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Intern_Intern", password = "azerty123", authorities = "INTERN")
+	public void testBretreiveOwnDemos() throws Exception {
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/project/task/demo/retreiveOwnDemos").accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Intern_Intern", password = "azerty123", authorities = "INTERN")
+	public void testCretreiveAllDemos() throws Exception {
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/project/task/demo/retreiveAllDemos").accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Intern_Intern", password = "azerty123", authorities = "INTERN")
+	public void testDretreiveAllDemosbyTask() throws Exception {
+		Task t = itaskRepo.findByTaskName("task1");
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/project/task/demo/retreiveAllDemos-by-task/" + t.getId()).accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Intern_Intern", password = "azerty123", authorities = "INTERN")
+	public void testEdisplayDemoDetails() throws Exception {
+		Task t = itaskRepo.findByTaskName("task1");
+
+		Demo d = idemo.findDemoByTask(t.getId());
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/project/task/demo/display-demo-details/" + d.getId()).accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Intern_Intern", password = "azerty123", authorities = "INTERN")
+	public void testFdisplayDemoDetailsByTask() throws Exception {
+		Task t = itaskRepo.findByTaskName("task1");
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/project/task/demo/display-demo-details-by-task/" + t.getId())
+				.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+	/********************* Document ****************************/
+
+	/*
+	 * @Test
+	 * 
+	 * @WithMockUser(username = "Trainer_Trainer", password = "azerty123",
+	 * authorities = "TRAINER") public void testKUploadDocument() throws Exception {
+	 * Vacancy v = ivacancyRepo.findByTitle("test"); Project p =
+	 * iprojectRepo.findByVacancy(v); String doc =
+	 * "{\"category\":\"REPORT\", \"project\":{ \"id\":"+p.getId()+" }}";
+	 * 
+	 * MockMultipartFile file = new MockMultipartFile("file", "Triggers.pdf",
+	 * MediaType.APPLICATION_PDF_VALUE,
+	 * "<<pdf data>>".getBytes(StandardCharsets.UTF_8));
+	 * 
+	 * ObjectMapper objectMapper = new ObjectMapper(); Document result =
+	 * objectMapper.readValue(String.valueOf(doc), Document.class);
+	 * 
+	 * MockMultipartFile metadata = new MockMultipartFile("doc", "doc",
+	 * MediaType.APPLICATION_JSON_VALUE,
+	 * objectMapper.writeValueAsString(result).getBytes(StandardCharsets.UTF_8));
+	 * 
+	 * mockMvc.perform(multipart("/api/document/add-doc").file(file).file(metadata).
+	 * accept(MediaType.APPLICATION_JSON)) .andExpect(status().isOk());
+	 * 
+	 * }
+	 */
+
+	/********************* Training Course ****************************/
+
+	@Test
+	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
+	public void testACreateTrainingCourse() throws Exception {
+
+		Vacancy v = ivacancyRepo.findByTitle("test");
+		Project p = iprojectRepo.findByVacancy(v);
+		String tc = "{ \"title\":\"course 1\",\"description\":\"azertyuiop\",\"type\":\"PDF\",\"project\":{\"id\":"
+				+ p.getId() + "}}";
+
+		MockMultipartFile file = new MockMultipartFile("file", "Triggers.pdf", MediaType.APPLICATION_PDF_VALUE,
+				"<<pdf data>>".getBytes(StandardCharsets.UTF_8));
+
+		ObjectMapper objectMapper = new ObjectMapper();
+		TrainingCourse result = objectMapper.readValue(String.valueOf(tc), TrainingCourse.class);
+
+		MockMultipartFile metadata = new MockMultipartFile("tc", "tc", MediaType.APPLICATION_JSON_VALUE,
+				objectMapper.writeValueAsString(result).getBytes(StandardCharsets.UTF_8));
+
+		mockMvc.perform(multipart("/api/course-training/add-training-course").file(file).file(metadata)
+				.accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Admin_Admin", password = "azerty123", authorities = "ADMINISTRATOR")
+	public void testBgetAllTrainingCourses() throws Exception {
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/course-training/retrieve-all-training-courses").accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Admin_Admin", password = "azerty123", authorities = "ADMINISTRATOR")
+	public void testCcountTrainingCourses() throws Exception {
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/course-training/count-training-courses").accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Intern_Intern", password = "azerty123", authorities = "INTERN")
+	public void testDgetTrainingCoursesByUserId() throws Exception {
+		User trainer = iuser.findUserBylogin("Trainer_Trainer");
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/course-training/retrieve-all-training-courses-by-trainer/" + trainer.getId())
+				.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Hr_Manager", password = "azerty123", authorities = "HR_MANAGER")
+	public void testEcountTrainingCoursesByUserId() throws Exception {
+		User trainer = iuser.findUserBylogin("Trainer_Trainer");
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/course-training/count-training-courses-by-trainer/" + trainer.getId())
+				.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
+	public void testFgetMyTrainingCourses() throws Exception {
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/course-training/retrieve-all-own-training-courses").accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
+	public void testGcountMyTrainingCourses() throws Exception {
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/course-training/count-all-own-training-courses").accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	/********************* Liking ****************************/
+
+	@Test
+	@WithMockUser(username = "Intern_Intern", password = "azerty123", authorities = "INTERN")
+	public void testALeaveLike() throws Exception {
+
+		TrainingCourse tc = itcRepo.findByTitle("course 1");
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.post("/api/training-course/liking/add-like/" + tc.getId()).accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Intern_Intern", password = "azerty123", authorities = "INTERN")
+	public void testBgetAllLikes() throws Exception {
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/training-course/liking/get-all-likes").accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser
+	public void testDgetlikescount() throws Exception {
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/training-course/liking/count-all-likes").accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser
+	public void testEgetuserlikescount() throws Exception {
+		User user = iuser.findUserBylogin("Intern_Intern");
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/training-course/liking/count-user-likes/" + user.getId()).accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser
+	public void testFgetLikingsByTc() throws Exception {
+		TrainingCourse tc = itcRepo.findByTitle("course 1");
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/training-course/liking/likes-by-training-course/" + tc.getId())
+				.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser
+	public void testGgetTclikescount() throws Exception {
+		TrainingCourse tc = itcRepo.findByTitle("course 1");
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/training-course/liking/count-tc-likes/" + tc.getId()).accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Intern_Intern", password = "azerty123", authorities = "INTERN")
+	public void testHgetOwnLikes() throws Exception {
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/training-course/liking/get-my-likes").accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	/********************* Comment ****************************/
+
+	@Test
+	@WithMockUser(username = "Intern_Intern", password = "azerty123", authorities = "INTERN")
+	public void testALeaveComment() throws Exception {
+		String comment = "{ \"commentContent\":\"aaaa\"}";
+		TrainingCourse tc = itcRepo.findByTitle("course 1");
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.post("/api/training-course/comments/add-comment/" + tc.getId()).content(comment)
+				.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Intern_Intern", password = "azerty123", authorities = "INTERN")
+	public void testCgetAllComments() throws Exception {
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/training-course/comments/get-all-comments").accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Intern_Intern", password = "azerty123", authorities = "INTERN")
+	public void testDgetOwnComments() throws Exception {
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/training-course/comments/get-own-comments").accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Intern_Intern", password = "azerty123", authorities = "INTERN")
+	public void testFgetCommentsByUser() throws Exception {
+		User user = iuser.findUserBylogin("Trainer_Trainer");
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/training-course/comments/comments-by-user/" + user.getId())
+				.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser
+	public void testGgetcommentscount() throws Exception {
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/training-course/comments/count-all-comments").accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser
+	public void testHgetusercommentscount() throws Exception {
+		User user = iuser.findUserBylogin("Intern_Intern");
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/training-course/comments/count-user-comments/" + user.getId())
+				.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser
+	public void testIgetCommentsByTC() throws Exception {
+		TrainingCourse tc = itcRepo.findByTitle("course 1");
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/training-course/comments/comments-by-Tc/" + tc.getId()).accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser
+	public void testJgetpostcommentscount() throws Exception {
+		TrainingCourse tc = itcRepo.findByTitle("course 1");
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/training-course/comments/count-Tc-comments/" + tc.getId()).accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	/********************* Assessment ****************************/
+	@Test
+	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
+	public void testAaddAssessment() throws Exception {
+		String assessment = "{\"finalNotice\":\"CONCLUSIVE\",\"remark\":\"remark\"}";
+
+		MockMultipartFile stamp = new MockMultipartFile("stamp", "image.jpg", MediaType.IMAGE_JPEG_VALUE,
+				"".getBytes(StandardCharsets.UTF_8));
+
+		MockMultipartFile signature = new MockMultipartFile("signature", "image.jpg", MediaType.IMAGE_JPEG_VALUE,
+				"".getBytes(StandardCharsets.UTF_8));
+
+		ObjectMapper objectMapper = new ObjectMapper();
+		Assessment result = objectMapper.readValue(String.valueOf(assessment), Assessment.class);
+
+		MockMultipartFile metadata = new MockMultipartFile("a", "assessment", MediaType.APPLICATION_JSON_VALUE,
+				objectMapper.writeValueAsString(result).getBytes(StandardCharsets.UTF_8));
+		User intern = iuser.findUserBylogin("Intern_Intern");
+		mockMvc.perform(multipart("/api/project/assessment/add-assessment/intern=/" + intern.getId()).file(stamp)
+				.file(signature).file(metadata).accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Intern_Intern", password = "azerty123", authorities = "INTERN")
+	public void testBdisplayassessmentDetailsById() throws Exception {
+		Assessment a = iassessment.findByRemark("remark");
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/project/assessment/display-assessment-details/" + a.getId())
+				.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
+	public void testCdisplayassessmentsByIntern() throws Exception {
+		User intern = iuser.findUserBylogin("Intern_Intern");
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/project/assessment/display-assessments-by-intern/" + intern.getId())
+				.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Admin_Admin", password = "azerty123", authorities = "ADMINISTRATOR")
+	public void testDdisplayAllAssessments() throws Exception {
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/project/assessment/display-all-assessments").accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Admin_Admin", password = "azerty123", authorities = "ADMINISTRATOR")
+	public void testFdisplayConclusiveAssessment() throws Exception {
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/project/assessment/display-Conclusive-assessment").accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Admin_Admin", password = "azerty123", authorities = "ADMINISTRATOR")
+	public void testGdisplayInconclusiveAssessment() throws Exception {
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/project/assessment/display-Inconclusive-assessment").accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Admin_Admin", password = "azerty123", authorities = "ADMINISTRATOR")
+	public void testHcountConclusiveAssessment() throws Exception {
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/project/assessment/count-Conclusive-assessment").accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Admin_Admin", password = "azerty123", authorities = "ADMINISTRATOR")
+	public void testIcountInconclusiveAssessment() throws Exception {
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/project/assessment/count-Inconclusive-assessment").accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Admin_Admin", password = "azerty123", authorities = "ADMINISTRATOR")
+	public void testJdisplayAssessmentByNotice() throws Exception {
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/project/assessment/display-assessments-by-notice/CONCLUSIVE")
+				.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+	@Test
+	@WithMockUser(username = "Hr_Manager", password = "azerty123", authorities = "HR_MANAGER")
+	public void testIDeleteInterview() throws Exception {
+		
+		Vacancy v = ivacancyRepo.findByTitle("test");
+		Application app = iapp.findByVacancy(v);
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.delete("/api/interview/delete-interview/"+app.getId()).accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+	/*
+	@Test
+	@WithMockUser(username = "Hr_Manager", password = "azerty123", authorities = "HR_MANAGER")
+	public void testJDeleteApplication() throws Exception {
+		
+ 		Vacancy v = ivacancyRepo.findByTitle("test");
+Application app=iapp.findByVacancy(v);
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.delete("/api/application/decline-application/"+app.getId()).accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+	*/
+	
+
+
+	@Test
+	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
+	public void testKdeleteAssessment() throws Exception {
+		Assessment a = iassessment.findByRemark("remark");
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.delete("/api/project/assessment/delete-assessment/" + a.getId()).accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+	
+ 
+	
+	@Test
+	@WithMockUser(username = "Intern_Intern", password = "azerty123", authorities = "INTERN")
+
+	public void testKDeleteComment() throws Exception {
+
+		Comment c=icomment.findByCommentContent("aaaa");
+		
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.delete("/api/training-course/comments/delete-comment/" + c.getIdComment())
+				.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+		
+		
+		
+		 
+	}
+
+	
+	@Test
+	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
+
+	public void testKDeleteTrainingCourse() throws Exception {
+
+		TrainingCourse tc = itcRepo.findByTitle("course 1");
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.delete("/api/course-training/delete-training-course/" + tc.getId()).accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+	
+	
+	@Test
+	@WithMockUser(username = "Intern_Intern", password = "azerty123", authorities = "INTERN")
+
+	public void testKDeleteDemo() throws Exception {
+
+		Task t = itaskRepo.findByTaskName("task1");
+		
+		Demo d=idemo.findDemoByTask(t.getId());
+		
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.delete("/api/project/task/demo/delete-task-demo/" + d.getId()).accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+	
+	
+	@Test
+	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
+
+	public void testKDeleteTask() throws Exception {
+
+		Task t = itaskRepo.findByTaskName("task1");
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.delete("/api/project/tasks/remove-project-task/" + t.getId()).accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+	
+ 
+	
+	@Test
+	@WithMockUser(username = "Hr_Manager", password = "azerty123", authorities = "HR_MANAGER")
+	public void testKDeleteSkillAssessment() throws Exception {
+
+		SkillAssessment sk = isk.getSkillAssessmentByTitle("test");
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.delete("/api/skill-assessment/delete-SkillAssessment/" + sk.getId()).accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+	
+	 
+	@Test
+	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
+	public void testLDeleteProject() throws Exception {
+
+		Vacancy v = ivacancyRepo.findByTitle("test");
+
+		Project p = iprojectRepo.findByVacancy(v);	
+		 
+		
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.delete("/api/project/delete-project/" + p.getId()).accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+
+	@Test
+	@WithMockUser(username = "Hr_Manager", password = "azerty123", authorities = "HR_MANAGER")
+	public void testMDeleteVacancy() throws Exception {
+
+		Vacancy v = ivacancyRepo.findByTitle("test");
+
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.delete("/api/vacancy/delete-vacancy/" + v.getId()).accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+
+	}
+	
+	
+	@Test
+	@WithMockUser(username = "Admin_Admin", password = "azerty123", authorities = "ADMINISTRATOR")
+
+	public void testNDeleteUser() throws Exception {
+
+ 
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.delete("/api/user/delete-user-company/Company").accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+ 
+	}
+
+	 
+	 
+	
 }

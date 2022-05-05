@@ -7,7 +7,9 @@ import java.io.IOException;
 import org.springframework.web.multipart.MultipartFile;
 
 public final class FileUploadUtil {
-	 public static void saveFile(
+
+
+	public static void saveFile(
 	           MultipartFile multipartFile) throws IOException {
 	     
 		 

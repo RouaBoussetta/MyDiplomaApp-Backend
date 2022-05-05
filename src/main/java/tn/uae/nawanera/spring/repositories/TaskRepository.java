@@ -21,6 +21,8 @@ public interface TaskRepository extends JpaRepository<Task, Integer>{
 	List<Task> findByStatus(TaskStatus status);
 
 	List<Task> findByDeadline(Date deadline);
+
+	Task findByTaskName(String task);
 	
 	 
  

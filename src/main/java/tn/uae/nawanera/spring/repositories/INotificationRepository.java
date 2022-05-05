@@ -17,6 +17,7 @@ import tn.uae.nawanera.spring.entities.User;
 @Repository
 public interface INotificationRepository extends JpaRepository<Notification, Integer>{
 
+	Notification findById(int id);
 	List<Notification> findBySender(User sender);
 
 	List<Notification> findByReceiver(User receiver);

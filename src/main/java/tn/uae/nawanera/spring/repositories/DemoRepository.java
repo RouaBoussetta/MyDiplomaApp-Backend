@@ -12,6 +12,7 @@ import tn.uae.nawanera.spring.entities.Task;
 
 @Repository
 public interface DemoRepository extends JpaRepository<Demo, Integer>{
+	Demo findById( int id);
 
 	List<Demo> findByTask(Task t);
 	

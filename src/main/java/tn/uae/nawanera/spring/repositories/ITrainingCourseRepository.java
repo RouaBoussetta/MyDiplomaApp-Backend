@@ -14,7 +14,7 @@ import tn.uae.nawanera.spring.entities.TrainingCourse;
 @Repository
 public interface ITrainingCourseRepository extends JpaRepository<TrainingCourse,Integer>{
 
- 
+	TrainingCourse findById(int id);
 	List<TrainingCourse> findByPublishedBy(String username);
 	
 	@Query("select DISTINCT tc from TrainingCourse tc "
@@ -34,6 +34,8 @@ public interface ITrainingCourseRepository extends JpaRepository<TrainingCourse,
 	List<TrainingCourse> findtcByTextContaining(String pattern);
 
 	List<TrainingCourse> findByProject(Project project);
+
+	TrainingCourse findByTitle(String string);
 	
 	
 }

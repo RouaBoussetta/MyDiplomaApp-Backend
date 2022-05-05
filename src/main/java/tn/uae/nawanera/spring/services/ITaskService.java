@@ -9,6 +9,7 @@ import tn.uae.nawanera.spring.entities.TaskStatus;
 public interface ITaskService {
  
   	public Task retreiveTaskDetails(int idTask);
+  	public Task findbyTaskname(String task);
 	public List<Task> retreiveAllProjectTasks(int idProject);
 	public int  countProjectTasks(int idProject);
 	public int  countAssignedTasksByIntern(int idIntern);

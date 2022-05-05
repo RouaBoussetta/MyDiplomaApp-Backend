@@ -8,5 +8,7 @@ public interface IinterviewService {
  
  	List<Interview> retreiveInterviews();
 	Interview planifyInterview(Interview interview, int idapp);
+	void rejectInterview(int id);
+	Interview getInterviewByApplication(int app);
 
 }

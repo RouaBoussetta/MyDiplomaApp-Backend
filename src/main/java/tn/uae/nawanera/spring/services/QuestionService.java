@@ -143,11 +143,9 @@ public class QuestionService implements IQuestionService {
 
 		Question question = questionrepository.getById(q);
 
-		if (question.getCorrectAnswer().getId() == answerId)
+		return question.getCorrectAnswer().getId() == answerId;
 
-			return true;
-		else
-			return false;
+
 	}
 
 }
