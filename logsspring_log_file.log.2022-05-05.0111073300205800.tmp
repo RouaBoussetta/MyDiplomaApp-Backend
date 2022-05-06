@@ -1,0 +1,851 @@
+2022-05-05 19:51:39.455  INFO 12160 --- [main] t.u.n.s.services.SkillAssessmentService  : Event created: %s
+
+2022-05-05 19:51:39.465  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:39.473  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:39.474  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 9 milliseconds.
+2022-05-05 19:51:39.474  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:39.483  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:39.484  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 10 milliseconds.
+2022-05-05 19:51:39.484  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method addNotification : 
+2022-05-05 19:51:39.488  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method addNotification : 
+2022-05-05 19:51:39.488  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 4 milliseconds.
+2022-05-05 19:51:39.489  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method sendEmail : 
+2022-05-05 19:51:41.182  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method sendEmail : 
+2022-05-05 19:51:41.182  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 1693 milliseconds.
+2022-05-05 19:51:41.182  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method assignSAToIntern : 
+2022-05-05 19:51:41.183  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 3619 milliseconds.
+2022-05-05 19:51:41.191  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:41.192  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:41.193  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:51:41.193  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method getQuestionByText : 
+2022-05-05 19:51:41.215  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method getQuestionByText : 
+2022-05-05 19:51:41.215  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 22 milliseconds.
+2022-05-05 19:51:41.215  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method getQuestionByText : 
+2022-05-05 19:51:41.234  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method getQuestionByText : 
+2022-05-05 19:51:41.234  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 19 milliseconds.
+2022-05-05 19:51:41.234  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method getAnswerByText : 
+2022-05-05 19:51:41.255  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method getAnswerByText : 
+2022-05-05 19:51:41.255  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 21 milliseconds.
+2022-05-05 19:51:41.256  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method getAnswerByText : 
+2022-05-05 19:51:41.275  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method getAnswerByText : 
+2022-05-05 19:51:41.275  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 19 milliseconds.
+2022-05-05 19:51:41.275  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method getSkillAssessmentByTitle : 
+2022-05-05 19:51:41.295  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method getSkillAssessmentByTitle : 
+2022-05-05 19:51:41.295  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 20 milliseconds.
+2022-05-05 19:51:41.301  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method find : 
+2022-05-05 19:51:41.320  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method find : 
+2022-05-05 19:51:41.321  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 20 milliseconds.
+2022-05-05 19:51:41.321  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method checkInternAnswers : 
+2022-05-05 19:51:41.339  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method checkInternAnswers : 
+2022-05-05 19:51:41.340  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 19 milliseconds.
+2022-05-05 19:51:41.352  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:41.352  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:41.354  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:41.413  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method addVacancyProjectDetails : 
+2022-05-05 19:51:41.443  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:41.446  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:41.446  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 3 milliseconds.
+2022-05-05 19:51:41.446  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method getAllInternByVacancy : 
+2022-05-05 19:51:41.448  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method getAllInternByVacancy : 
+2022-05-05 19:51:41.448  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 2 milliseconds.
+2022-05-05 19:51:41.461  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method assignProjectToIntern : 
+2022-05-05 19:51:41.495  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method assignProjectToIntern : 
+2022-05-05 19:51:41.495  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 34 milliseconds.
+2022-05-05 19:51:41.495  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method addVacancyProjectDetails : 
+2022-05-05 19:51:41.495  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 82 milliseconds.
+2022-05-05 19:51:41.506  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:41.506  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:41.508  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:41.569  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method addProjectTask : 
+2022-05-05 19:51:41.617  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method addProjectTask : 
+2022-05-05 19:51:41.617  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 48 milliseconds.
+2022-05-05 19:51:41.627  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:41.627  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:41.628  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:51:41.723  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method addTrainingCourse : 
+2022-05-05 19:51:41.732  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:41.754  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:41.754  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 22 milliseconds.
+2022-05-05 19:51:41.764  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:41.766  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:41.766  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 2 milliseconds.
+2022-05-05 19:51:41.768  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:41.770  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:41.770  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 2 milliseconds.
+2022-05-05 19:51:41.770  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method addNotification : 
+2022-05-05 19:51:41.776  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method addNotification : 
+2022-05-05 19:51:41.776  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 6 milliseconds.
+2022-05-05 19:51:41.776  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:41.778  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:41.778  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 2 milliseconds.
+2022-05-05 19:51:41.778  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method addNotification : 
+2022-05-05 19:51:41.783  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method addNotification : 
+2022-05-05 19:51:41.783  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 5 milliseconds.
+2022-05-05 19:51:41.783  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:41.785  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:41.785  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 2 milliseconds.
+2022-05-05 19:51:41.785  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method addNotification : 
+2022-05-05 19:51:41.789  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method addNotification : 
+2022-05-05 19:51:41.789  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 4 milliseconds.
+2022-05-05 19:51:41.789  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method addTrainingCourse : 
+2022-05-05 19:51:41.789  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 66 milliseconds.
+2022-05-05 19:51:41.797  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:41.797  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:41.798  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:51:41.836  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method addComment : 
+2022-05-05 19:51:41.868  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:41.869  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:41.869  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 2 milliseconds.
+2022-05-05 19:51:41.877  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method addComment : 
+2022-05-05 19:51:41.877  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 41 milliseconds.
+2022-05-05 19:51:41.885  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:41.885  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:41.886  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:51:41.916  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method addLiking : 
+2022-05-05 19:51:41.923  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:41.946  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:41.946  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 23 milliseconds.
+2022-05-05 19:51:41.948  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method addLiking : 
+2022-05-05 19:51:41.948  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 32 milliseconds.
+2022-05-05 19:51:41.957  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:41.958  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:41.960  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:41.960  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method findUserBylogin : 
+2022-05-05 19:51:41.980  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method findUserBylogin : 
+2022-05-05 19:51:41.980  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 20 milliseconds.
+2022-05-05 19:51:42.011  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method planifyInterview : 
+2022-05-05 19:51:42.055  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method planifyInterview : 
+2022-05-05 19:51:42.056  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 44 milliseconds.
+2022-05-05 19:51:42.065  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:42.065  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:42.066  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:51:42.082  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method findUserBylogin : 
+2022-05-05 19:51:42.099  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method findUserBylogin : 
+2022-05-05 19:51:42.099  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 17 milliseconds.
+2022-05-05 19:51:42.113  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method addDemoDetails : 
+2022-05-05 19:51:42.176  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method addDemoDetails : 
+2022-05-05 19:51:42.176  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 64 milliseconds.
+2022-05-05 19:51:42.185  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:42.185  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:42.187  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:42.195  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method findUserBylogin : 
+2022-05-05 19:51:42.211  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method findUserBylogin : 
+2022-05-05 19:51:42.211  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 17 milliseconds.
+2022-05-05 19:51:42.227  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method addAssessment : 
+2022-05-05 19:51:42.260  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:42.261  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:42.262  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 2 milliseconds.
+2022-05-05 19:51:42.271  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method addAssessment : 
+2022-05-05 19:51:42.271  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 44 milliseconds.
+2022-05-05 19:51:42.283  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:42.283  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:42.287  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 3 ms
+2022-05-05 19:51:42.311  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method displayVacancyProjectDetailsByVacancy : 
+2022-05-05 19:51:42.329  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method displayVacancyProjectDetailsByVacancy : 
+2022-05-05 19:51:42.329  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 18 milliseconds.
+2022-05-05 19:51:42.349  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:42.349  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:42.350  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:51:42.377  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method displayAssessmentById : 
+2022-05-05 19:51:42.397  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method displayAssessmentById : 
+2022-05-05 19:51:42.397  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 20 milliseconds.
+2022-05-05 19:51:42.406  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:42.406  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:42.407  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:51:42.409  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method getAllLikings : 
+2022-05-05 19:51:42.414  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method getAllLikings : 
+2022-05-05 19:51:42.414  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 5 milliseconds.
+2022-05-05 19:51:42.422  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:42.422  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:42.423  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:51:42.426  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method getAllTrainingCourses : 
+2022-05-05 19:51:42.449  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method getAllTrainingCourses : 
+2022-05-05 19:51:42.449  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 23 milliseconds.
+2022-05-05 19:51:42.465  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:42.465  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:42.467  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:42.469  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method retreiveInterviews : 
+2022-05-05 19:51:42.494  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method retreiveInterviews : 
+2022-05-05 19:51:42.494  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 25 milliseconds.
+2022-05-05 19:51:42.511  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:42.511  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:42.512  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:51:42.515  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method retrieveOwnDemos : 
+2022-05-05 19:51:42.549  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:42.551  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:42.551  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 2 milliseconds.
+2022-05-05 19:51:42.551  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:42.554  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:42.554  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 3 milliseconds.
+2022-05-05 19:51:42.558  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:42.560  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:42.560  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 2 milliseconds.
+2022-05-05 19:51:42.560  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:42.562  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:42.562  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 2 milliseconds.
+2022-05-05 19:51:42.563  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:42.565  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:42.565  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 3 milliseconds.
+2022-05-05 19:51:42.565  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method retrieveOwnDemos : 
+2022-05-05 19:51:42.565  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 50 milliseconds.
+2022-05-05 19:51:42.579  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:42.579  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:42.580  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:51:42.580  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method findUserBylogin : 
+2022-05-05 19:51:42.611  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method findUserBylogin : 
+2022-05-05 19:51:42.611  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 31 milliseconds.
+2022-05-05 19:51:42.639  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method acceptApplication : 
+2022-05-05 19:51:42.666  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method acceptIntern : 
+2022-05-05 19:51:42.679  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method acceptIntern : 
+2022-05-05 19:51:42.679  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 13 milliseconds.
+2022-05-05 19:51:42.683  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method acceptApplication : 
+2022-05-05 19:51:42.683  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 44 milliseconds.
+2022-05-05 19:51:42.705  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:42.705  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:42.707  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:51:42.756  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method displayVacancyProjectDetailsById : 
+2022-05-05 19:51:42.779  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method displayVacancyProjectDetailsById : 
+2022-05-05 19:51:42.779  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 23 milliseconds.
+2022-05-05 19:51:42.791  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:42.791  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:42.793  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:42.795  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method countTrainingCourses : 
+2022-05-05 19:51:42.825  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method countTrainingCourses : 
+2022-05-05 19:51:42.825  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 30 milliseconds.
+2022-05-05 19:51:42.835  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:42.835  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:42.837  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:42.837  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method findUserBylogin : 
+2022-05-05 19:51:42.856  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method findUserBylogin : 
+2022-05-05 19:51:42.856  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 19 milliseconds.
+2022-05-05 19:51:42.860  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method displayAssessmentByIntern : 
+2022-05-05 19:51:42.880  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method displayAssessmentByIntern : 
+2022-05-05 19:51:42.880  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 20 milliseconds.
+2022-05-05 19:51:42.889  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:42.889  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:42.891  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:42.893  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method getAllComments : 
+2022-05-05 19:51:42.910  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method getAllComments : 
+2022-05-05 19:51:42.910  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 17 milliseconds.
+2022-05-05 19:51:42.916  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:42.916  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:42.917  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:51:42.918  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method retrieveAllDemos : 
+2022-05-05 19:51:42.935  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method retrieveAllDemos : 
+2022-05-05 19:51:42.936  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 18 milliseconds.
+2022-05-05 19:51:42.943  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:42.944  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:42.945  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:51:42.945  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method findUserBylogin : 
+2022-05-05 19:51:42.960  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method findUserBylogin : 
+2022-05-05 19:51:42.961  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 16 milliseconds.
+2022-05-05 19:51:42.961  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method findUserBylogin : 
+2022-05-05 19:51:42.976  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method findUserBylogin : 
+2022-05-05 19:51:42.976  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 15 milliseconds.
+2022-05-05 19:51:42.979  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method affectTrainerToIntern : 
+2022-05-05 19:51:43.012  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method affectTrainerToIntern : 
+2022-05-05 19:51:43.012  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 33 milliseconds.
+2022-05-05 19:51:43.019  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:43.020  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:43.021  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:51:43.023  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method retrieveAllProject : 
+2022-05-05 19:51:43.045  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method retrieveAllProject : 
+2022-05-05 19:51:43.045  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 22 milliseconds.
+2022-05-05 19:51:43.057  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:43.057  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:43.060  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 3 ms
+2022-05-05 19:51:43.062  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method retrieveAllAssessments : 
+2022-05-05 19:51:43.083  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method retrieveAllAssessments : 
+2022-05-05 19:51:43.083  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 21 milliseconds.
+2022-05-05 19:51:43.093  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:43.093  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:43.095  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:43.148  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method retreiveAllProjectTasks : 
+2022-05-05 19:51:43.185  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method retreiveAllProjectTasks : 
+2022-05-05 19:51:43.185  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 37 milliseconds.
+2022-05-05 19:51:43.201  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:43.201  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:43.203  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:43.207  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method getOwnComments : 
+2022-05-05 19:51:43.207  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:43.241  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:43.241  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 34 milliseconds.
+2022-05-05 19:51:43.250  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method getOwnComments : 
+2022-05-05 19:51:43.251  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 44 milliseconds.
+2022-05-05 19:51:43.264  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:43.264  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:43.267  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:43.267  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method findUserBylogin : 
+2022-05-05 19:51:43.298  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method findUserBylogin : 
+2022-05-05 19:51:43.299  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 32 milliseconds.
+2022-05-05 19:51:43.302  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method getTrainingCoursesByUserId : 
+2022-05-05 19:51:43.345  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method getTrainingCoursesByUserId : 
+2022-05-05 19:51:43.345  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 43 milliseconds.
+2022-05-05 19:51:43.372  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:43.372  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:43.375  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 3 ms
+2022-05-05 19:51:43.378  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method countLikings : 
+2022-05-05 19:51:43.384  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method countLikings : 
+2022-05-05 19:51:43.384  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 6 milliseconds.
+2022-05-05 19:51:43.396  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:43.396  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:43.398  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:43.433  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method retrieveDemosByTask : 
+2022-05-05 19:51:43.475  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method retrieveDemosByTask : 
+2022-05-05 19:51:43.475  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 42 milliseconds.
+2022-05-05 19:51:43.488  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:43.488  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:43.491  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 3 ms
+2022-05-05 19:51:43.491  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method findUserBylogin : 
+2022-05-05 19:51:43.521  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method findUserBylogin : 
+2022-05-05 19:51:43.522  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 31 milliseconds.
+2022-05-05 19:51:43.528  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method countTrainingCourses : 
+2022-05-05 19:51:43.565  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method countTrainingCourses : 
+2022-05-05 19:51:43.565  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 37 milliseconds.
+2022-05-05 19:51:43.579  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:43.579  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:43.581  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:43.677  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method displayDemoDetailsById : 
+2022-05-05 19:51:43.706  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method displayDemoDetailsById : 
+2022-05-05 19:51:43.706  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 29 milliseconds.
+2022-05-05 19:51:43.721  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:43.721  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:43.723  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:43.726  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method retrieveOwnProjects : 
+2022-05-05 19:51:43.727  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:43.757  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:43.757  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 30 milliseconds.
+2022-05-05 19:51:43.765  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method retrieveOwnProjects : 
+2022-05-05 19:51:43.765  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 39 milliseconds.
+2022-05-05 19:51:43.781  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:43.782  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:43.783  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:51:43.816  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method retreiveTaskDetails : 
+2022-05-05 19:51:43.855  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method retreiveTaskDetails : 
+2022-05-05 19:51:43.855  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 39 milliseconds.
+2022-05-05 19:51:43.871  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:43.871  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:43.874  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:43.875  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method findUserBylogin : 
+2022-05-05 19:51:43.910  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method findUserBylogin : 
+2022-05-05 19:51:43.910  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 35 milliseconds.
+2022-05-05 19:51:43.916  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method countLikingsByUser : 
+2022-05-05 19:51:43.921  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method countLikingsByUser : 
+2022-05-05 19:51:43.921  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 5 milliseconds.
+2022-05-05 19:51:43.934  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:43.934  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:43.937  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 3 ms
+2022-05-05 19:51:44.009  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method countProjectTasks : 
+2022-05-05 19:51:44.044  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method countProjectTasks : 
+2022-05-05 19:51:44.045  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 36 milliseconds.
+2022-05-05 19:51:44.059  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:44.059  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:44.061  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:44.064  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method retrieveAllConclusive : 
+2022-05-05 19:51:44.098  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method retrieveAllConclusive : 
+2022-05-05 19:51:44.098  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 34 milliseconds.
+2022-05-05 19:51:44.114  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:44.114  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:44.117  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 3 ms
+2022-05-05 19:51:44.150  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method displayDemoByTask : 
+2022-05-05 19:51:44.186  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method displayDemoByTask : 
+2022-05-05 19:51:44.187  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 37 milliseconds.
+2022-05-05 19:51:44.198  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:44.199  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:44.201  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:44.201  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method findUserBylogin : 
+2022-05-05 19:51:44.235  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method findUserBylogin : 
+2022-05-05 19:51:44.235  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 34 milliseconds.
+2022-05-05 19:51:44.242  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method getCommentsByUserId : 
+2022-05-05 19:51:44.245  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method getCommentsByUserId : 
+2022-05-05 19:51:44.245  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 4 milliseconds.
+2022-05-05 19:51:44.257  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:44.257  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:44.259  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:44.291  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method getLikingsByTCId : 
+2022-05-05 19:51:44.337  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method getLikingsByTCId : 
+2022-05-05 19:51:44.337  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 46 milliseconds.
+2022-05-05 19:51:44.350  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:44.350  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:44.354  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 4 ms
+2022-05-05 19:51:44.357  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method getMyTrainingCourses : 
+2022-05-05 19:51:44.359  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:44.394  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:44.395  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 36 milliseconds.
+2022-05-05 19:51:44.410  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method getMyTrainingCourses : 
+2022-05-05 19:51:44.410  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 53 milliseconds.
+2022-05-05 19:51:44.429  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:44.429  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:44.431  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:44.434  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method getMyTrainingCourses : 
+2022-05-05 19:51:44.435  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:44.473  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:44.473  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 38 milliseconds.
+2022-05-05 19:51:44.488  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method getMyTrainingCourses : 
+2022-05-05 19:51:44.489  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 55 milliseconds.
+2022-05-05 19:51:44.501  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:44.503  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:44.504  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:51:44.508  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method retrieveAllInconclusive : 
+2022-05-05 19:51:44.511  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method retrieveAllInconclusive : 
+2022-05-05 19:51:44.512  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 4 milliseconds.
+2022-05-05 19:51:44.524  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:44.524  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:44.525  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:51:44.573  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method countLikingsByTC : 
+2022-05-05 19:51:44.612  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method countLikingsByTC : 
+2022-05-05 19:51:44.613  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 40 milliseconds.
+2022-05-05 19:51:44.627  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:44.628  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:44.630  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:44.633  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method countComments : 
+2022-05-05 19:51:44.677  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method countComments : 
+2022-05-05 19:51:44.677  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 44 milliseconds.
+2022-05-05 19:51:44.692  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:44.692  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:44.696  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 4 ms
+2022-05-05 19:51:44.701  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method retreiveAllProjectTasksByStatus : 
+2022-05-05 19:51:44.708  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method retreiveAllProjectTasksByStatus : 
+2022-05-05 19:51:44.708  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 7 milliseconds.
+2022-05-05 19:51:44.721  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:44.721  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:44.723  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:44.755  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method findUserBylogin : 
+2022-05-05 19:51:44.782  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method findUserBylogin : 
+2022-05-05 19:51:44.782  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 27 milliseconds.
+2022-05-05 19:51:44.787  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method assignTaskToIntern : 
+2022-05-05 19:51:44.833  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method assignTaskToIntern : 
+2022-05-05 19:51:44.833  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 47 milliseconds.
+2022-05-05 19:51:44.847  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:44.847  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:44.849  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:44.852  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method retrieveAllConclusive : 
+2022-05-05 19:51:44.882  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method retrieveAllConclusive : 
+2022-05-05 19:51:44.882  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 30 milliseconds.
+2022-05-05 19:51:44.895  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:44.895  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:44.897  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:51:44.900  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method getOwnLikes : 
+2022-05-05 19:51:44.900  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:44.933  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:44.933  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 33 milliseconds.
+2022-05-05 19:51:44.936  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method getOwnLikes : 
+2022-05-05 19:51:44.936  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 36 milliseconds.
+2022-05-05 19:51:44.950  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:44.950  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:44.952  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:44.953  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method findUserBylogin : 
+2022-05-05 19:51:44.981  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method findUserBylogin : 
+2022-05-05 19:51:44.981  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 28 milliseconds.
+2022-05-05 19:51:44.985  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method countCommentsByUser : 
+2022-05-05 19:51:45.017  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method countCommentsByUser : 
+2022-05-05 19:51:45.017  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 32 milliseconds.
+2022-05-05 19:51:45.026  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:45.026  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:45.028  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:45.095  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method rejectInterview : 
+2022-05-05 19:51:45.151  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method rejectInterview : 
+2022-05-05 19:51:45.151  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 56 milliseconds.
+2022-05-05 19:51:45.161  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:45.161  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:45.162  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:51:45.165  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method retrieveAllInconclusive : 
+2022-05-05 19:51:45.167  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method retrieveAllInconclusive : 
+2022-05-05 19:51:45.167  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 2 milliseconds.
+2022-05-05 19:51:45.178  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:45.178  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:45.179  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:51:45.205  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method findUserBylogin : 
+2022-05-05 19:51:45.231  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method findUserBylogin : 
+2022-05-05 19:51:45.232  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 27 milliseconds.
+2022-05-05 19:51:45.236  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method disassociateTaskFromIntern : 
+2022-05-05 19:51:45.289  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method disassociateTaskFromIntern : 
+2022-05-05 19:51:45.289  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 53 milliseconds.
+2022-05-05 19:51:45.302  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:45.302  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:45.305  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 3 ms
+2022-05-05 19:51:45.340  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method getCommentsByTCId : 
+2022-05-05 19:51:45.381  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method getCommentsByTCId : 
+2022-05-05 19:51:45.382  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 42 milliseconds.
+2022-05-05 19:51:45.397  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:45.397  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:45.400  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 3 ms
+2022-05-05 19:51:45.401  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method findUserBylogin : 
+2022-05-05 19:51:45.436  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method findUserBylogin : 
+2022-05-05 19:51:45.436  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 36 milliseconds.
+2022-05-05 19:51:45.441  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method countAssignedTasksByIntern : 
+2022-05-05 19:51:45.487  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method countAssignedTasksByIntern : 
+2022-05-05 19:51:45.487  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 46 milliseconds.
+2022-05-05 19:51:45.500  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:45.500  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:45.502  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:45.506  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method displayAssessmentsByNotice : 
+2022-05-05 19:51:45.531  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method displayAssessmentsByNotice : 
+2022-05-05 19:51:45.532  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 25 milliseconds.
+2022-05-05 19:51:45.543  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:45.543  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:45.545  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:45.574  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method countCommentsByTC : 
+2022-05-05 19:51:45.602  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method countCommentsByTC : 
+2022-05-05 19:51:45.602  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 28 milliseconds.
+2022-05-05 19:51:45.613  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:45.614  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:45.616  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:45.662  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method deleteComment : 
+2022-05-05 19:51:45.662  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:45.689  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:45.689  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 27 milliseconds.
+2022-05-05 19:51:45.716  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method deleteComment : 
+2022-05-05 19:51:45.716  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 54 milliseconds.
+2022-05-05 19:51:45.727  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:45.728  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:45.730  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:45.780  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method removeDemo : 
+2022-05-05 19:51:45.808  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method removeDemo : 
+2022-05-05 19:51:45.808  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 28 milliseconds.
+2022-05-05 19:51:45.817  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:45.818  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:45.819  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:51:45.820  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method getSkillAssessmentByTitle : 
+2022-05-05 19:51:45.847  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method getSkillAssessmentByTitle : 
+2022-05-05 19:51:45.847  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 27 milliseconds.
+2022-05-05 19:51:45.850  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method deleteSkillAssessment : 
+2022-05-05 19:51:45.851  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method getQuestionByskillAssessment : 
+2022-05-05 19:51:45.881  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method getQuestionByskillAssessment : 
+2022-05-05 19:51:45.882  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 31 milliseconds.
+2022-05-05 19:51:45.882  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method removeQuestion : 
+2022-05-05 19:51:45.885  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method removeAnswerByQuestion : 
+2022-05-05 19:51:45.899  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method removeAnswerByQuestion : 
+2022-05-05 19:51:45.900  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 15 milliseconds.
+2022-05-05 19:51:45.907  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method removeQuestion : 
+2022-05-05 19:51:45.907  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 25 milliseconds.
+2022-05-05 19:51:45.907  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method removeQuestion : 
+2022-05-05 19:51:45.910  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method removeAnswerByQuestion : 
+2022-05-05 19:51:45.926  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method removeAnswerByQuestion : 
+2022-05-05 19:51:45.926  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 16 milliseconds.
+2022-05-05 19:51:45.933  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method removeQuestion : 
+2022-05-05 19:51:45.933  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 26 milliseconds.
+2022-05-05 19:51:45.940  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method deleteSkillAssessment : 
+2022-05-05 19:51:45.941  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 91 milliseconds.
+2022-05-05 19:51:45.950  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:45.951  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:45.953  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:45.981  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method removeProjectTask : 
+2022-05-05 19:51:46.015  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method removeProjectTask : 
+2022-05-05 19:51:46.015  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 34 milliseconds.
+2022-05-05 19:51:46.026  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:46.026  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:46.028  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:46.059  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method deleteTrainingCourse : 
+2022-05-05 19:51:46.118  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method deleteTrainingCourse : 
+2022-05-05 19:51:46.118  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 59 milliseconds.
+2022-05-05 19:51:46.133  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:46.134  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:46.135  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:51:46.160  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method removeAssessment : 
+2022-05-05 19:51:46.185  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method removeAssessment : 
+2022-05-05 19:51:46.185  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 25 milliseconds.
+2022-05-05 19:51:46.194  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:46.194  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:46.196  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:46.256  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method removeProject : 
+2022-05-05 19:51:46.285  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method retreiveAllProjectTasks : 
+2022-05-05 19:51:46.291  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method retreiveAllProjectTasks : 
+2022-05-05 19:51:46.291  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 6 milliseconds.
+2022-05-05 19:51:46.299  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method removeProject : 
+2022-05-05 19:51:46.299  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 43 milliseconds.
+2022-05-05 19:51:46.311  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:46.312  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:46.314  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:46.345  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method deleteVacancyById : 
+2022-05-05 19:51:46.371  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:46.374  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:46.374  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 3 milliseconds.
+2022-05-05 19:51:46.378  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:46.380  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:46.380  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 3 milliseconds.
+2022-05-05 19:51:46.380  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method addNotification : 
+2022-05-05 19:51:46.387  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method addNotification : 
+2022-05-05 19:51:46.387  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 7 milliseconds.
+2022-05-05 19:51:46.388  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:46.391  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:46.391  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 4 milliseconds.
+2022-05-05 19:51:46.392  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method addNotification : 
+2022-05-05 19:51:46.396  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method addNotification : 
+2022-05-05 19:51:46.396  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 4 milliseconds.
+2022-05-05 19:51:46.397  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:46.399  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:46.399  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 3 milliseconds.
+2022-05-05 19:51:46.399  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method addNotification : 
+2022-05-05 19:51:46.405  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method addNotification : 
+2022-05-05 19:51:46.405  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 6 milliseconds.
+2022-05-05 19:51:46.405  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:51:46.411  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:51:46.411  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 6 milliseconds.
+2022-05-05 19:51:46.411  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method addNotification : 
+2022-05-05 19:51:46.416  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method addNotification : 
+2022-05-05 19:51:46.417  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 6 milliseconds.
+2022-05-05 19:51:46.422  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method deleteVacancyById : 
+2022-05-05 19:51:46.422  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 77 milliseconds.
+2022-05-05 19:51:46.433  INFO 12160 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:51:46.433  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:51:46.435  INFO 12160 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:51:46.440  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : In method removeUsersByCompanyName : 
+2022-05-05 19:51:46.447  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method removeUsersByCompanyName : 
+2022-05-05 19:51:46.447  INFO 12160 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 7 milliseconds.
+2022-05-05 19:52:00.010  INFO 12160 --- [scheduling-1] t.u.n.spring.services.UserService        : Method with cron expression
+2022-05-05 19:53:41.447  INFO 7704 --- [main] t.u.n.spring.test.MydiplomaAppTest       : Starting MydiplomaAppTest using Java 1.8.0_211 on DESKTOP-4QOM9A3 with PID 7704 (started by LENOVO in C:\Users\LENOVO\Documents\GitHub\myDiplomaApp)
+2022-05-05 19:53:41.451  INFO 7704 --- [main] t.u.n.spring.test.MydiplomaAppTest       : No active profile set, falling back to default profiles: default
+2022-05-05 19:53:44.001  INFO 7704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-05-05 19:53:44.245  INFO 7704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 223 ms. Found 23 JPA repository interfaces.
+2022-05-05 19:53:45.384  INFO 7704 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@93a5c6c' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-05 19:53:45.426  INFO 7704 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-05-05 19:53:45.705  INFO 7704 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-05-05 19:53:46.083  INFO 7704 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-05-05 19:53:46.833  INFO 7704 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-05-05 19:53:47.081  INFO 7704 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2022-05-05 19:53:47.641  INFO 7704 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-05-05 19:53:48.658  INFO 7704 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-05-05 19:53:52.063  INFO 7704 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-05-05 19:53:52.083  INFO 7704 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-05-05 19:53:54.563  WARN 7704 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-05-05 19:53:58.127  INFO 7704 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4e6b3d56, org.springframework.security.web.context.SecurityContextPersistenceFilter@3641de1a, org.springframework.security.web.header.HeaderWriterFilter@314c07a0, org.springframework.security.web.authentication.logout.LogoutFilter@248e17b8, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5299ec35, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6ecfc0e8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3192f4f7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1bb3f49d, org.springframework.security.web.session.SessionManagementFilter@558fbded, org.springframework.security.web.access.ExceptionTranslationFilter@7d08ea55]
+2022-05-05 19:54:00.397  WARN 7704 --- [main] o.s.b.a.batch.JpaBatchConfigurer         : JPA does not support custom isolation levels, so locks may not be taken when launching Jobs
+2022-05-05 19:54:00.433  INFO 7704 --- [main] o.s.b.c.r.s.JobRepositoryFactoryBean     : No database type set, using meta data indicating: MYSQL
+2022-05-05 19:54:00.545  INFO 7704 --- [main] o.s.b.c.l.support.SimpleJobLauncher      : No TaskExecutor has been set, defaulting to synchronous executor.
+2022-05-05 19:54:01.394  INFO 7704 --- [scheduling-1] t.u.n.spring.services.UserService        : Method with fixed Rate
+2022-05-05 19:54:01.404  INFO 7704 --- [main] t.u.n.spring.test.MydiplomaAppTest       : Started MydiplomaAppTest in 20.707 seconds (JVM running for 24.442)
+2022-05-05 19:54:01.413  INFO 7704 --- [main] o.s.b.a.b.JobLauncherApplicationRunner   : Running default command line with: []
+2022-05-05 19:54:01.740  INFO 7704 --- [main] o.s.b.c.l.support.SimpleJobLauncher      : Job: [SimpleJob: [name=listRolesJob]] launched with the following parameters: [{}]
+2022-05-05 19:54:01.844  INFO 7704 --- [main] o.s.batch.core.job.SimpleStepHandler     : Step already complete or not restartable, so no action to execute: StepExecution: id=1, version=4, name=processingStep, status=COMPLETED, exitStatus=COMPLETED, readCount=5, filterCount=0, writeCount=5 readSkipCount=0, writeSkipCount=0, processSkipCount=0, commitCount=2, rollbackCount=0, exitDescription=
+2022-05-05 19:54:01.866  INFO 7704 --- [main] o.s.b.c.l.support.SimpleJobLauncher      : Job: [SimpleJob: [name=listRolesJob]] completed with the following parameters: [{}] and the following status: [COMPLETED] in 44ms
+2022-05-05 19:54:02.128  INFO 7704 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:54:02.128  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:54:02.130  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:54:02.330  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method signUp : 
+2022-05-05 19:54:02.531  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method sendEmail : 
+2022-05-05 19:54:05.333  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method sendEmail : 
+2022-05-05 19:54:05.335  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 2804 milliseconds.
+2022-05-05 19:54:05.337  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method signUp : 
+2022-05-05 19:54:05.337  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 3009 milliseconds.
+2022-05-05 19:54:05.392  INFO 7704 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:54:05.393  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:54:05.394  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:54:05.494  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method findUserBylogin : 
+2022-05-05 19:54:05.586  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method findUserBylogin : 
+2022-05-05 19:54:05.586  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 92 milliseconds.
+2022-05-05 19:54:05.710  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method findUserBylogin : 
+2022-05-05 19:54:05.713  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method findUserBylogin : 
+2022-05-05 19:54:05.713  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 3 milliseconds.
+2022-05-05 19:54:05.777  INFO 7704 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:54:05.778  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:54:05.779  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:54:05.834  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:54:05.845  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:54:05.845  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 11 milliseconds.
+2022-05-05 19:54:05.845  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method findRoleByroleType : 
+2022-05-05 19:54:05.857  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method findRoleByroleType : 
+2022-05-05 19:54:05.857  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 12 milliseconds.
+2022-05-05 19:54:05.858  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method createUser : 
+2022-05-05 19:54:05.943  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method sendEmail : 
+2022-05-05 19:54:07.743  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method sendEmail : 
+2022-05-05 19:54:07.745  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 1801 milliseconds.
+2022-05-05 19:54:07.746  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method createUser : 
+2022-05-05 19:54:07.747  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 1889 milliseconds.
+2022-05-05 19:54:07.754  INFO 7704 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:54:07.755  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:54:07.756  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:54:07.766  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:54:07.775  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:54:07.775  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 9 milliseconds.
+2022-05-05 19:54:07.775  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method findRoleByroleType : 
+2022-05-05 19:54:07.777  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method findRoleByroleType : 
+2022-05-05 19:54:07.777  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 2 milliseconds.
+2022-05-05 19:54:07.777  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:54:07.779  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:54:07.780  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 3 milliseconds.
+2022-05-05 19:54:07.780  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method sendEmail : 
+2022-05-05 19:54:09.612  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method sendEmail : 
+2022-05-05 19:54:09.612  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 1832 milliseconds.
+2022-05-05 19:54:09.613  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method createUser : 
+2022-05-05 19:54:09.697  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method sendEmail : 
+2022-05-05 19:54:11.698  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method sendEmail : 
+2022-05-05 19:54:11.699  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 2002 milliseconds.
+2022-05-05 19:54:11.700  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method createUser : 
+2022-05-05 19:54:11.701  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 2088 milliseconds.
+2022-05-05 19:54:11.710  INFO 7704 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:54:11.711  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:54:11.712  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:54:11.723  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:54:11.732  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:54:11.732  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 9 milliseconds.
+2022-05-05 19:54:11.733  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method findRoleByroleType : 
+2022-05-05 19:54:11.736  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method findRoleByroleType : 
+2022-05-05 19:54:11.737  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 4 milliseconds.
+2022-05-05 19:54:11.737  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:54:11.740  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:54:11.740  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 3 milliseconds.
+2022-05-05 19:54:11.740  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method sendEmail : 
+2022-05-05 19:54:13.683  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method sendEmail : 
+2022-05-05 19:54:13.685  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 1945 milliseconds.
+2022-05-05 19:54:13.686  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method createUser : 
+2022-05-05 19:54:13.770  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method sendEmail : 
+2022-05-05 19:54:15.614  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method sendEmail : 
+2022-05-05 19:54:15.615  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 1845 milliseconds.
+2022-05-05 19:54:15.616  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method createUser : 
+2022-05-05 19:54:15.616  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 1930 milliseconds.
+2022-05-05 19:54:15.626  INFO 7704 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:54:15.626  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:54:15.627  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:54:15.637  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method createCateogry : 
+2022-05-05 19:54:15.650  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method createCateogry : 
+2022-05-05 19:54:15.650  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 13 milliseconds.
+2022-05-05 19:54:15.658  INFO 7704 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:54:15.659  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:54:15.660  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:54:15.668  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method findCompanyInterns : 
+2022-05-05 19:54:15.672  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method findCompanyInterns : 
+2022-05-05 19:54:15.673  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 5 milliseconds.
+2022-05-05 19:54:15.685  INFO 7704 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:54:15.686  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:54:15.688  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:54:15.691  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method findUsersActivated : 
+2022-05-05 19:54:15.694  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method findUsersActivated : 
+2022-05-05 19:54:15.694  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 3 milliseconds.
+2022-05-05 19:54:15.704  INFO 7704 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:54:15.704  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:54:15.706  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:54:15.710  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method findCompanyHRs : 
+2022-05-05 19:54:15.722  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method findCompanyHRs : 
+2022-05-05 19:54:15.723  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 13 milliseconds.
+2022-05-05 19:54:15.731  INFO 7704 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:54:15.732  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:54:15.734  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:54:15.739  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method findUserBylogin : 
+2022-05-05 19:54:15.751  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method findUserBylogin : 
+2022-05-05 19:54:15.751  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 12 milliseconds.
+2022-05-05 19:54:15.760  INFO 7704 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:54:15.760  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:54:15.761  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:54:15.764  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method findUserLastname : 
+2022-05-05 19:54:15.778  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method findUserLastname : 
+2022-05-05 19:54:15.779  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 15 milliseconds.
+2022-05-05 19:54:15.789  INFO 7704 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:54:15.790  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:54:15.791  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:54:15.793  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method getAllUsers : 
+2022-05-05 19:54:15.847  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method getAllUsers : 
+2022-05-05 19:54:15.848  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 56 milliseconds.
+2022-05-05 19:54:15.861  INFO 7704 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:54:15.861  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:54:15.863  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:54:15.863  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method createCateogry : 
+2022-05-05 19:54:15.867  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method createCateogry : 
+2022-05-05 19:54:15.868  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 5 milliseconds.
+2022-05-05 19:54:16.030  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method createVacancy : 
+2022-05-05 19:54:16.042  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:54:16.054  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:54:16.055  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 13 milliseconds.
+2022-05-05 19:54:16.055  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:54:16.056  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:54:16.057  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 2 milliseconds.
+2022-05-05 19:54:16.065  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:54:16.067  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:54:16.067  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 2 milliseconds.
+2022-05-05 19:54:16.081  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:54:16.083  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:54:16.083  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 2 milliseconds.
+2022-05-05 19:54:16.083  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method addNotification : 
+2022-05-05 19:54:16.096  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method addNotification : 
+2022-05-05 19:54:16.096  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 13 milliseconds.
+2022-05-05 19:54:16.096  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:54:16.098  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:54:16.098  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 2 milliseconds.
+2022-05-05 19:54:16.098  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method addNotification : 
+2022-05-05 19:54:16.102  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method addNotification : 
+2022-05-05 19:54:16.103  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 5 milliseconds.
+2022-05-05 19:54:16.103  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method currentUser : 
+2022-05-05 19:54:16.105  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method currentUser : 
+2022-05-05 19:54:16.105  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 2 milliseconds.
+2022-05-05 19:54:16.106  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method addNotification : 
+2022-05-05 19:54:16.111  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method addNotification : 
+2022-05-05 19:54:16.111  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 5 milliseconds.
+2022-05-05 19:54:16.111  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method createVacancy : 
+2022-05-05 19:54:16.111  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 81 milliseconds.
+2022-05-05 19:54:16.124  INFO 7704 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:54:16.124  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:54:16.125  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:54:16.128  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method retrieveCompanyVacancies : 
+2022-05-05 19:54:16.185  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method retrieveCompanyVacancies : 
+2022-05-05 19:54:16.186  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 58 milliseconds.
+2022-05-05 19:54:16.204  INFO 7704 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:54:16.204  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:54:16.205  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:54:16.207  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method getPaidVacancies : 
+2022-05-05 19:54:16.209  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method getPaidVacancies : 
+2022-05-05 19:54:16.209  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 2 milliseconds.
+2022-05-05 19:54:16.221  INFO 7704 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:54:16.221  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:54:16.223  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:54:16.226  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method getActiveVacancies : 
+2022-05-05 19:54:16.257  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method getActiveVacancies : 
+2022-05-05 19:54:16.257  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 31 milliseconds.
+2022-05-05 19:54:16.271  INFO 7704 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:54:16.271  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:54:16.274  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 3 ms
+2022-05-05 19:54:16.276  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method getArchievedVacancies : 
+2022-05-05 19:54:16.278  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method getArchievedVacancies : 
+2022-05-05 19:54:16.279  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 3 milliseconds.
+2022-05-05 19:54:16.290  INFO 7704 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:54:16.290  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:54:16.291  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:54:16.295  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method getVacanciesByStatus : 
+2022-05-05 19:54:16.322  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method getVacanciesByStatus : 
+2022-05-05 19:54:16.322  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 27 milliseconds.
+2022-05-05 19:54:16.331  INFO 7704 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:54:16.331  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:54:16.332  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:54:16.333  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method getVacancyByCompany : 
+2022-05-05 19:54:16.390  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method getVacancyByCompany : 
+2022-05-05 19:54:16.391  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 58 milliseconds.
+2022-05-05 19:54:16.395  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method getVacancyById : 
+2022-05-05 19:54:16.436  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method getVacancyById : 
+2022-05-05 19:54:16.436  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 41 milliseconds.
+2022-05-05 19:54:16.455  INFO 7704 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:54:16.455  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:54:16.457  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:54:16.459  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method retreiveAllVacancies : 
+2022-05-05 19:54:16.495  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method retreiveAllVacancies : 
+2022-05-05 19:54:16.495  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 36 milliseconds.
+2022-05-05 19:54:16.507  INFO 7704 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:54:16.508  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:54:16.509  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:54:16.512  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method countActiveVacancies : 
+2022-05-05 19:54:16.547  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method countActiveVacancies : 
+2022-05-05 19:54:16.548  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 36 milliseconds.
+2022-05-05 19:54:16.561  INFO 7704 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:54:16.561  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:54:16.562  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:54:16.565  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method countArchievedVacancies : 
+2022-05-05 19:54:16.569  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method countArchievedVacancies : 
+2022-05-05 19:54:16.569  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 4 milliseconds.
+2022-05-05 19:54:16.581  INFO 7704 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:54:16.582  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:54:16.584  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:54:16.588  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method countDraftVacancies : 
+2022-05-05 19:54:16.591  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method countDraftVacancies : 
+2022-05-05 19:54:16.592  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 4 milliseconds.
+2022-05-05 19:54:16.603  INFO 7704 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:54:16.603  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:54:16.604  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2022-05-05 19:54:16.607  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method countVacancies : 
+2022-05-05 19:54:16.641  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method countVacancies : 
+2022-05-05 19:54:16.641  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 34 milliseconds.
+2022-05-05 19:54:16.653  INFO 7704 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:54:16.653  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-05-05 19:54:16.656  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-05-05 19:54:16.661  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : In method countClosedVacancies : 
+2022-05-05 19:54:16.665  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : out of the  method countClosedVacancies : 
+2022-05-05 19:54:16.665  INFO 7704 --- [main] t.u.n.spring.config.LoggingAspect        : Method execution time: 4 milliseconds.
+2022-05-05 19:54:16.677  INFO 7704 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2022-05-05 19:54:16.677  INFO 7704 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
