@@ -805,7 +805,7 @@ public class MydiplomaAppTest {
 		assertEquals(200, result1.getResponse().getStatus());
 
 	}
-
+ 
 	@Test
 	@WithMockUser(username = "Hr_Manager", password = "azerty123", authorities = "HR_MANAGER")
 	public void MMtestAssignSAToIntern() throws Exception {
@@ -820,7 +820,7 @@ public class MydiplomaAppTest {
 		assertEquals(200, result1.getResponse().getStatus());
 
 	}
-
+ 
 	@Test
 
 	public void MMMtestActivate() throws Exception {

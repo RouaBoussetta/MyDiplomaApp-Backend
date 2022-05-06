@@ -67,7 +67,7 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 	INotificationService inotifService;
 	@Autowired
 	private EmailService emailService;
- 
+
  	private static final String APPLICATION_NAME = "serviceCal";
    	private static final JsonFactory JSON_FACTORY = new JacksonFactory();
  	private static com.google.api.services.calendar.Calendar client;
@@ -160,12 +160,7 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 		for (Question q : questions) {
 			iQuestionService.removeQuestion(q.getId());
 		}
- 
-		
-		 
-		 
-		skillAssessmentRepository.deleteSK(skillassessment);
-
+ 		skillAssessmentRepository.deleteSK(skillassessment);
 	}
 
 	@Override
@@ -277,7 +272,6 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 					"you are invited to do a qualification test Due to your interest in the internship offer posted by "
 							+ iuserService.currentUser().getCompanyName() + " company.");
 			
-
 			SimpleMailMessage email = new SimpleMailMessage();
 			email.setTo(intern.getEmail());
 			email.setSubject(subject);
@@ -286,22 +280,13 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 					intern.getUserImage() + "Dear " + intern.getFirstname() + ":\n"
 							+ "Due to your interest in the internship offer posted by the company nawanera llc, you are required to do a qualification test.  \n"
 							+ "please take your test as soon as possible."
-
 			);
-
 			emailService.sendEmail(email);
-
 		}
-		
-		
-
+	
 	}
 	
-	
 
-	
-	
-	
 	public void attacheSa(String email,String summary, String description) throws IOException, GeneralSecurityException {
 		
 		com.google.api.services.calendar.model.Events eventList;
