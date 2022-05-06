@@ -67,7 +67,7 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 	INotificationService inotifService;
 	@Autowired
 	private EmailService emailService;
- /*
+ 
  	private static final String APPLICATION_NAME = "serviceCal";
    	private static final JsonFactory JSON_FACTORY = new JacksonFactory();
  	private static com.google.api.services.calendar.Calendar client;
@@ -84,7 +84,7 @@ public class SkillAssessmentService implements ISkillAssessmentService {
  	private Set<Event> events = new HashSet<>();
  	final DateTime date1 = new DateTime("2022-05-05T16:30:00.000");
 	final DateTime date2 = new DateTime(new Date());
-	*/
+ 
 	
  	public SkillAssessment save(SkillAssessment skillassessment, List<Question> questions) {
 
@@ -219,7 +219,7 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 	public SkillAssessment find(int id) {
 		return skillAssessmentRepository.findById(id);
 	}
-/*
+ 
 	@Transactional
 	@Override
 	public void assignSAToIntern(int saId, int internId ) throws GeneralSecurityException, IOException {
@@ -361,7 +361,7 @@ public class SkillAssessmentService implements ISkillAssessmentService {
  				log.info("Event created: %s\n", event.getHtmlLink());
  
 	}
- */
+ 
 	@Override
 	public SkillAssessment getSkillAssessmentByTitle(String string) {
 

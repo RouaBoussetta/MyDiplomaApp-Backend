@@ -28,7 +28,7 @@ public interface ISkillAssessmentService {
 
 	Result checkInternAnswers(SkillAssessment sa, List<Response> answers);
 
-	//void assignSAToIntern(int saId, int internId) throws GeneralSecurityException, IOException;
+	void assignSAToIntern(int saId, int internId) throws GeneralSecurityException, IOException;
 
 	void publishSkillAssessment(int skillassessment);
 
@@ -37,7 +37,7 @@ public interface ISkillAssessmentService {
 	void publishSkillAssessment(String title);
 
  
-	//void assignSAToIntern(String skTitle, String internUsername) throws GeneralSecurityException, IOException;
+	void assignSAToIntern(String skTitle, String internUsername) throws GeneralSecurityException, IOException;
 
 	SkillAssessment getSkillAssessmentByTitle(String string);
 

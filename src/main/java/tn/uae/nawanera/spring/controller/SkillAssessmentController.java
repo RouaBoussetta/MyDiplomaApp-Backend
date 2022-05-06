@@ -79,7 +79,7 @@ public class SkillAssessmentController {
 
 		return iSkillAssessmentService.update(id,sk);
 	}
-	/*
+ 
 	@PreAuthorize("hasAuthority('HR_MANAGER')")
 	@PutMapping("/assign-skill-assessment-to-intern/{sa}/{intern}")
 	public void assignSAToIntern(@PathVariable("sa") int sa, @PathVariable("intern") int intern) throws GeneralSecurityException, IOException {
@@ -94,7 +94,7 @@ public class SkillAssessmentController {
 		iSkillAssessmentService.assignSAToIntern(sa, intern);
 
 	}
-	*/
+	 
 	@PreAuthorize("hasAuthority('INTERN')")
 	@PostMapping(value = "/{saId}/submitAnswers")
 	public Result startTest(@PathVariable("saId") int saId, @RequestBody List<Response> answers) {
