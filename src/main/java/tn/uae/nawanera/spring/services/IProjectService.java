@@ -30,4 +30,6 @@ public interface IProjectService {
 
 	List<Project> getInternProjects();
 
+	int countProjects();
+
 }

@@ -148,5 +148,12 @@ public class ApplicationController {
 	public List<Application> getAllOwnSkillAssessments() {
 		return iapplicationService.retreiveApplicantSkillAssessments();
 	}
+	
+	
+	@PreAuthorize("hasAuthority('HR_MANAGER')")
+	@GetMapping("/retreive-all-vacancy-applications-postedby")
+	public List<Application> getAllvacancyApplicationsPostedBy() {
+		return iapplicationService.retreiveVacancyApplications();
+	}
 
 }

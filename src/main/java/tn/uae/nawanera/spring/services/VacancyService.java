@@ -121,8 +121,7 @@ public class VacancyService implements IVacancyService {
 	@Override
 	public int countVacancies() {
 
-		List<Vacancy> vacancies = vacancyRepository.findAll();
-		return vacancies.size();
+ 		return  vacancyRepository.findAll().size();
 	}
 
 	@Override

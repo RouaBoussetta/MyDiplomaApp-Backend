@@ -6,7 +6,7 @@ public class SecurityConstants {
 	public static final String TOKEN_PREFIX ="Bearer";
 	public static final String HEADER_STRING= "Authorization";
 	public static final String MY_EMAIL = "mydiploma88@gmail.com";
-	public static final String MY_PASSWORD = "mydiploma@123000";
+	//public static final String MY_PASSWORD = "mydiploma@123000";
 	 
 	
 	

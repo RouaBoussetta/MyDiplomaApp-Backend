@@ -102,7 +102,17 @@ public class AnswerController {
 	
 	
 	
+	@PreAuthorize("hasAuthority('HR_MANAGER')")
 
+	@GetMapping("/retrieve-answer-details/{a}")
+	@ResponseBody
+
+	public Answer getAnswerById(@PathVariable("a") int a) {
+
+ 
+		return answerservice.getAnswerById(a);
+
+	}
 
 	
 	

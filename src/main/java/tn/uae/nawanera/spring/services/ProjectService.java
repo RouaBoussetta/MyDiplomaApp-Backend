@@ -102,6 +102,14 @@ public class ProjectService implements IProjectService {
 	}
 
 	@Override
+	public int countProjects() {
+		 
+		return projectRepository.findAll().size();
+	}
+
+	
+	
+	@Override
 	public Project update(int id, Project p) {
 
 		Project existProject = projectRepository.findById(id) ;

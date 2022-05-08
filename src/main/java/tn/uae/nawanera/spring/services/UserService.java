@@ -18,6 +18,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import lombok.extern.slf4j.Slf4j;
 import tn.uae.nawanera.spring.config.FileUploadUtil;
 import tn.uae.nawanera.spring.entities.Application;
 import tn.uae.nawanera.spring.entities.Project;
@@ -28,7 +29,7 @@ import tn.uae.nawanera.spring.repositories.ApplicationRepository;
 import tn.uae.nawanera.spring.repositories.ProjectRepository;
 import tn.uae.nawanera.spring.repositories.UserRepository;
 import tn.uae.nawanera.spring.repositories.VacancyRepository;
-
+@Slf4j
 @Service
 public class UserService implements IUserservice {
 	private static final Logger logger = LogManager.getLogger(UserService.class);
@@ -358,7 +359,7 @@ public class UserService implements IUserservice {
 			user.setUserImage(file.getOriginalFilename());
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.info("e:"+e);
 		}
 		userRepository.save(user);
  
@@ -436,6 +437,23 @@ public class UserService implements IUserservice {
 	@Override
 	public List<User> getAllhrManagers() {
  		return userRepository.findAllByRole(RoleType.HR_MANAGER);
+	}
+	
+	
+	@Override
+	public int countAllUsers() {
+ 		return userRepository.findAll().size();
+	}
+	
+	@Override
+	public int countAllCompanies() {
+ 		return getAllCompanies().size();
+	}
+	
+	
+	@Override
+	public int countAllInterns() {
+ 		return getAllInterns().size();
 	}
 
 }

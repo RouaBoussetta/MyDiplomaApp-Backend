@@ -1,5 +1,7 @@
 package tn.uae.nawanera.spring.services;
 
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -20,13 +22,16 @@ public class InterviewService implements IinterviewService{
 	InterviewRepository interviewRepository;
 	@Autowired
 	ApplicationRepository applicationRepository;
-	
+	@Autowired
+	SkillAssessmentService saService;
 	@Autowired
 	VacancyRepository vacancyRepository;
 	@Autowired
 	UserRepository userRepository;
+	
+ 
 	@Override
-	public Interview planifyInterview(Interview interview ,int idapp) {
+	public Interview planifyInterview(Interview interview ,int idapp) throws IOException, GeneralSecurityException {
 		
 		Application app=applicationRepository.findById(idapp);
 		
@@ -36,6 +41,8 @@ public class InterviewService implements IinterviewService{
 		interviewRepository.save(interview);
 		app.setInterviewPlanned(true);
 		applicationRepository.save(app);
+		
+		saService.attacheSa(app.getIntern().getEmail(), "Interview", "You have An interview with "+app.getVacancy().getPostedby().getFirstname()+" "+app.getVacancy().getPostedby().getLastname());
 		return interview;
 	}
 	@Override
@@ -57,6 +64,6 @@ public class InterviewService implements IinterviewService{
 	}
 	
 	
-	
+ 
 
 }

@@ -55,6 +55,25 @@ public class UserController {
 		return iuserservice.getAllUsers();
 	}
 	
+	
+	@PreAuthorize("hasAuthority('ADMINISTRATOR')")
+	@GetMapping("/count-users")
+	public int countUsers() {
+		return iuserservice.countAllUsers();
+	}
+	
+	@PreAuthorize("hasAuthority('ADMINISTRATOR')")
+	@GetMapping("/count-companies")
+	public int countCompaniess() {
+		return iuserservice.countAllCompanies();
+	}
+	
+	@PreAuthorize("hasAuthority('ADMINISTRATOR')")
+	@GetMapping("/count-interns")
+	public int countInterns() {
+		return iuserservice.countAllInterns();
+	}
+	
 	@PreAuthorize("hasAuthority('ADMINISTRATOR')")
 	@GetMapping("/findall-interns")
 	public List<User> getAllInterns() {

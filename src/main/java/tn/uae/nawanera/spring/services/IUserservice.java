@@ -81,4 +81,10 @@ public interface IUserservice {
 
 	void removeUsersByCompanyName(String companyName);
 
+	int countAllUsers();
+
+	 int countAllCompanies();
+
+	int countAllInterns();
+
 }

@@ -55,7 +55,7 @@ public Application getApplicationByInternAndVacancy(@Param("intern")User intern,
 	@Query("select a from Application a "
 			+ "where  "
 			+ "a.intern=:intern")
-	Application findByIntern( @Param("intern")User intern);
+	List<Application> findByIntern( @Param("intern")User intern);
 
 	Application findBySkillAssessment(SkillAssessment sa);
 	
@@ -64,6 +64,14 @@ public Application getApplicationByInternAndVacancy(@Param("intern")User intern,
 			+ "where  "
 			+ "a.intern=:intern ")
 	List<Application> getApplicantApplications(  @Param("intern")User intern);
+	
+	
+
+	@Query("select DISTINCT a from Application a "
+			+ "where  "
+			+ "a.vacancy.postedby=:postedby ")
+	List<Application> getVacancyApplications(  @Param("postedby")User postedby);
+	
 	
 	
 	@Query("select a from Application a "

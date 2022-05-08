@@ -7,6 +7,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -16,6 +17,7 @@ import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -23,6 +25,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.request.RequestPostProcessor;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -33,6 +36,7 @@ import tn.uae.nawanera.spring.entities.Application;
 import tn.uae.nawanera.spring.entities.Assessment;
 import tn.uae.nawanera.spring.entities.Comment;
 import tn.uae.nawanera.spring.entities.Demo;
+import tn.uae.nawanera.spring.entities.Document;
 import tn.uae.nawanera.spring.entities.Project;
 import tn.uae.nawanera.spring.entities.Question;
 import tn.uae.nawanera.spring.entities.SkillAssessment;
@@ -69,13 +73,12 @@ public class MydiplomaAppTest {
 
 	@Autowired
 	UserRepository userRepository;
-	
+
 	@Autowired
 	ICommentRepository icomment;
 	@Autowired
 	ILikingRepository iliking;
-	
-	
+
 	@Autowired
 	CommentService commentService;
 	@Autowired
@@ -115,33 +118,31 @@ public class MydiplomaAppTest {
 
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).apply(springSecurity()).build();
 	}
-/*
+
 	@Test
 	public void AAtestsignup() throws Exception {
 
 		String admin = "{\"firstname\":\"Admin\",\"lastname\":\"admin\",\"username\":\"Admin_Admin\",\"companyName\":\"myDiploma\",\"email\":\"admin@gmail.com\",\"password\":\"azerty123\",\"role\":{\"id\":1,\"roleType\":\"ADMINISTRATOR\"}}";
 
-		MockMultipartFile file = new MockMultipartFile("file", "Triggers.pdf", MediaType.APPLICATION_PDF_VALUE,
-				"<<pdf data>>".getBytes(StandardCharsets.UTF_8));
-
+		MockMultipartFile image = new MockMultipartFile("file", "admin.jpg", "", "".getBytes(StandardCharsets.UTF_8));
 		ObjectMapper objectMapper = new ObjectMapper();
 		User result = objectMapper.readValue(String.valueOf(admin), User.class);
 
 		MockMultipartFile metadata = new MockMultipartFile("u", "admin", MediaType.APPLICATION_JSON_VALUE,
 				objectMapper.writeValueAsString(result).getBytes(StandardCharsets.UTF_8));
 
-		mockMvc.perform(multipart("/api/auth/signup").file(file).file(metadata).accept(MediaType.APPLICATION_JSON))
+		mockMvc.perform(multipart("/api/auth/signup").file(image).file(metadata).accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk());
 
 	}
-*/
+
 	@Test
 	public void AtestSignupIntern() throws Exception {
 
 		String intern = "{\"firstname\":\"intern\",\"lastname\":\"intern\",\"username\":\"Intern_Intern\",\"email\":\"boussettaroua@gmail.com\",\"password\":\"azerty123\",\"role\":{\"id\":5,\"roleType\":\"INTERN\"}}";
 
-		MockMultipartFile file = new MockMultipartFile("file", "Triggers.pdf", MediaType.APPLICATION_PDF_VALUE,
-				"<<pdf data>>".getBytes(StandardCharsets.UTF_8));
+		MockMultipartFile image = new MockMultipartFile("file", "intern_intern.jpg", "",
+				"".getBytes(StandardCharsets.UTF_8));
 
 		ObjectMapper objectMapper = new ObjectMapper();
 		User result = objectMapper.readValue(String.valueOf(intern), User.class);
@@ -149,7 +150,7 @@ public class MydiplomaAppTest {
 		MockMultipartFile metadata = new MockMultipartFile("u", "intern", MediaType.APPLICATION_JSON_VALUE,
 				objectMapper.writeValueAsString(result).getBytes(StandardCharsets.UTF_8));
 
-		mockMvc.perform(multipart("/api/auth/signup").file(file).file(metadata).accept(MediaType.APPLICATION_JSON))
+		mockMvc.perform(multipart("/api/auth/signup").file(image).file(metadata).accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk());
 
 	}
@@ -172,14 +173,14 @@ public class MydiplomaAppTest {
 
 		String company = "{\"firstname\":\"company\",\"lastname\":\"company\",\"username\":\"Company_Company\",\"companyName\":\"Company\",\"email\":\"company@gmail.com\",\"password\":\"azerty123\",\"role\":{\"id\":2,\"roleType\":\"COMPANY\"}}";
 
-		MockMultipartFile file = new MockMultipartFile("file", "Triggers.pdf", MediaType.APPLICATION_PDF_VALUE,
-				"<<pdf data>>".getBytes(StandardCharsets.UTF_8));
+		MockMultipartFile image = new MockMultipartFile("file", "nawanera.jpg", "",
+				"".getBytes(StandardCharsets.UTF_8));
 		ObjectMapper objectMapper = new ObjectMapper();
 		User result = objectMapper.readValue(String.valueOf(company), User.class);
 
 		MockMultipartFile metadata = new MockMultipartFile("u", "company", MediaType.APPLICATION_JSON_VALUE,
 				objectMapper.writeValueAsString(result).getBytes(StandardCharsets.UTF_8));
-		mockMvc.perform(multipart("/api/user/addCompany").file(file).file(metadata).accept(MediaType.APPLICATION_JSON))
+		mockMvc.perform(multipart("/api/user/addCompany").file(image).file(metadata).accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk());
 
 	}
@@ -190,8 +191,7 @@ public class MydiplomaAppTest {
 
 		String hr = "{\"firstname\":\"Hr\",\"lastname\":\"Hr\",\"username\":\"Hr_Manager\",\"email\":\"hr@gmail.com\",\"password\":\"azerty123\"}";
 
-		MockMultipartFile file = new MockMultipartFile("file", "Triggers.pdf", MediaType.APPLICATION_PDF_VALUE,
-				"<<pdf data>>".getBytes(StandardCharsets.UTF_8));
+		MockMultipartFile image = new MockMultipartFile("file", "roua.jpg", "", "".getBytes(StandardCharsets.UTF_8));
 
 		ObjectMapper objectMapper = new ObjectMapper();
 		User result = objectMapper.readValue(String.valueOf(hr), User.class);
@@ -199,7 +199,7 @@ public class MydiplomaAppTest {
 		MockMultipartFile metadata = new MockMultipartFile("u", "hr", MediaType.APPLICATION_JSON_VALUE,
 				objectMapper.writeValueAsString(result).getBytes(StandardCharsets.UTF_8));
 
-		mockMvc.perform(multipart("/api/user/addManager").file(file).file(metadata).accept(MediaType.APPLICATION_JSON))
+		mockMvc.perform(multipart("/api/user/addManager").file(image).file(metadata).accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk());
 
 	}
@@ -210,8 +210,8 @@ public class MydiplomaAppTest {
 
 		String trainer = "{\"firstname\":\"Trainer\",\"lastname\":\"Trainer\",\"username\":\"Trainer_Trainer\",\"email\":\"trainer@gmail.com\",\"password\":\"azerty123\"}";
 
-		MockMultipartFile file = new MockMultipartFile("file", "Triggers.pdf", MediaType.APPLICATION_PDF_VALUE,
-				"<<pdf data>>".getBytes(StandardCharsets.UTF_8));
+		MockMultipartFile image = new MockMultipartFile("file", "noureddine.jpg", "",
+				"".getBytes(StandardCharsets.UTF_8));
 
 		ObjectMapper objectMapper = new ObjectMapper();
 		User result = objectMapper.readValue(String.valueOf(trainer), User.class);
@@ -219,38 +219,34 @@ public class MydiplomaAppTest {
 		MockMultipartFile metadata = new MockMultipartFile("u", "trainer", MediaType.APPLICATION_JSON_VALUE,
 				objectMapper.writeValueAsString(result).getBytes(StandardCharsets.UTF_8));
 
-		mockMvc.perform(multipart("/api/user/addTrainer").file(file).file(metadata).accept(MediaType.APPLICATION_JSON))
+		mockMvc.perform(multipart("/api/user/addTrainer").file(image).file(metadata).accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk());
 	}
 
-	/*
-	 * @Test
-	 * 
-	 * @WithMockUser(username = "Daryl_See", password = "azerty123", authorities =
-	 * "HR_MANAGER") public void EtestEditProfile() throws Exception {
-	 * 
-	 * String hr =
-	 * "{\"firstname\":\"Daryll\",\"lastname\":\"See\",\"username\":\"Daryl_See\",\"email\":\"daryl.see@gmail.com\",\"password\":\"daryl\"}";
-	 * MockMultipartFile file = new MockMultipartFile("file", "Triggers.pdf",
-	 * MediaType.APPLICATION_PDF_VALUE,
-	 * "<<pdf data>>".getBytes(StandardCharsets.UTF_8));
-	 * 
-	 * ObjectMapper objectMapper = new ObjectMapper(); User result =
-	 * objectMapper.readValue(String.valueOf(hr), User.class);
-	 * 
-	 * MockMultipartFile metadata = new MockMultipartFile("u", "hr",
-	 * MediaType.APPLICATION_JSON_VALUE,
-	 * objectMapper.writeValueAsString(result).getBytes(StandardCharsets.UTF_8));
-	 * 
-	 * mockMvc.perform(multipart("/api/user/edit-profile").file(file).file(metadata)
-	 * .accept(MediaType.APPLICATION_JSON).with(new RequestPostProcessor() {
-	 * 
-	 * @Override public MockHttpServletRequest
-	 * postProcessRequest(MockHttpServletRequest request) {
-	 * request.setMethod("PUT"); return request; } })) .andExpect(status().isOk());
-	 * 
-	 * }
-	 */
+	@Test
+
+	@WithMockUser(username = "Hr_Manager", password = "azerty123", authorities = "HR_MANAGER")
+	public void EtestEditProfile() throws Exception {
+		User u = iuser.findUserBylogin("Hr_Manager");
+		String hr = "{\"firstname\":\"Daryl\",\"lastname\":\"See\",\"username\":\"Hr_Manager\",\"email\":\"daryl.see@gmail.com\",\"password\":\"azerty123\",\"bio\":\"kjhfkjflkjflkjfljljojpoj\" ,\"valid\":\"true\"}";
+		MockMultipartFile image = new MockMultipartFile("file", "14.PNG", "", "".getBytes(StandardCharsets.UTF_8));
+
+		ObjectMapper objectMapper = new ObjectMapper();
+		User result = objectMapper.readValue(String.valueOf(hr), User.class);
+
+		MockMultipartFile metadata = new MockMultipartFile("u", "hr", MediaType.APPLICATION_JSON_VALUE,
+				objectMapper.writeValueAsString(result).getBytes(StandardCharsets.UTF_8));
+
+		mockMvc.perform(multipart("/api/user/edit-profile/" + u.getId()).file(image).file(metadata)
+				.accept(MediaType.APPLICATION_JSON).with(new RequestPostProcessor() {
+
+					@Override
+					public MockHttpServletRequest postProcessRequest(MockHttpServletRequest request) {
+						request.setMethod("PUT");
+						return request;
+					}
+				})).andExpect(status().isOk());
+	}
 
 	@Test
 	@WithMockUser(username = "Admin_Admin", password = "azerty123", authorities = "ADMINISTRATOR")
@@ -362,9 +358,8 @@ public class MydiplomaAppTest {
 				+ "\"qualification\":\"Must have strong oral and written communications skills, and be able to work effectively and build relationships with others.\",\r\n"
 				+ "\"degree\":\"BACHELOR\",\r\n" + "\"category\":" + jsonStr + "," + "\"paid\":\"false\",\r\n"
 				+ "\"status\":\"ACTIVE\"\r\n" + "}";
-		MockMultipartFile file = new MockMultipartFile("file", "Triggers.pdf", MediaType.APPLICATION_PDF_VALUE,
-				"<<pdf data>>".getBytes(StandardCharsets.UTF_8));
 
+		MockMultipartFile image = new MockMultipartFile("file", "1.PNG", "", "".getBytes(StandardCharsets.UTF_8));
 		ObjectMapper objectMapper = new ObjectMapper();
 		Vacancy result = objectMapper.readValue(String.valueOf(v), Vacancy.class);
 
@@ -372,7 +367,7 @@ public class MydiplomaAppTest {
 				objectMapper.writeValueAsString(result).getBytes(StandardCharsets.UTF_8));
 
 		mockMvc.perform(
-				multipart("/api/vacancy/addVacancy").file(file).file(metadata).accept(MediaType.APPLICATION_JSON))
+				multipart("/api/vacancy/addVacancy").file(image).file(metadata).accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk());
 
 	}
@@ -572,19 +567,20 @@ public class MydiplomaAppTest {
 	/*
 	 * @Test
 	 * 
-	 * @WithMockUser(username = "Daryl_See", password = "daryl", authorities =
+	 * @WithMockUser(username = "Hr_Manager", password = "azerty123", authorities =
 	 * "HR_MANAGER") public void testCAcceptInternApplication() throws Exception {
+	 * 
+	 * User intern=iuser.findUserBylogin("Intern_Intern"); Vacancy
+	 * vacancy=ivacancyRepo.findByTitle("test"); Application
+	 * app=iapp.getApplicationByInternAndVacancy(intern, vacancy);
 	 * MockHttpServletRequestBuilder requestBuilder =
-	 * MockMvcRequestBuilders.put("/api/vacancy/accept-application/1")
+	 * MockMvcRequestBuilders.put("/api/vacancy/accept-application/"+app.getId())
 	 * .accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
 	 * 
 	 * MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 	 * 
-	 * assertEquals(200, result.getResponse().getStatus());
-	 * 
-	 * }
+	 * assertEquals(200, result.getResponse().getStatus()); }
 	 */
-
 	@Test
 	@WithMockUser(username = "Hr_Manager", password = "azerty", authorities = "HR_MANAGER")
 	public void JtestDGetAllVacanciesAppliedByIntern() throws Exception {
@@ -805,7 +801,7 @@ public class MydiplomaAppTest {
 		assertEquals(200, result1.getResponse().getStatus());
 
 	}
- 
+
 	@Test
 	@WithMockUser(username = "Hr_Manager", password = "azerty123", authorities = "HR_MANAGER")
 	public void MMtestAssignSAToIntern() throws Exception {
@@ -820,7 +816,7 @@ public class MydiplomaAppTest {
 		assertEquals(200, result1.getResponse().getStatus());
 
 	}
- 
+
 	@Test
 
 	public void MMMtestActivate() throws Exception {
@@ -862,36 +858,25 @@ public class MydiplomaAppTest {
 
 	@Test
 	@WithMockUser(username = "Hr_Manager", password = "azerty123", authorities = "HR_MANAGER")
-	public void testAPlannifyInterview() throws Exception {
-		String interview = "{\"interviewDate\":\"2022-01-20\",\"interviewTime\":\"18:00:00\" }";
-		User u = iuser.findUserBylogin("Intern_Intern");
-
-		Application app = iapp.findByIntern(u);
-
-		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
-				.post("/api/interview/plannify/" + app.getId()).content(interview).accept(MediaType.APPLICATION_JSON)
-				.contentType(MediaType.APPLICATION_JSON);
-
-		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-
-		assertEquals(200, result.getResponse().getStatus());
-
-	}
-
-	@Test
-	@WithMockUser(username = "Hr_Manager", password = "azerty123", authorities = "HR_MANAGER")
 	public void testCAcceptIntern() throws Exception {
 		User u = iuser.findUserBylogin("Intern_Intern");
 
-		Application app = iapp.findByIntern(u);
+		List<Vacancy> vacancies = ivacancy.getOwnVacancies();
+		List<Application> apps = iapp.findByIntern(u);
 
-		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
-				.put("/api/application/accept-application/" + app.getId()).accept(MediaType.APPLICATION_JSON)
-				.contentType(MediaType.APPLICATION_JSON);
+		for (Vacancy v : vacancies) {
+			for (Application app : apps) {
+				if (v.getId() == app.getVacancy().getId()) {
+					MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+							.put("/api/application/accept-application/" + app.getId())
+							.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
 
-		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+					MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 
-		assertEquals(200, result.getResponse().getStatus());
+					assertEquals(200, result.getResponse().getStatus());
+				}
+			}
+		}
 
 	}
 
@@ -1020,47 +1005,23 @@ public class MydiplomaAppTest {
 
 	}
 
-	/*
-	 * @Test
-	 * 
-	 * @WithMockUser(username = "Trainer_Trainer", password = "azerty123",
-	 * authorities = "TRAINER") public void testBupdateProjectTask() throws
-	 * Exception { String
-	 * task="{ \"taskName\":\"updated\", \"status\": \"TODO\",\"taskIssue\": \"\",\"deadline\":\"2022-06-17\"}"
-	 * ; Vacancy v = ivacancyRepo.findByTitle("test");
-	 * 
-	 * Project p = iprojectRepo.findByVacancy(v); Task t=itaskRepo.fin
-	 * MockHttpServletRequestBuilder requestBuilder =
-	 * MockMvcRequestBuilders.put("/api/project/tasks/Update-project-task/"+p.getId(
-	 * )) .content(task)
-	 * .accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
-	 * 
-	 * MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-	 * 
-	 * assertEquals(200, result.getResponse().getStatus());
-	 * 
-	 * }
-	 * 
-	 * 
-	 * @Test
-	 * 
-	 * @WithMockUser(username = "Intern_Intern", password = "azerty123", authorities
-	 * = "INTERN") public void testCupdateProjectTask() throws Exception { String
-	 * task="{ \"taskName\":\"updated\", \"status\": \"DOING\",\"taskIssue\": \"\",\"deadline\":\"2022-06-17\"}"
-	 * ; Vacancy v = ivacancyRepo.findByTitle("test");
-	 * 
-	 * Project p = iprojectRepo.findByVacancy(v); MockHttpServletRequestBuilder
-	 * requestBuilder =
-	 * MockMvcRequestBuilders.put("/api/project/tasks/Update-project-task/"+p.getId(
-	 * )) .content(task)
-	 * .accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
-	 * 
-	 * MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-	 * 
-	 * assertEquals(200, result.getResponse().getStatus());
-	 * 
-	 * }
-	 */
+	@Test
+
+	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
+	public void testBupdateProjectTask() throws Exception {
+
+		String task = "{ \"taskName\":\"task1\", \"status\": \"TODO\",\"taskIssue\": \"\",\"deadline\":\"2022-06-17\"}";
+		Vacancy v = ivacancyRepo.findByTitle("test");
+
+		Project p = iprojectRepo.findByVacancy(v);
+		Task t = itaskRepo.findByTaskName("task1");
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.put("/api/project/tasks/Update-project-task/" + p.getId()).content(task)
+				.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+		assertEquals(200, result.getResponse().getStatus());
+	}
 
 	@Test
 	@WithMockUser(username = "Intern_Intern", password = "azerty123", authorities = "INTERN")
@@ -1082,8 +1043,7 @@ public class MydiplomaAppTest {
 	@Test
 	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
 	public void testEgetProjectTaskDetails() throws Exception {
-		// Vacancy v = ivacancyRepo.findByTitle("test");
-//		Project p = iprojectRepo.findByVacancy(v);
+
 		Task t = itaskRepo.findByTaskName("task1");
 		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
 				.get("/api/project/tasks/retreive-Project-Task-details/" + t.getId()).accept(MediaType.APPLICATION_JSON)
@@ -1169,24 +1129,19 @@ public class MydiplomaAppTest {
 
 	}
 
-	/*
-	 * @Test
-	 * 
-	 * @WithMockUser(username = "Trainer_Trainer", password = "azerty123",
-	 * authorities = "TRAINER") public void testKretreiveInternTasks() throws
-	 * Exception { User intern=iuser.findUserBylogin("Intern_Intern");
-	 * 
-	 * MockHttpServletRequestBuilder requestBuilder =
-	 * MockMvcRequestBuilders.get("/api/project/tasks/retreive-intern-Tasks/"+intern
-	 * .getId())
-	 * .accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
-	 * 
-	 * MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-	 * 
-	 * assertEquals(200, result.getResponse().getStatus());
-	 * 
-	 * }
-	 */
+	@Test
+	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
+	public void testKretreiveInternTasks() throws Exception {
+		User intern = iuser.findUserBylogin("Intern_Intern");
+		Project project = iprojectRepo.findByTitle("project1");
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/api/project/tasks/retreive-intern-Tasks/" + project.getId() + "/" + intern.getId())
+				.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		assertEquals(200, result.getResponse().getStatus());
+	}
 
 	/********************* Demo ****************************/
 
@@ -1282,34 +1237,31 @@ public class MydiplomaAppTest {
 		assertEquals(200, result.getResponse().getStatus());
 
 	}
+
 	/********************* Document ****************************/
+/*
+	@Test
 
-	/*
-	 * @Test
-	 * 
-	 * @WithMockUser(username = "Trainer_Trainer", password = "azerty123",
-	 * authorities = "TRAINER") public void testKUploadDocument() throws Exception {
-	 * Vacancy v = ivacancyRepo.findByTitle("test"); Project p =
-	 * iprojectRepo.findByVacancy(v); String doc =
-	 * "{\"category\":\"REPORT\", \"project\":{ \"id\":"+p.getId()+" }}";
-	 * 
-	 * MockMultipartFile file = new MockMultipartFile("file", "Triggers.pdf",
-	 * MediaType.APPLICATION_PDF_VALUE,
-	 * "<<pdf data>>".getBytes(StandardCharsets.UTF_8));
-	 * 
-	 * ObjectMapper objectMapper = new ObjectMapper(); Document result =
-	 * objectMapper.readValue(String.valueOf(doc), Document.class);
-	 * 
-	 * MockMultipartFile metadata = new MockMultipartFile("doc", "doc",
-	 * MediaType.APPLICATION_JSON_VALUE,
-	 * objectMapper.writeValueAsString(result).getBytes(StandardCharsets.UTF_8));
-	 * 
-	 * mockMvc.perform(multipart("/api/document/add-doc").file(file).file(metadata).
-	 * accept(MediaType.APPLICATION_JSON)) .andExpect(status().isOk());
-	 * 
-	 * }
-	 */
+	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
+	public void testKUploadDocument() throws Exception {
+		Vacancy v = ivacancyRepo.findByTitle("test");
+		Project p = iprojectRepo.findByVacancy(v);
+		String doc = "{\"category\":\"REPORT\", \"project\":{ \"id\":" + p.getId() + " }}";
 
+		MockMultipartFile file = new MockMultipartFile("file", "Triggers.pdf", MediaType.APPLICATION_PDF_VALUE,
+				"<<pdf data>>".getBytes(StandardCharsets.UTF_8));
+
+		ObjectMapper objectMapper = new ObjectMapper();
+		Document result = objectMapper.readValue(String.valueOf(doc), Document.class);
+
+		MockMultipartFile metadata = new MockMultipartFile("doc", "doc", MediaType.APPLICATION_JSON_VALUE,
+				objectMapper.writeValueAsString(result).getBytes(StandardCharsets.UTF_8));
+
+		mockMvc.perform(multipart("/api/document/add-doc").file(file).file(metadata).accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk());
+
+	}
+*/
 	/********************* Training Course ****************************/
 
 	@Test
@@ -1771,15 +1723,17 @@ public class MydiplomaAppTest {
 		assertEquals(200, result.getResponse().getStatus());
 
 	}
+/*
 	@Test
+
 	@WithMockUser(username = "Hr_Manager", password = "azerty123", authorities = "HR_MANAGER")
 	public void testIDeleteInterview() throws Exception {
-		
+
 		Vacancy v = ivacancyRepo.findByTitle("test");
 		Application app = iapp.findByVacancy(v);
 
 		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
-				.delete("/api/interview/delete-interview/"+app.getId()).accept(MediaType.APPLICATION_JSON)
+				.delete("/api/interview/delete-interview/" + app.getId()).accept(MediaType.APPLICATION_JSON)
 				.contentType(MediaType.APPLICATION_JSON);
 
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
@@ -1787,15 +1741,16 @@ public class MydiplomaAppTest {
 		assertEquals(200, result.getResponse().getStatus());
 
 	}
-	/*
+*/
 	@Test
+
 	@WithMockUser(username = "Hr_Manager", password = "azerty123", authorities = "HR_MANAGER")
 	public void testJDeleteApplication() throws Exception {
-		
- 		Vacancy v = ivacancyRepo.findByTitle("test");
-Application app=iapp.findByVacancy(v);
+
+		Vacancy v = ivacancyRepo.findByTitle("test");
+		Application app = iapp.findByVacancy(v);
 		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
-				.delete("/api/application/decline-application/"+app.getId()).accept(MediaType.APPLICATION_JSON)
+				.delete("/api/application/decline-application/" + app.getId()).accept(MediaType.APPLICATION_JSON)
 				.contentType(MediaType.APPLICATION_JSON);
 
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
@@ -1803,11 +1758,9 @@ Application app=iapp.findByVacancy(v);
 		assertEquals(200, result.getResponse().getStatus());
 
 	}
-	*/
-	
-
 
 	@Test
+
 	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
 	public void testKdeleteAssessment() throws Exception {
 		Assessment a = iassessment.findByRemark("remark");
@@ -1820,16 +1773,15 @@ Application app=iapp.findByVacancy(v);
 		assertEquals(200, result.getResponse().getStatus());
 
 	}
-	
- 
-	
+
 	@Test
+
 	@WithMockUser(username = "Intern_Intern", password = "azerty123", authorities = "INTERN")
 
 	public void testKDeleteComment() throws Exception {
 
-		Comment c=icomment.findByCommentContent("aaaa");
-		
+		Comment c = icomment.findByCommentContent("aaaa");
+
 		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
 				.delete("/api/training-course/comments/delete-comment/" + c.getIdComment())
 				.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
@@ -1837,14 +1789,11 @@ Application app=iapp.findByVacancy(v);
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 
 		assertEquals(200, result.getResponse().getStatus());
-		
-		
-		
-		 
+
 	}
 
-	
 	@Test
+
 	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
 
 	public void testKDeleteTrainingCourse() throws Exception {
@@ -1860,17 +1809,17 @@ Application app=iapp.findByVacancy(v);
 		assertEquals(200, result.getResponse().getStatus());
 
 	}
-	
-	
+
 	@Test
+
 	@WithMockUser(username = "Intern_Intern", password = "azerty123", authorities = "INTERN")
 
 	public void testKDeleteDemo() throws Exception {
 
 		Task t = itaskRepo.findByTaskName("task1");
-		
-		Demo d=idemo.findDemoByTask(t.getId());
-		
+
+		Demo d = idemo.findDemoByTask(t.getId());
+
 		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
 				.delete("/api/project/task/demo/delete-task-demo/" + d.getId()).accept(MediaType.APPLICATION_JSON)
 				.contentType(MediaType.APPLICATION_JSON);
@@ -1880,9 +1829,9 @@ Application app=iapp.findByVacancy(v);
 		assertEquals(200, result.getResponse().getStatus());
 
 	}
-	
-	
+
 	@Test
+
 	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
 
 	public void testKDeleteTask() throws Exception {
@@ -1897,10 +1846,9 @@ Application app=iapp.findByVacancy(v);
 		assertEquals(200, result.getResponse().getStatus());
 
 	}
-	
- 
-	
+
 	@Test
+
 	@WithMockUser(username = "Hr_Manager", password = "azerty123", authorities = "HR_MANAGER")
 	public void testKDeleteSkillAssessment() throws Exception {
 
@@ -1915,17 +1863,16 @@ Application app=iapp.findByVacancy(v);
 		assertEquals(200, result.getResponse().getStatus());
 
 	}
-	
-	 
+
 	@Test
+
 	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
 	public void testLDeleteProject() throws Exception {
 
 		Vacancy v = ivacancyRepo.findByTitle("test");
 
-		Project p = iprojectRepo.findByVacancy(v);	
-		 
-		
+		Project p = iprojectRepo.findByVacancy(v);
+
 		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
 				.delete("/api/project/delete-project/" + p.getId()).accept(MediaType.APPLICATION_JSON)
 				.contentType(MediaType.APPLICATION_JSON);
@@ -1945,20 +1892,18 @@ Application app=iapp.findByVacancy(v);
 		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
 				.delete("/api/vacancy/delete-vacancy/" + v.getId()).accept(MediaType.APPLICATION_JSON)
 				.contentType(MediaType.APPLICATION_JSON);
-
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 
 		assertEquals(200, result.getResponse().getStatus());
 
 	}
-	
-	
+
 	@Test
+
 	@WithMockUser(username = "Admin_Admin", password = "azerty123", authorities = "ADMINISTRATOR")
 
 	public void testNDeleteUser() throws Exception {
 
- 
 		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
 				.delete("/api/user/delete-user-company/Company").accept(MediaType.APPLICATION_JSON)
 				.contentType(MediaType.APPLICATION_JSON);
@@ -1966,10 +1911,7 @@ Application app=iapp.findByVacancy(v);
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 
 		assertEquals(200, result.getResponse().getStatus());
- 
+
 	}
 
-	 
-	 
-	
 }

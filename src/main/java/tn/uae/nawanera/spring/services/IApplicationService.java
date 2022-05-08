@@ -21,6 +21,7 @@ public interface IApplicationService {
  
 	Application findApplicationById(int id);
  	List<Application> retreiveApplicantSkillAssessments();
+ 	List<Application> retreiveVacancyApplications();
 	List<Vacancy> retreiveAllAssignedVacancies();
 	
  	Boolean isAppliedByIntern(int idIntern, int idVacancy);

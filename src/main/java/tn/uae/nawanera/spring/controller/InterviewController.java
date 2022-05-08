@@ -1,5 +1,7 @@
 package tn.uae.nawanera.spring.controller;
 
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +30,7 @@ public class InterviewController {
 	@PreAuthorize("hasAuthority('HR_MANAGER')")
 	@PostMapping(value = "/plannify/{idapp}")
 	@ResponseBody
-	public ResponseEntity<MessageResponse> plannifyInterview(@RequestBody Interview interview, @PathVariable ("idapp")int idapp) {
+	public ResponseEntity<MessageResponse> plannifyInterview(@RequestBody Interview interview, @PathVariable ("idapp")int idapp) throws IOException, GeneralSecurityException {
 		if (interview == null) {
 			return ResponseEntity.badRequest().body(new MessageResponse("Error: please add values!"));
 		}

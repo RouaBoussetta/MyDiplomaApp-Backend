@@ -100,6 +100,12 @@ public class ProjectController {
 		return iprojectService.countProjectInterns(id);
 	}
 	
+	@PermitAll
+	@GetMapping("/count-projects")
+	public int countProjects()   {
+		return iprojectService.countProjects();
+	}
+	
 	@PreAuthorize("hasAuthority('TRAINER')")
 
 	@PutMapping("/update-project/{id}")

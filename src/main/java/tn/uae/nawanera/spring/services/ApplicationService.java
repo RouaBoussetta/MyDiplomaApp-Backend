@@ -187,4 +187,9 @@ public class ApplicationService implements IApplicationService {
  		
 	}
 
+	@Override
+	public List<Application> retreiveVacancyApplications() {
+ 		return applicationRepository.getVacancyApplications(userService.currentUser());
+	}
+
 }
