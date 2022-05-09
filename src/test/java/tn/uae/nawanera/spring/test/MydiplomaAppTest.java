@@ -118,7 +118,7 @@ public class MydiplomaAppTest {
 
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).apply(springSecurity()).build();
 	}
-
+/*
 	@Test
 	public void AAtestsignup() throws Exception {
 
@@ -135,7 +135,7 @@ public class MydiplomaAppTest {
 				.andExpect(status().isOk());
 
 	}
-
+*/
 	@Test
 	public void AtestSignupIntern() throws Exception {
 
