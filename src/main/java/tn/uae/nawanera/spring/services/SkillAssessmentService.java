@@ -68,7 +68,7 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 	INotificationService inotifService;
 	@Autowired
 	private EmailService emailService;
-
+/*
 	private static final String APPLICATION_NAME = "serviceCal";
 	private static final JsonFactory JSON_FACTORY = new JacksonFactory();
 	private static com.google.api.services.calendar.Calendar client;
@@ -85,7 +85,7 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 	private Set<Event> events = new HashSet<>();
 	final DateTime date1 = new DateTime("2022-05-05T16:30:00.000");
 	final DateTime date2 = new DateTime(new Date());
-
+*/
 	@Override
 	public SkillAssessment save(SkillAssessment skillassessment) {
 
@@ -257,10 +257,10 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 
 					String description = "you are invited to do a qualification test Due to your interest in the internship offer posted by the company "
 							+ iuserService.currentUser().getCompanyName();
-
+/*
 					attacheSa(intern.getEmail(),
 							sa.getTitle(),
-							description);
+							description);*/
 					applicationRepository.save(app);
 					inotifService.addNotification(intern, iuserService.currentUser(), subject,
 							"you are invited to do a qualification test Due to your interest in the internship offer posted by "
@@ -306,7 +306,7 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 
 			String description = "you are invited to do a qualification test Due to your interest in the internship offer posted by the company "
 					+ iuserService.currentUser().getCompanyName();
-			attacheSa(intern.getEmail(), sa.getTitle(), description);
+		/*	attacheSa(intern.getEmail(), sa.getTitle(), description);*/
 			inotifService.addNotification(intern, iuserService.currentUser(), subject,
 					"you are invited to do a qualification test Due to your interest in the internship offer posted by "
 							+ iuserService.currentUser().getCompanyName() + " company.");
@@ -326,7 +326,7 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 		}
 
 	}
-
+/*
 	public void attacheSa(String email, String summary, String description)
 			throws IOException, GeneralSecurityException {
 
@@ -376,7 +376,7 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 		log.info("Event created: %s\n", event.getHtmlLink());
 
 	}
-
+*/
 	@Override
 	public SkillAssessment getSkillAssessmentByTitle(String string) {
 
