@@ -42,7 +42,7 @@ public class InterviewService implements IinterviewService{
 		app.setInterviewPlanned(true);
 		applicationRepository.save(app);
 		
-		saService.attacheSa(app.getIntern().getEmail(), "Interview", "You have An interview with "+app.getVacancy().getPostedby().getFirstname()+" "+app.getVacancy().getPostedby().getLastname());
+	//	saService.attacheSa(app.getIntern().getEmail(), "Interview", "You have An interview with "+app.getVacancy().getPostedby().getFirstname()+" "+app.getVacancy().getPostedby().getLastname());
 		return interview;
 	}
 	@Override
