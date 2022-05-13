@@ -27,7 +27,7 @@ public class Package {
 	private int id;
 	private String name ;
 	@Enumerated(EnumType.STRING)
-	private Type type;
+	private SubscriptionType type;
 	 
 	 
 	private float price;

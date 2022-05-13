@@ -40,7 +40,7 @@ public class TrainingCourse {
 	private String description;
 	
 	@Enumerated(EnumType.STRING)              
-	private CourseType type;
+	private Type type;
  
 	private LocalDateTime publishedAt;
  
