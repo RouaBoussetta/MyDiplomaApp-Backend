@@ -28,7 +28,7 @@ public class Document {
 	
 	private String doc;
 	
-	@JsonIgnore
+	//@JsonIgnore
 	 @ManyToOne 
 	 @JoinColumn(name="project", nullable=false)
 	    private Project project;
