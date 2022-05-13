@@ -118,7 +118,7 @@ public class MydiplomaAppTest {
 
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).apply(springSecurity()).build();
 	}
- 
+/*
 	@Test
 	public void AAtestsignup() throws Exception {
 
@@ -135,7 +135,7 @@ public class MydiplomaAppTest {
 				.andExpect(status().isOk());
 
 	}
- 
+ */
 	@Test
 	public void AtestSignupIntern() throws Exception {
 
@@ -1132,11 +1132,12 @@ public class MydiplomaAppTest {
 
 	}
 
+	
 	@Test
 	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")
-	public void testKretreiveInternTasks() throws Exception {
+	public void testJretreiveInternTasks() throws Exception {
 		User intern = iuser.findUserBylogin("Intern_Intern");
-		Project project = iprojectRepo.findByTitle("project1");
+		Project project = iprojectRepo.findByTitle("kkkk");
 		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
 				.get("/api/project/tasks/retreive-intern-Tasks/" + project.getId() + "/" + intern.getId())
 				.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
@@ -1746,7 +1747,7 @@ public class MydiplomaAppTest {
 	}
 */
 	
-	
+
 	@Test
 
 	@WithMockUser(username = "Hr_Manager", password = "azerty123", authorities = "HR_MANAGER")
