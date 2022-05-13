@@ -1,7 +1,5 @@
 package tn.uae.nawanera.spring.entities;
 
-
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,30 +29,27 @@ public class Assessment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
 
 	@ManyToOne(cascade = CascadeType.DETACH)
 	@JoinColumn(name = "trainer")
 	private User trainer;
-	
+
 	@ManyToOne(cascade = CascadeType.DETACH)
 	@JoinColumn(name = "intern")
 	private User intern;
-	
 
- 
-	
 	@Enumerated(EnumType.STRING)
 	private Notice finalNotice;
 	@NotBlank
 	@Column(columnDefinition = "TEXT")
 	private String remark;
 	@Column(columnDefinition = "TEXT")
-	
+
 	private String signature;
 	@Column(columnDefinition = "TEXT")
 
 	private String stamp;
 	
 	
+
 }

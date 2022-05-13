@@ -29,6 +29,10 @@ public interface IProjectService {
 	 
 
 	List<Project> getInternProjects();
+	List<Project> getInternProjects(int idintern);
+	
+	List<Project> getTrainerProjects(int idTrainer);
+ 	
 
 	int countProjects();
 

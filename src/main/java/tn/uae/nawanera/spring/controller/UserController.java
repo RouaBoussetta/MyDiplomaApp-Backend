@@ -1,9 +1,14 @@
 package tn.uae.nawanera.spring.controller;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.security.PermitAll;
+import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -23,6 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lowagie.text.DocumentException;
 
 import lombok.extern.slf4j.Slf4j;
 import tn.uae.nawanera.spring.config.FileUploadUtil;
@@ -34,6 +40,7 @@ import tn.uae.nawanera.spring.services.EmailService;
 import tn.uae.nawanera.spring.services.INotificationService;
 import tn.uae.nawanera.spring.services.IRoleservice;
 import tn.uae.nawanera.spring.services.IUserservice;
+import tn.uae.nawanera.spring.services.PdfExporter;
 
 @Slf4j
 @RestController
@@ -61,6 +68,8 @@ public class UserController {
 	public int countUsers() {
 		return iuserservice.countAllUsers();
 	}
+	
+	
 	
 	@PreAuthorize("hasAuthority('ADMINISTRATOR')")
 	@GetMapping("/count-companies")
@@ -282,7 +291,7 @@ public class UserController {
 
 		user.setCompanyName(iuserservice.currentUser().getCompanyName());
 		user.setRole(role);
-
+/*
 		SimpleMailMessage email = new SimpleMailMessage();
 		email.setTo(user.getEmail());
 		email.setSubject("Registration");
@@ -293,7 +302,7 @@ public class UserController {
 				+ "As soon as the trial period ends you will have to pay to be able to continue using our App.");
 
 		emailService.sendEmail(email);
-
+*/
 		return iuserservice.createUser(user);
 	}
 
@@ -325,7 +334,7 @@ public class UserController {
 
 		user.setCompanyName(iuserservice.currentUser().getCompanyName());
 		user.setRole(role);
-
+/*
 		SimpleMailMessage email = new SimpleMailMessage();
 		email.setTo(user.getEmail());
 		email.setSubject("Registration");
@@ -336,7 +345,7 @@ public class UserController {
 				+ "As soon as the trial period ends you will have to pay to be able to continue using our App.");
 
 		emailService.sendEmail(email);
-
+*/
 		return iuserservice.createUser(user);
 	}
 
@@ -404,6 +413,28 @@ public class UserController {
 	}
 	
  
+ 
+	@GetMapping("/test")
+	public void sendEmailWithAttachement() throws MessagingException, IOException {
+		  emailService.sendEmailWithAttachment();
+	}
 	
+	
+	  @GetMapping("/users/export/pdf")
+	    public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
+	        response.setContentType("application/pdf");
+	        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+	        String currentDateTime = dateFormatter.format(new Date());
+	         
+	        String headerKey = "Content-Disposition";
+	        String headerValue = "attachment; filename=users_" + currentDateTime + ".pdf";
+	        response.setHeader(headerKey, headerValue);
+	         
+	        List<User> listUsers = iuserservice.getAllUsers();
+	         
+	        PdfExporter exporter = new PdfExporter(listUsers);
+	        exporter.export(response);
+	         
+	    }
 	
 }

@@ -10,7 +10,6 @@ import java.util.regex.Pattern;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -73,7 +72,7 @@ public class UserService implements IUserservice {
 		user.setAccountLocked(false);
 		user.setFailedAttempt(0);
 		userRepository.save(user);
-
+/*
 		SimpleMailMessage email = new SimpleMailMessage();
 		email.setTo(user.getEmail());
 		email.setSubject("Registration");
@@ -83,7 +82,7 @@ public class UserService implements IUserservice {
 				+ "As soon as the trial period ends you will have to pay to be able to continue using our App.");
 
 		emailService.sendEmail(email);
-
+*/
 		return user;
 	}
 
@@ -332,17 +331,6 @@ public class UserService implements IUserservice {
 	}
 
  
-	  @Scheduled(fixedRate = 60000)
-	  public void fixedRateMethod() {
-		  logger.info("Method with fixed Rate");
-	  }
-	 
-
-	  @Scheduled(cron = "*/60 * * * * *" )
-	  public void cronMethod() {
-		  logger.info("Method with cron expression");
-	 }
-
 	@Override
 	public User signUp(User user, MultipartFile file) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
@@ -362,7 +350,7 @@ public class UserService implements IUserservice {
 			log.info("e:"+e);
 		}
 		userRepository.save(user);
- 
+ /*
 		SimpleMailMessage email = new SimpleMailMessage();
 		email.setTo(user.getEmail());
 		email.setSubject("Registration");
@@ -372,7 +360,7 @@ public class UserService implements IUserservice {
 				+ "As soon as the trial period ends you will have to pay to be able to continue using our App." + "");
 
 		emailService.sendEmail(email);
-
+*/
 		return user;
 	}
 
@@ -455,5 +443,28 @@ public class UserService implements IUserservice {
 	public int countAllInterns() {
  		return getAllInterns().size();
 	}
+	
+	
+	
+	
+	/************************************************************************/
+	
+	
+
+	  @Scheduled(fixedRate = 60000)
+	  public void fixedRateMethod() {
+		  logger.info("Method with fixed Rate");
+	  }
+	
+	 
+
+	 // @Scheduled(cron = "*/60 * * * * *" )
+	/*  public void cronMethod() {
+		  logger.info("Method with cron expression");
+	 }
+*/
+	
+
+	
 
 }

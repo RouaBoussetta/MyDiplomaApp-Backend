@@ -3,6 +3,7 @@ package tn.uae.nawanera.spring.entities;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+import javax.annotation.Nullable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -49,12 +50,13 @@ public class Vacancy {
 	@Column(columnDefinition = "TEXT") 
 	private String description;
 	private Boolean paid;
+	@Nullable
 	private float salary;
 	@ManyToOne(cascade = CascadeType.DETACH)
 	@JoinColumn(name = "category")
 	private VacancyCategory category;
 	
-	//skill
+	
 	private String qualification;
 	
 	@ToString.Exclude

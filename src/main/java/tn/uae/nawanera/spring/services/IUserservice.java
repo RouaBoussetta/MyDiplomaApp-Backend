@@ -86,5 +86,7 @@ public interface IUserservice {
 	 int countAllCompanies();
 
 	int countAllInterns();
+	
+	
 
 }

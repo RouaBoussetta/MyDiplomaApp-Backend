@@ -194,6 +194,9 @@ public class AuthController {
 	 iuserservice.updateUser(user); return "password reseted";
 	 
 	 } else { return "operation regected"; } }
+	 
+	 
+	 
 	
 
 }

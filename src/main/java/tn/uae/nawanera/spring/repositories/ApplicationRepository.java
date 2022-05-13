@@ -21,7 +21,7 @@ public interface ApplicationRepository extends JpaRepository<Application, Intege
 	@Query("select DISTINCT u from User u "
 			+ "join u.applications a "
 			+ "join a.vacancy v "
-			+ "where v.id=:vacancyId")
+			+ "where v.id=:vacancyId ")
 	List<User> getAllInternByVacancy(@Param("vacancyId")int vacancyId);
 	
 	@Query("select DISTINCT u from User u "

@@ -84,8 +84,10 @@ public class ApplicationService implements IApplicationService {
 	@Override
 	public List<User> getAllInternByVacancy(int vacancyId) {
 
-		return applicationRepository.getAllInternByVacancy(vacancyId);
+		return applicationRepository.getAllAffectedInternByVacancy(vacancyId);
 	}
+	
+	
 	
 	@Override
 	public List<User> getAllInternByVacancyTitle(String title) {

@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.var;
 import tn.uae.nawanera.spring.entities.Project;
 import tn.uae.nawanera.spring.entities.Task;
 import tn.uae.nawanera.spring.entities.User;
@@ -45,6 +46,8 @@ public class ProjectService implements IProjectService {
 
 		p.setAddedOn(LocalDate.now());
 		p.setAddedAt(LocalTime.now());
+	
+		
 		projectRepository.save(p);
 		for (User u : interns) {
 			iuserService.assignProjectToIntern(p.getId(), u.getId());
@@ -135,5 +138,25 @@ public class ProjectService implements IProjectService {
 		User intern=userRepository.findById(iuserService.currentUser().getId()) ;
 		return intern.getInternProjects();
 	}
+
+	@Override
+	public List<Project> getInternProjects(int idintern) {
+		User intern=userRepository.findById(idintern) ;
+		return intern.getInternProjects();
+	}
+
+	@Override
+	public List<Project> getTrainerProjects(int idTrainer) {
+		User trainer=userRepository.findById(idTrainer) ;
+		return projectRepository.findByTrainer(trainer);
+	}
+	
+	
+
+
+	
+	
+	
+	
 
 }

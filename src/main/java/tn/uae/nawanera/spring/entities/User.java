@@ -143,7 +143,7 @@ public class User {
 	
 	
 	@ToString.Exclude
-	@JsonIgnore
+	//@JsonIgnore
 	@ManyToMany
     @JoinTable( name = "Interns_projects",
                 joinColumns = @JoinColumn( name = "idIntern" ),
@@ -151,12 +151,16 @@ public class User {
     private List<Project> internProjects ;
 	
 	@ToString.Exclude
-	@JsonIgnore
+	 @JsonIgnore
+	// @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+
 	@OneToMany(targetEntity = Certificate.class, mappedBy = "hrmanager")
-	private Set<Certificate> certificates;
+	private List<Certificate> certificates;
 	
 	@ToString.Exclude
-	@JsonIgnore
+	 @JsonIgnore
+	// @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+
 	@OneToMany(targetEntity = Certificate.class, mappedBy = "intern")
 	private Set<Certificate> internCertificates;
 

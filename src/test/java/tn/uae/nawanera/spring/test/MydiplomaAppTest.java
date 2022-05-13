@@ -36,7 +36,7 @@ import tn.uae.nawanera.spring.entities.Application;
 import tn.uae.nawanera.spring.entities.Assessment;
 import tn.uae.nawanera.spring.entities.Comment;
 import tn.uae.nawanera.spring.entities.Demo;
-import tn.uae.nawanera.spring.entities.Document;
+
 import tn.uae.nawanera.spring.entities.Project;
 import tn.uae.nawanera.spring.entities.Question;
 import tn.uae.nawanera.spring.entities.SkillAssessment;
@@ -118,7 +118,7 @@ public class MydiplomaAppTest {
 
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).apply(springSecurity()).build();
 	}
-/*
+ 
 	@Test
 	public void AAtestsignup() throws Exception {
 
@@ -135,7 +135,7 @@ public class MydiplomaAppTest {
 				.andExpect(status().isOk());
 
 	}
-*/
+ 
 	@Test
 	public void AtestSignupIntern() throws Exception {
 
@@ -170,11 +170,8 @@ public class MydiplomaAppTest {
 	@Test
 	@WithMockUser(username = "Admin_Admin", password = "azerty123", authorities = "ADMINISTRATOR")
 	public void BtestCreateCompanies() throws Exception {
-
 		String company = "{\"firstname\":\"company\",\"lastname\":\"company\",\"username\":\"Company_Company\",\"companyName\":\"Company\",\"email\":\"company@gmail.com\",\"password\":\"azerty123\",\"role\":{\"id\":2,\"roleType\":\"COMPANY\"}}";
-
-		MockMultipartFile image = new MockMultipartFile("file", "nawanera.jpg", "",
-				"".getBytes(StandardCharsets.UTF_8));
+		MockMultipartFile image = new MockMultipartFile("file", "nawanera.jpg", "","".getBytes(StandardCharsets.UTF_8));
 		ObjectMapper objectMapper = new ObjectMapper();
 		User result = objectMapper.readValue(String.valueOf(company), User.class);
 
@@ -909,7 +906,7 @@ public class MydiplomaAppTest {
 		assertEquals(200, result.getResponse().getStatus());
 
 	}
-
+/*
 	/********************* Project ****************************/
 
 	@Test
@@ -917,9 +914,15 @@ public class MydiplomaAppTest {
 	public void testACreateProjectDetails() throws Exception {
 		Vacancy v = ivacancyRepo.findByTitle("test");
 
-		String project = "{\r\n" + "    \"title\":\"project1\",\r\n"
-				+ "    \"description\":\"In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.\",\r\n"
-				+ "    \"vacancy\":{\r\n" + "\"id\":" + v.getId() + "}\r\n" + "}";
+		String project = "{\r\n"
+				+ "    \"title\":\"kkkk\",\r\n"
+				+ "    \"description\":\"ytuioklpm^guyhjlkm\",\r\n"
+				+ "    \"startedOn\":\"2022-05-10\",\r\n"
+				+ "    \"endedOn\":\"2022-12-20\",\r\n"
+				+ "    \"vacancy\":{\r\n"
+				+ "        \"id\":"+v.getId()
+				+ "    }"
+				+ "}";
 
 		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.post("/api/project/add-project")
 				.content(project).accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
@@ -1742,6 +1745,8 @@ public class MydiplomaAppTest {
 
 	}
 */
+	
+	
 	@Test
 
 	@WithMockUser(username = "Hr_Manager", password = "azerty123", authorities = "HR_MANAGER")
@@ -1898,8 +1903,8 @@ public class MydiplomaAppTest {
 
 	}
 
-	@Test
 
+	@Test
 	@WithMockUser(username = "Admin_Admin", password = "azerty123", authorities = "ADMINISTRATOR")
 
 	public void testNDeleteUser() throws Exception {

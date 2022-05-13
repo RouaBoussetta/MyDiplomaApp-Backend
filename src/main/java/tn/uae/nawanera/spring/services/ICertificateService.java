@@ -14,6 +14,7 @@ public interface ICertificateService {
 	Certificate addCertificateDetails(Certificate certificate, int idIntern, MultipartFile stamp, MultipartFile signature)  ;
 	Certificate displayCertificateDetailsById(int id);
 	List<Certificate> displayCertificatesByAttributer(int hrId);
+	//List<Certificate> displayCertificatesByIntern(int intern);
 	List<Certificate> displayOwnHrCertificates( )  ;
 	List<Certificate> retrieveAllCertificate();
   	String downloadCertificate(int id);
