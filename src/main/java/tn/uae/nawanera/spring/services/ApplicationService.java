@@ -87,7 +87,11 @@ public class ApplicationService implements IApplicationService {
 		return applicationRepository.getAllAffectedInternByVacancy(vacancyId);
 	}
 	
-	
+	@Override
+	public List<User> getAllApplicantByVacancy(int vacancyId) {
+
+		return applicationRepository.getAllApplicantByVacancy(vacancyId);
+	}
 	
 	@Override
 	public List<User> getAllInternByVacancyTitle(String title) {
@@ -143,6 +147,16 @@ public class ApplicationService implements IApplicationService {
 
  
 		return applicationRepository.findByVacancy(v);
+	}
+
+	
+	@Override
+	public Application findApplicationByVacancyAndApplicant(int idv,int idApplicant) {
+ 		Vacancy v = vacancyRepository.findById(idv);
+
+ 		User applicant = userRepository.findById(idApplicant);
+
+		return applicationRepository.getApplicationByInternAndVacancy(v,applicant);
 	}
 
 	@Override

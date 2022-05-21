@@ -108,6 +108,10 @@ public class UserService implements IUserservice {
 
 			existantUser.setUsername(user.getUsername());
 
+		if (!user.getCompanyName().equals(existantUser.getCompanyName()))
+
+			existantUser.setCompanyName(user.getCompanyName());
+		
 		if (!user.getBio().equals(existantUser.getBio()))
 
 			existantUser.setBio(user.getBio());
@@ -119,7 +123,9 @@ public class UserService implements IUserservice {
 
 		if (!user.getPassword().equals(existantUser.getPassword()))
 			existantUser.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+		if (!user.isValid() == existantUser.isValid())
 
+			existantUser.setValid(user.isValid());
 		return userRepository.save(existantUser);
 
 	}
@@ -229,25 +235,12 @@ public class UserService implements IUserservice {
 
 		return userRepository.findUserByresettoken(username);
 	}
-
+/*
 	@Override
 	public User updateUserr(User u, int id) {
 
 		User user = userRepository.findById(id);
-		if (!u.getFirstname().equals(user.getFirstname()))
-			user.setFirstname(u.getFirstname());
-
-		if (!u.getLastname().equals(user.getLastname()))
-
-			user.setLastname(u.getLastname());
-
-		if (!u.getUsername().equals(user.getUsername()))
-
-			user.setUsername(u.getUsername());
-		if (!u.getEmail().equals(user.getEmail()))
-
-			user.setEmail(u.getEmail());
-
+		
 		if (!u.isValid() == user.isValid())
 
 			user.setValid(u.isValid());
@@ -255,7 +248,7 @@ public class UserService implements IUserservice {
 		return userRepository.save(user);
 
 	}
-
+*/
 	public void affectTrainerToIntern(int trainerId, int internId) {
 		User intern = userRepository.findById(internId);
 		User trainer = userRepository.findById(trainerId);
@@ -455,6 +448,12 @@ public class UserService implements IUserservice {
 	  public void fixedRateMethod() {
 		  logger.info("Method with fixed Rate");
 	  }
+
+	@Override
+	public User updateUserr(User u, int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	 
 

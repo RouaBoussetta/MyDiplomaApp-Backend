@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -155,8 +154,24 @@ public class VacancyController {
 	
 	@PreAuthorize("hasAuthority('HR_MANAGER')")
 	@PutMapping("/UpdateVacancy/{id}")
-	public Vacancy updateVacancy(@RequestBody Vacancy vacancy,@PathVariable ("id") int id) {
-		 
+	public Vacancy updateVacancy(@RequestParam String v,@PathVariable ("id") int id,@RequestParam(value = "file", required = false) MultipartFile file) {
+		Vacancy vacancy = new Vacancy();
+		ObjectMapper objectMapper = new ObjectMapper();
+		try {
+			vacancy = objectMapper.readValue(v, Vacancy.class);
+		} catch (JsonProcessingException e) {
+			log.info("e :", e);
+
+		}
+		Vacancy exist=findVacancyById(id);
+		try {
+			FileUploadUtil.saveFile(file);
+			exist.setImage(file.getOriginalFilename());
+
+		} catch (IOException e) {
+			log.info("e", e);
+
+		}
 		return ivacancyService.updateVacancy(vacancy,id);
 	}
 	

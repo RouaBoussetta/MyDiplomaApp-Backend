@@ -2,6 +2,8 @@ package tn.uae.nawanera.spring.controller;
 
 import java.util.List;
 
+import javax.annotation.security.PermitAll;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -51,6 +53,15 @@ public class ApplicationController {
 	public List<User> getAllInternByVacancy(@PathVariable("idvacancy") int idvacancy) {
 
 		return iapplicationService.getAllInternByVacancy(idvacancy);
+	}
+	
+	
+	@PermitAll
+	@GetMapping(value = "getAllApplicantByVacancy/{idvacancy}")
+	@ResponseBody
+	public List<User> getAllApplicantByVacancy(@PathVariable("idvacancy") int idvacancy) {
+
+		return iapplicationService.getAllApplicantByVacancy(idvacancy);
 	}
 	
 	@PreAuthorize("hasAuthority('HR_MANAGER')")
@@ -154,6 +165,16 @@ public class ApplicationController {
 	@GetMapping("/retreive-all-vacancy-applications-postedby")
 	public List<Application> getAllvacancyApplicationsPostedBy() {
 		return iapplicationService.retreiveVacancyApplications();
+	}
+	
+	
+	
+	@PreAuthorize("hasAuthority('HR_MANAGER') or hasAuthority('INTERN')")
+	@GetMapping(value = "get-application-by-vacancy-and-applicant/{idvacancy}/{idApplicant}")
+	@ResponseBody
+	public Application  getApplicationByVacancyAndApplicant (@PathVariable("idvacancy") int idvacancy ,@PathVariable("idApplicant") int idApplicant) {
+
+	return iapplicationService.findApplicationByVacancyAndApplicant(idvacancy, idApplicant);
 	}
 
 }

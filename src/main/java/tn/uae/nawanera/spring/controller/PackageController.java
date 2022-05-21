@@ -40,7 +40,7 @@ public class PackageController {
 	}
 	
 	
-	@PreAuthorize("hasAuthority('ADMINISTRATOR') or hasAuthority('COMPANY')")
+	 //@PreAuthorize("hasAuthority('ADMINISTRATOR') or hasAuthority('COMPANY')")
 	@GetMapping(value = "/getAllPackages")
 	@ResponseBody
 	public List<Package> getAllPackages() {

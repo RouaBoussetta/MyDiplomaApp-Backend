@@ -11,12 +11,14 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
 import com.stripe.model.Customer;
 import com.stripe.model.Token;
 
 import tn.uae.nawanera.spring.entities.Notification;
+import tn.uae.nawanera.spring.entities.Package;
 import tn.uae.nawanera.spring.entities.Subscription;
 import tn.uae.nawanera.spring.entities.User;
 import tn.uae.nawanera.spring.repositories.INotificationRepository;
@@ -35,7 +37,8 @@ public class SubscriptionService implements ISubscriptionService{
 	
 	@Autowired
 	IUserservice iuserService;
-	
+	@Autowired
+	IPackageService packService;
 	@Autowired
 	SubscriptionRepository paymentRepository;
 	@Autowired 
@@ -63,7 +66,7 @@ public class SubscriptionService implements ISubscriptionService{
  
 	@Override
 	public String createCardForCustumorStripe(String customerId,Subscription p) throws StripeException {
-		 
+		 Stripe.apiKey=api;
 		Customer customer = Customer.retrieve(customerId);
 		Map<String, Object> cardParam = new HashMap<>();
 		cardParam.put("number", p.getCard());
@@ -85,29 +88,35 @@ public class SubscriptionService implements ISubscriptionService{
 
 	
 	@Override
-	public void chargeCustomer(String customerId,Subscription p,int amount) throws StripeException  {
-	 
+	public void chargeCustomer(String customerId,Subscription p  ) throws StripeException  {
+		 Stripe.apiKey=api;
+
 		User company=iuserService.currentUser();
+		Package pack=packService.getPackageDetails(p.getPack().getId());
 		List<User> users=userRepository.findAllByCompanyName(company.getCompanyName());
 
 		createCardForCustumorStripe(customerId,p) ;
-		
-		Map<String, Object> params = new HashMap<>();
-		params.put("amount", amount);
+ 		Map<String, Object> params = new HashMap<>();
+		params.put("amount",Math.round((pack.getPrice()*p.getNbPack())*100));
 		params.put("currency", "usd");
 		params.put("customer", "cus_L4TboHTyXLiW7u");
 
 		try {
 			 Charge.create(params);
-			
+ 
 			p.setCard(p.getCard());
 			p.setExpMonth(p.getExpMonth());
 			p.setExpYear(p.getExpYear());
 			p.setCvc(p.getCvc());
-			p.setAmount(amount);
+			p.setAmount(pack.getPrice()*p.getNbPack());
+			 p.setNbPack(p.getNbPack());
+		
+			p.setCompany(company);
+			 
 			paymentRepository.save(p);
 			company.setSubscribed(true);
 			userRepository.save(company);
+
 			for(User u:users) {
 				u.setSubscribed(true);
 				userRepository.save(u);
@@ -126,7 +135,6 @@ public class SubscriptionService implements ISubscriptionService{
 	  public Notification addPaidSubscriptionNotif (Subscription s)   {
 		
 		User sender=userRepository.findById(1);
-		
 		
 		
 		Notification notif = new Notification ();
@@ -152,6 +160,13 @@ public class SubscriptionService implements ISubscriptionService{
 		notif.setReceiver(s.getCompany());
 		iNotificationRepository.save(notif);
 		return (notif);}
+
+	@Override
+	public List<Subscription> findbyCompany(int id) {
+		User company=userRepository.findById(id);
+
+		return paymentRepository.findByCompany(company);
+	}
 
 	
 	

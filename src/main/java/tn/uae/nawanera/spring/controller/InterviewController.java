@@ -54,5 +54,14 @@ public class InterviewController {
 	{  
 		iInterviewService.rejectInterview(id);
 	}
+	
+	
+	@PreAuthorize("hasAuthority('HR_MANAGER') or hasAuthority('INTERN') ")
+	@GetMapping("/retreive-interview-by-application/{id}")
+	public Interview getInteriewByApplicationId(@PathVariable("id") int id) {
+		return iInterviewService.getInterviewByApplication(id);
+	}
+	
+	
 
 }

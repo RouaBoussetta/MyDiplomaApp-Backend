@@ -85,6 +85,16 @@ public class ProjectController {
 	public List<Project> getOwnProjects()   {
 		return iprojectService.retrieveOwnProjects();
 	}
+	
+	
+	@PermitAll
+	@GetMapping("/retreive-trainer-projects/{id}")
+	public List<Project> getTrainerProjects(@PathVariable("id") int id)   {
+		return iprojectService.getTrainerProjects(id);
+	}
+	
+	
+	
 	@PreAuthorize("hasAuthority('TRAINER')")
 
 	@DeleteMapping("/delete-project/{id}")  

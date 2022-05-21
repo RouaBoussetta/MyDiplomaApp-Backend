@@ -36,7 +36,7 @@ public class Application {
 	private String cv;
 	
 	private Boolean isAffected;
-	private Boolean interviewPlanned;
+ 	private Boolean interviewPlanned;
 	
  	@ToString.Exclude
 	@ManyToOne

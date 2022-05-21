@@ -31,6 +31,8 @@ public interface IApplicationService {
 	Application applyByTitle(Application app, MultipartFile file, String titleVacancy);
 	Application applyById(Application app, MultipartFile file, int idvacancy);
 	Application findApplicationByVacancy(int idvacancy);
+	Application findApplicationByVacancyAndApplicant(int idv, int idApplicant);
+	List<User> getAllApplicantByVacancy(int vacancyId);
  	
 	
  
