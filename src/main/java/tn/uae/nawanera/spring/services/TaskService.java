@@ -10,11 +10,13 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tn.uae.nawanera.spring.entities.Demo;
 import tn.uae.nawanera.spring.entities.Project;
 import tn.uae.nawanera.spring.entities.Task;
 import tn.uae.nawanera.spring.entities.TaskStatus;
 import tn.uae.nawanera.spring.entities.User;
 import tn.uae.nawanera.spring.repositories.ApplicationRepository;
+import tn.uae.nawanera.spring.repositories.DemoRepository;
 import tn.uae.nawanera.spring.repositories.ProjectRepository;
 import tn.uae.nawanera.spring.repositories.TaskRepository;
 import tn.uae.nawanera.spring.repositories.UserRepository;
@@ -27,6 +29,9 @@ public class TaskService implements ITaskService {
 
 	@Autowired
 	TaskRepository taskRepository;
+	
+	@Autowired
+	DemoRepository demoRepository;
 	@Autowired
 	ApplicationRepository appRepository;
 
@@ -47,8 +52,14 @@ public class TaskService implements ITaskService {
 	public void removeProjectTask(int idTask) {
 
 		Task t = taskRepository.findById(idTask);
+List<Demo> demos=demoRepository.findByTask(t);
+demoRepository.deleteAll(demos);
 
 		taskRepository.delete(t);
+		
+	 
+		
+		
 
 	}
 

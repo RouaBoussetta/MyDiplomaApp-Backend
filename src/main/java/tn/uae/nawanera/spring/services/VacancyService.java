@@ -13,7 +13,7 @@ import tn.uae.nawanera.spring.entities.Vacancy;
 import tn.uae.nawanera.spring.entities.VacancyCategory;
 import tn.uae.nawanera.spring.repositories.UserRepository;
 import tn.uae.nawanera.spring.repositories.VacancyRepository;
-
+import org.springframework.data.domain.Sort;
 @Service
 public class VacancyService implements IVacancyService {
 
@@ -240,8 +240,19 @@ public class VacancyService implements IVacancyService {
 		return vacancyRepository.findVacanciesByTrainedby(iuserService.currentUser());
 
 	}
+/*
+	@Override
+	public List<Vacancy> retrieveVacanciesAsc() {
+		 
+		return vacancyRepository.findVacanciesAsc(iuserService.currentUser() );
+	}
 
-	 
+*/
+
+	@Override
+	public Vacancy getVacancyByTitle(String title) {
+		return vacancyRepository.findByTitle(title);
+	}	 
 
 	
 	

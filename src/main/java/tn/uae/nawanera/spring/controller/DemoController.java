@@ -43,6 +43,8 @@ public class DemoController {
 			log.info("e :", e);
         }
 		idemoService.addDemoDetails(demo,file, idtask);
+		
+		System.out.println(demo.getCategory()); 
 		return ResponseEntity.ok(new MessageResponse("Task Demo successfully Registred!"));
 	}
 

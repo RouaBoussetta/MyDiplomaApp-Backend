@@ -65,12 +65,29 @@ public class CertificateController {
 	
 	
 	
+	@GetMapping(value = "/display-all-certificates")
+	@ResponseBody
+	public List<Certificate>  displayAllCertificates( ) {
+
+		return certificateservice.retrieveAllCertificate();
+	}
+	
+	
+	
  
 	@GetMapping(value = "/display-own-hr-Certificates")
 	@ResponseBody
 	public List<Certificate>  displayOwnHrCertificates( )  {
 
 		return certificateservice.displayOwnHrCertificates();
+	}
+	
+	
+	@GetMapping(value = "/display-intern-/{id}/certificates")
+	@ResponseBody
+	public List<Certificate>  displayInternCertificates(@PathVariable("id")int id )  {
+
+		return certificateservice.displayCertificatesByIntern(id);
 	}
 	
 	

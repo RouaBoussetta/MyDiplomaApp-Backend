@@ -15,6 +15,7 @@ public interface IVacancyService {
 
 	public Vacancy getVacancyById(int id);
 	public Vacancy getVacancyByCompany(String companyName);
+	public Vacancy getVacancyByTitle(String title);
 
 	public void deleteVacancyById(int vacancyId);
 
@@ -58,6 +59,8 @@ public interface IVacancyService {
 
 	List<Vacancy> getCompanyVacanciesByCategory(String companyname, VacancyCategory category);
 
-	List<Vacancy> retrieveVacanciesTrainedBy();
+	public List<Vacancy> retrieveVacanciesTrainedBy();
+
+	// List<Vacancy> retrieveVacanciesAsc();
 
 }

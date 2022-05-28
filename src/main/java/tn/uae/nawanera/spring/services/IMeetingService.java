@@ -6,4 +6,6 @@ import tn.uae.nawanera.spring.entities.Meeting;
 
 public interface IMeetingService {
 	List<Meeting> retreiveMeetings();
+	
+	
  }

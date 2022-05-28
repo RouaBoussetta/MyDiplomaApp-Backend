@@ -8,4 +8,5 @@ import org.springframework.mail.SimpleMailMessage;
 public interface EmailService {
 	public void sendEmail(SimpleMailMessage email);
 	 void sendEmailWithAttachment() throws MessagingException, IOException ;
+	 void sendEmailWithMeetingLink(String link) throws MessagingException, IOException;
 }

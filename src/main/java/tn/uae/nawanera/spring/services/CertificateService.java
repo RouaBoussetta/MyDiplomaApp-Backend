@@ -76,6 +76,15 @@ public class CertificateService implements ICertificateService{
 		certificateRepository.delete(certificate);
 
 	}
+	@Override
+	public List<Certificate> displayCertificatesByIntern(int u) {
+ 
+		
+		User intern=userRepository.findById(u);
+		
+		
+		return certificateRepository.findByIntern(intern);
+	}
 
 	 
 

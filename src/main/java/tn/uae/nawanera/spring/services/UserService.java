@@ -289,6 +289,8 @@ public class UserService implements IUserservice {
 		intern.setCompanyName(currentUser().getCompanyName());
 
 		intern.setAddedBy(currentUser().getUsername());
+		
+		
 
 		userRepository.save(intern);
 

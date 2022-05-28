@@ -2,11 +2,20 @@ package tn.uae.nawanera.spring.services;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import javax.mail.MessagingException;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,6 +23,7 @@ import java.util.Collections;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 
 import com.google.api.client.json.jackson2.JacksonFactory;
@@ -44,6 +54,7 @@ import com.google.api.services.calendar.model.ConferenceProperties;
 import com.google.api.services.calendar.model.ConferenceSolutionKey;
 import com.google.api.services.calendar.model.CreateConferenceRequest;
 import com.google.api.services.calendar.model.Event;
+import com.google.api.services.calendar.model.EventAttendee;
 import com.google.api.services.calendar.model.EventDateTime;
 import com.google.api.services.calendar.model.EventReminder;
 
@@ -63,7 +74,7 @@ public class InterviewService implements IinterviewService{
 	VacancyRepository vacancyRepository;
 	@Autowired
 	UserRepository userRepository;
-	/*
+	 
 	private static final String APPLICATION_NAME = "serviceCal";
 	private static final JsonFactory JSON_FACTORY = new JacksonFactory();
 	private static com.google.api.services.calendar.Calendar client;
@@ -78,11 +89,11 @@ public class InterviewService implements IinterviewService{
 	private String serviceAccount = "mydiploma@mydiploma-343611.iam.gserviceaccount.com";
 
 	private Set<Event> events = new HashSet<>();
-	final DateTime date1 = new DateTime("2022-05-05T16:30:00.000");
-	final DateTime date2 = new DateTime(new Date());
- */
+ 
+	@Autowired
+	private EmailService emailService;
 	@Override
-	public Interview planifyInterview(Interview interview ,int idapp) throws IOException, GeneralSecurityException {
+	public Interview planifyInterview(Interview interview ,int idapp) throws IOException, GeneralSecurityException, MessagingException {
 		
 		Application app=applicationRepository.findById(idapp);
 		
@@ -93,7 +104,9 @@ public class InterviewService implements IinterviewService{
 		app.setInterviewPlanned(true);
 		applicationRepository.save(app);
 		
-	// attacheInteriew("boussettaroua@gmail.com", "Interview", "You have An interview with "+app.getVacancy().getPostedby().getFirstname()+" "+app.getVacancy().getPostedby().getLastname());
+		System.out.println("******"+interview.getInterviewDate());
+ 
+	  attacheInteriew(app.getIntern().getEmail(), "Interview", "You have An interview with "+app.getVacancy().getPostedby().getFirstname()+" "+app.getVacancy().getPostedby().getLastname(), interview.getInterviewDate(), interview.getEndDate(), interview.getInterviewTime(), interview.getEndTime());
 		return interview;
 	}
 	@Override
@@ -110,13 +123,13 @@ public class InterviewService implements IinterviewService{
 	@Override
 	public void rejectInterview (int id) {
 		
-		Interview intervieww=getInterviewByApplication(id);
+		Interview intervieww=getInterviewByApplication(id); 
 		  interviewRepository.delete(intervieww);
 	}
 	
-	 /*
-	public void attacheInteriew(String email, String summary, String description)
-			throws IOException, GeneralSecurityException {
+	 
+	public void attacheInteriew(String email, String summary, String description, LocalDate startDate , LocalDate  endDate, LocalTime startTime ,LocalTime endTime)
+			throws IOException, GeneralSecurityException, MessagingException {
 
 		com.google.api.services.calendar.model.Events eventList;
 
@@ -135,75 +148,134 @@ public class InterviewService implements IinterviewService{
 		client = new com.google.api.services.calendar.Calendar.Builder(transport, JSON_FACTORY, credential)
 				.setApplicationName(APPLICATION_NAME).build();
 		log.info("**********************Client******************* \n" + client);
+ 		
 		Events events = client.events();
 		//eventList = events.list("primary").setTimeMin(date1).setTimeMax(date2).execute();
 
-		Event event = new Event().setSummary(summary)
+		/*
+		Event event = new Event()
+	            .setSummary(summary)
+	         .setExtendedProperties(null)
+	            .setDescription(description);
 
-				.setDescription(description);
-		
-		
 
-		DateTime startDateTime = new DateTime("2022-05-22T13:00:00+01:00");
-		EventDateTime start = new EventDateTime().setDateTime(startDateTime).setTimeZone("UTC");
-		event.setStart(start);
+	    DateTime startDateTime = new DateTime( "2022-05-22T13:00:00+01:00" );//"2020-05-05T11:00:00+06:00");
+	    EventDateTime start = new EventDateTime()
+	            .setDateTime(startDateTime)
+	            .setTimeZone("UTC");
+	    event.setStart(start);
 
-		DateTime endDateTime = new DateTime("2022-05-22T14:00:00+01:00");
-		EventDateTime end = new EventDateTime().setDateTime(endDateTime).setTimeZone("UTC");
-		event.setEnd(end);
+	    DateTime endDateTime = new DateTime("2022-05-22T14:00:00+01:00");//"2020-05-05T12:00:00+06:00");
+	    EventDateTime end = new EventDateTime()
+	            .setDateTime(endDateTime)
+	            .setTimeZone("UTC");
+	    event.setEnd(end);
 
-		String[] recurrence = new String[] { "RRULE:FREQ=DAILY;COUNT=1" };
-		event.setRecurrence(Arrays.asList(recurrence));
+	    String[] recurrence = new String[] {"RRULE:FREQ=DAILY;COUNT=1"};
+	    event.setRecurrence(Arrays.asList(recurrence));
 
-		EventReminder[] reminderOverrides = new EventReminder[] {
-				new EventReminder().setMethod("email").setMinutes(24 * 60),
-				new EventReminder().setMethod("popup").setMinutes(10), };
-		Event.Reminders reminders = new Event.Reminders().setUseDefault(false)
-				.setOverrides(Arrays.asList(reminderOverrides));
-		event.setReminders(reminders);
-
-		ConferenceProperties conferenceProperties=new ConferenceProperties();
-		List<String> allowedConferenceSolutionTypes = new ArrayList< >();
-
-		allowedConferenceSolutionTypes.add("hangoutsMeet");
-
-		conferenceProperties.setAllowedConferenceSolutionTypes(allowedConferenceSolutionTypes);
-
-		// .setConferenceProperties(conferenceProperties);
-		
-		
-		ConferenceSolutionKey conferenceSKey = new ConferenceSolutionKey();
-		
-		conferenceSKey.setType("hangoutsMeet"); 
-		
-		
-		CreateConferenceRequest createConferenceReq = new CreateConferenceRequest();
-		createConferenceReq.setRequestId("sample232212"); // ID generated by you
-		createConferenceReq.setConferenceSolutionKey(conferenceSKey);
-		
-		ConferenceData conferenceData = new ConferenceData();
-		conferenceData.setCreateRequest(createConferenceReq);
-		
-		event.setConferenceData(conferenceData);
- 	Calendar c=new Calendar();
  
- 	c.setConferenceProperties(conferenceProperties);
- 	
+
+	    EventReminder[] reminderOverrides = new EventReminder[] {
+	            new EventReminder().setMethod("email").setMinutes(24 * 60),
+	            new EventReminder().setMethod("popup").setMinutes(10),
+	    };
+
+
+	    Event.Reminders reminders = new Event.Reminders()
+	            .setUseDefault(false)
+	            .setOverrides(Arrays.asList(reminderOverrides));
+	    event.setReminders(reminders);
+
+
+	    ConferenceSolutionKey conferenceSKey = new ConferenceSolutionKey();
+	    conferenceSKey.setType("hangoutsMeet"); // Non-G suite user
+	    CreateConferenceRequest createConferenceReq = new CreateConferenceRequest();
+	    createConferenceReq.setRequestId("3whatisup3"); // ID generated by you
+	    createConferenceReq.setConferenceSolutionKey(conferenceSKey);
+	    ConferenceData conferenceData = new ConferenceData();
+	    conferenceData.setCreateRequest(createConferenceReq);
+	   // event.setConferenceData(conferenceData);
+ event.setConferenceData(conferenceData);
+ event.setHangoutLink("https://meet.google.com/wsm-ekqf-guo");
+
+	    String calendarId = "primary";
+
+	    try {
+	        event = client.events().insert(calendarId, event).setConferenceDataVersion(0).execute();
+			SimpleMailMessage mail = new SimpleMailMessage();
+			mail.setTo(email);
+			mail.setSubject("Registration");
+			 
+			emailService.sendEmailWithMeetingLink("https://meet.google.com/wsm-ekqf-guo");
+	    
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+
+	    System.out.printf("Event created: %s\n", event.getHtmlLink());
+	    System.out.printf("Hangout Link %s\n", event.getHangoutLink());
+	    System.out.printf("conferenceData %s\n", event.getConferenceData());
+	    
+	    
+	    
+	    */
+		
+		
+		
+		Event event = new Event();
+		
+	 
+		DateTimeFormatter time
+        = DateTimeFormatter.ISO_TIME;
+	 
+		System.out.println("******************"+ startDate);
+		System.out.println("******************"+ startTime.format(time));
+
+	    event.setStart(new EventDateTime().setDateTime(new DateTime(startDate.toString()+"T"+startTime.format(time)+"+01:00")) .setTimeZone("UTC"));
+	    event.setEnd(new EventDateTime().setDateTime(new DateTime(endDate+"T"+endTime.format(time)+"+01:00")).  setTimeZone("UTC"));
+
+
+
+	   
+
+	    String[] recurrence = new String[] {"RRULE:FREQ=DAILY;COUNT=1"};
+	    event.setRecurrence(Arrays.asList(recurrence));
+
  
-		try {
-		    event = client.events().insert(email, event).setConferenceDataVersion(0).setSendNotifications(true).execute();
-		} catch (IOException e) {
-		    e.printStackTrace();
-		}
-		System.out.printf("Event created: %s\n", event.getHtmlLink());
 
-		System.out.printf("conference Type: %s\n", event.getConferenceData());
-		System.out.printf("conference properties: %s\n", c.getConferenceProperties());
-		 
- 		System.out.printf("Hangout Link %s\n", event.getHangoutLink());
+	    EventReminder[] reminderOverrides = new EventReminder[] {
+	            new EventReminder().setMethod("email").setMinutes(24 * 60),
+	            new EventReminder().setMethod("popup").setMinutes(10),
+	    };
 
+
+	    Event.Reminders reminders = new Event.Reminders()
+	            .setUseDefault(false)
+	            .setOverrides(Arrays.asList(reminderOverrides));
+	    event.setReminders(reminders);
+
+	    ConferenceData conferenceData = new ConferenceData();
+
+	    conferenceData.setCreateRequest(
+	            new CreateConferenceRequest()
+	                    .setConferenceSolutionKey(
+	                            new ConferenceSolutionKey()
+	                                    .setType("hangoutsMeet")));
+
+	    event.setConferenceData(conferenceData);
+
+	    client.events().insert("primary", event).execute();
+	    System.out.printf("Event created: %s\n", event.getHtmlLink());
+	    System.out.printf("Hangout Link %s\n", event.getHangoutLink());
+	    System.out.printf("conferenceData %s\n", event.getConferenceData());
+	    
+	    
+	    
+	
+	
 	}
  
- */
+  
 
 }

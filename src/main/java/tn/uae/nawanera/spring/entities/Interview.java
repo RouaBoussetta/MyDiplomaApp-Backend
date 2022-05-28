@@ -1,6 +1,7 @@
 package tn.uae.nawanera.spring.entities;
 
  
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
  
@@ -33,10 +34,14 @@ public class Interview {
 	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
 	private LocalDateTime createdAt;
  
-	@JsonFormat(pattern = "YYYY-MM-dd")
- 	private Date interviewDate;
+ 	private LocalDate interviewDate;
 	@JsonFormat(pattern="HH:mm:ss")
  	private LocalTime interviewTime;
+	
+	
+ 	private LocalDate endDate;
+	@JsonFormat(pattern="HH:mm:ss")
+ 	private LocalTime endTime;
  	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Application application;

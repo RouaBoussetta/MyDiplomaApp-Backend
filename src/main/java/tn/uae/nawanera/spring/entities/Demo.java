@@ -27,7 +27,7 @@ public class Demo {
 	@Column(columnDefinition = "TEXT")
 	private String description;
 	@Enumerated(EnumType.STRING)
-	private SubscriptionType category;
+	private Type category;
 	@Column(columnDefinition = "TEXT")
 
 	private String file;

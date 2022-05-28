@@ -12,6 +12,7 @@ import tn.uae.nawanera.spring.entities.User;
 public interface CertificateRepository extends JpaRepository<Certificate, Integer> {
 
 	List<Certificate> findByHrmanager(User hrmanager);
+	List<Certificate> findByIntern(User intern);
 	Certificate findById(int id);
  
 }

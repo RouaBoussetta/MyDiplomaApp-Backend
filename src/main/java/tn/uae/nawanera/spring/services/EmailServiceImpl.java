@@ -28,7 +28,7 @@ public class EmailServiceImpl implements EmailService {
 		
 	}
 	
-	 public void sendMailToIntern(String email) throws MessagingException {
+	 public void sendMail (String email) throws MessagingException {
 		 javax.mail.internet.MimeMessage mimeMessage = mailSender.createMimeMessage();
 	        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
 	        
@@ -76,6 +76,35 @@ public class EmailServiceImpl implements EmailService {
 	        mailSender.send(msg);
 
 	    }
+	  
+	  
+	  @Async
+		public
+		    void sendEmailWithMeetingLink(String link) throws MessagingException, IOException {
+
+		        MimeMessage msg = mailSender.createMimeMessage();
+
+		        // true = multipart message
+		        MimeMessageHelper helper = new MimeMessageHelper(msg, true);
+		        helper.setTo("boussettaroua@gmail.com");
+
+		        helper.setSubject("Testing from Spring Boot");
+
+		        // default = text/plain
+		        //helper.setText("Check attachment for image!");
+
+		        // true = text/html
+		        helper.setText(
+		        	 
+		        		"<h1>Video Conference </h1>", true);
+		 
+		        helper.setText(
+			        	 
+		        		"<a href='https://meet.google.com/wsm-ekqf-guo'> "+link+" </a>", true);
+ 
+		        mailSender.send(msg);
+
+		    }
 
   
 
