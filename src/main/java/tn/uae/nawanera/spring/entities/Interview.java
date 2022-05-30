@@ -46,5 +46,7 @@ public class Interview {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Application application;
 	
+	private String link;
+	
 
 }

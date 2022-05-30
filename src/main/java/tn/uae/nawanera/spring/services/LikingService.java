@@ -89,9 +89,7 @@ public class LikingService implements ILikingService {
 	public String addLiking(int idTc) {
 		int iduser = iuserService.currentUser().getId();
 		Liking l = new Liking();
-		if (isLikeExists(iduser, idTc)) {
-			return ("You already liked this post");
-		} else {
+		
 			TrainingCourse tc = itcRepository.findById(idTc);
 			l.setUser(iuserService.currentUser());
 			l.setTrainingCourse(tc);
@@ -100,7 +98,7 @@ public class LikingService implements ILikingService {
 			iLikingRepository.save(l);
 			return "number of likes on this post: " + countLikingsByTC(idTc);
 
-		}
+		
 	}
 
 	@Override

@@ -123,9 +123,7 @@ public class UserService implements IUserservice {
 
 		if (!user.getPassword().equals(existantUser.getPassword()))
 			existantUser.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		if (!user.isValid() == existantUser.isValid())
 
-			existantUser.setValid(user.isValid());
 		return userRepository.save(existantUser);
 
 	}

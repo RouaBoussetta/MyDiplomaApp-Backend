@@ -118,7 +118,7 @@ public class MydiplomaAppTest {
 
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).apply(springSecurity()).build();
 	}
-/*
+ 
 	@Test
 	public void AAtestsignup() throws Exception {
 		String admin = "{\"firstname\":\"Admin\",\"lastname\":\"admin\",\"username\":\"Admin_Admin\",\"companyName\":\"myDiploma\",\"email\":\"admin@gmail.com\",\"password\":\"azerty123\",\"role\":{\"id\":1,\"roleType\":\"ADMINISTRATOR\"}}";
@@ -133,7 +133,7 @@ public class MydiplomaAppTest {
 		mockMvc.perform(multipart("/api/auth/signup").file(image).file(metadata).accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk());
 	}
-*/
+ 
 	@Test
 	public void AtestSignupIntern() throws Exception {
 

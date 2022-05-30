@@ -53,7 +53,7 @@ public class ApplicationService implements IApplicationService {
  		app.setIsAffected(false);
  		
  		applicationRepository.save(app);
- 		inotifService.addNotification(app.getIntern(), userService.currentUser(), "New Internship Vacancy Application", "Apply for "+app.getVacancy().getTitle()+" internship which you posted.");
+ 		inotifService.addNotification(app.getVacancy().getTrainedby(), userService.currentUser(), "New Internship Vacancy Application", "Apply for "+app.getVacancy().getTitle()+" internship which you posted.");
 
 		return  app;
 

@@ -68,7 +68,7 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 	INotificationService inotifService;
 	@Autowired
 	private EmailService emailService;
-/*
+
 	private static final String APPLICATION_NAME = "serviceCal";
 	private static final JsonFactory JSON_FACTORY = new JacksonFactory();
 	private static com.google.api.services.calendar.Calendar client;
@@ -83,9 +83,7 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 	private String serviceAccount = "mydiploma@mydiploma-343611.iam.gserviceaccount.com";
 
 	private Set<Event> events = new HashSet<>();
-	final DateTime date1 = new DateTime("2022-05-05T16:30:00.000");
-	final DateTime date2 = new DateTime(new Date());
-*/
+
 	@Override
 	public SkillAssessment save(SkillAssessment skillassessment) {
 
@@ -167,7 +165,7 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 				}
 			}
 		}
-
+		app.setDone(true);
 		app.setInternScore(score);
 		applicationRepository.save(app);
 
@@ -247,21 +245,61 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 
 		SkillAssessment sa = skillAssessmentRepository.findById(saId);
 
- 		List<Vacancy> vacancies=vacancyRepository.findVacanciesByPostedby(iuserService.currentUser());
+		List<Vacancy> vacancies = vacancyRepository.findVacanciesByPostedby(iuserService.currentUser());
 		List<Application> apps = applicationRepository.findByIntern(intern);
-		for (Vacancy v :vacancies) {
-			for(Application app:apps) {
-				if (v.getId()==app.getVacancy().getId()) {
+		for (Vacancy v : vacancies) {
+			for (Application app : apps) {
+				if (v.getId() == app.getVacancy().getId()) {
 					app.setSkillAssessment(sa);
+					app.setInterviewPlanned(false);
 					String subject = "Qualifying Test";
 
 					String description = "you are invited to do a qualification test Due to your interest in the internship offer posted by the company "
 							+ iuserService.currentUser().getCompanyName();
-/*
-					attacheSa(intern.getEmail(),
-							sa.getTitle(),
-							description);*/
+					/*
+					 * attacheSa(intern.getEmail(), sa.getTitle(), description);
+					 */
 					applicationRepository.save(app);
+					inotifService.addNotification(intern, iuserService.currentUser(), subject,
+							"you are invited to do a qualification test Due to your interest in the internship offer posted by "
+									+ iuserService.currentUser().getCompanyName() + " company.");
+					/*
+					 * SimpleMailMessage email = new SimpleMailMessage();
+					 * email.setTo(intern.getEmail()); email.setSubject(subject); email.setText(
+					 * 
+					 * intern.getUserImage() + "Dear " + intern.getFirstname() + ":\n" +
+					 * "Due to your interest in the internship offer posted by the company nawanera llc, you are required to do a qualification test.  \n"
+					 * + "please take your test as soon as possible."
+					 * 
+					 * );
+					 * 
+					 * emailService.sendEmail(email);
+					 */
+				}
+			}
+
+		}
+
+	}
+
+	@Transactional
+	@Override
+	public void assignSAToIntern(String skTitle, String internUsername) throws GeneralSecurityException, IOException {
+
+		User intern = userRepository.findByUsername(internUsername);
+		SkillAssessment sa = skillAssessmentRepository.findByTitle(skTitle);
+		List<Vacancy> vacancies = vacancyRepository.findVacanciesByPostedby(iuserService.currentUser());
+		List<Application> apps = applicationRepository.findByIntern(intern);
+		String subject = "Qualifying Test";
+
+		for (Vacancy v : vacancies) {
+			for (Application app : apps) {
+				if (v.getId() == app.getVacancy().getId()) {
+					app.setSkillAssessment(sa);
+
+					String description = "you are invited to do a qualification test Due to your interest in the internship offer posted by the company "
+							+ iuserService.currentUser().getCompanyName();
+					/* attacheSa(intern.getEmail(), sa.getTitle(), description); */
 					inotifService.addNotification(intern, iuserService.currentUser(), subject,
 							"you are invited to do a qualification test Due to your interest in the internship offer posted by "
 									+ iuserService.currentUser().getCompanyName() + " company.");
@@ -273,110 +311,68 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 
 							intern.getUserImage() + "Dear " + intern.getFirstname() + ":\n"
 									+ "Due to your interest in the internship offer posted by the company nawanera llc, you are required to do a qualification test.  \n"
-									+ "please take your test as soon as possible."
-
-					);
-
+									+ "please take your test as soon as possible.");
 					emailService.sendEmail(email);
 				}
 			}
-			 
-			
-		}
-		 
 
-		
-
-	}
-
-	@Transactional
-	@Override
-	public void assignSAToIntern(String skTitle, String internUsername) throws GeneralSecurityException, IOException {
-
-		User intern = userRepository.findByUsername(internUsername);
-		SkillAssessment sa = skillAssessmentRepository.findByTitle(skTitle);
-		List<Vacancy> vacancies=vacancyRepository.findVacanciesByPostedby(iuserService.currentUser());
-		List<Application> apps = applicationRepository.findByIntern(intern);
-		String subject = "Qualifying Test";
-
-		for (Vacancy v :vacancies) {
-			for(Application app:apps) {
-				if (v.getId()==app.getVacancy().getId()) {
-			app.setSkillAssessment(sa);
-
-			String description = "you are invited to do a qualification test Due to your interest in the internship offer posted by the company "
-					+ iuserService.currentUser().getCompanyName();
-		/*	attacheSa(intern.getEmail(), sa.getTitle(), description);*/
-			inotifService.addNotification(intern, iuserService.currentUser(), subject,
-					"you are invited to do a qualification test Due to your interest in the internship offer posted by "
-							+ iuserService.currentUser().getCompanyName() + " company.");
-
-			SimpleMailMessage email = new SimpleMailMessage();
-			email.setTo(intern.getEmail());
-			email.setSubject(subject);
-			email.setText(
-
-					intern.getUserImage() + "Dear " + intern.getFirstname() + ":\n"
-							+ "Due to your interest in the internship offer posted by the company nawanera llc, you are required to do a qualification test.  \n"
-							+ "please take your test as soon as possible.");
-			emailService.sendEmail(email);
-				}
-			}
-			
 		}
 
 	}
-/*
-	public void attacheSa(String email, String summary, String description)
-			throws IOException, GeneralSecurityException {
 
-		com.google.api.services.calendar.model.Events eventList;
-
-		Preconditions.checkArgument(!Strings.isNullOrEmpty(APPLICATION_NAME),
-				"applicationName cannot be null or empty!");
-
-		transport = GoogleNetHttpTransport.newTrustedTransport();
-
-		credential = new GoogleCredential.Builder().setTransport(transport).setJsonFactory(JSON_FACTORY)
-				.setServiceAccountId(serviceAccount)
-				.setServiceAccountScopes(Collections.singleton(CalendarScopes.CALENDAR))
-				.setServiceAccountPrivateKeyFromP12File(keyFile)
-
-				.build();
-		credential.refreshToken();
-		client = new com.google.api.services.calendar.Calendar.Builder(transport, JSON_FACTORY, credential)
-				.setApplicationName(APPLICATION_NAME).build();
-		log.info("**********************Client******************* \n" + client);
-		Events events = client.events();
-		eventList = events.list("primary").setTimeMin(date1).setTimeMax(date2).execute();
-
-		Event event = new Event().setSummary(summary)
-
-				.setDescription(description);
-
-		DateTime startDateTime = new DateTime("2022-05-29T13:00:00+01:00");
-		EventDateTime start = new EventDateTime().setDateTime(startDateTime).setTimeZone("UTC");
-		event.setStart(start);
-
-		DateTime endDateTime = new DateTime("2022-05-29T14:00:00+01:00");
-		EventDateTime end = new EventDateTime().setDateTime(endDateTime).setTimeZone("UTC");
-		event.setEnd(end);
-
-		String[] recurrence = new String[] { "RRULE:FREQ=DAILY;COUNT=1" };
-		event.setRecurrence(Arrays.asList(recurrence));
-
-		EventReminder[] reminderOverrides = new EventReminder[] {
-				new EventReminder().setMethod("email").setMinutes(24 * 60),
-				new EventReminder().setMethod("popup").setMinutes(10), };
-		Event.Reminders reminders = new Event.Reminders().setUseDefault(false)
-				.setOverrides(Arrays.asList(reminderOverrides));
-		event.setReminders(reminders);
-
-		event = client.events().insert(email, event).execute();
-		log.info("Event created: %s\n", event.getHtmlLink());
-
-	}
-*/
+	/*
+	 * public void attacheSa(String email, String summary, String description)
+	 * throws IOException, GeneralSecurityException {
+	 * 
+	 * com.google.api.services.calendar.model.Events eventList;
+	 * 
+	 * Preconditions.checkArgument(!Strings.isNullOrEmpty(APPLICATION_NAME),
+	 * "applicationName cannot be null or empty!");
+	 * 
+	 * transport = GoogleNetHttpTransport.newTrustedTransport();
+	 * 
+	 * credential = new
+	 * GoogleCredential.Builder().setTransport(transport).setJsonFactory(
+	 * JSON_FACTORY) .setServiceAccountId(serviceAccount)
+	 * .setServiceAccountScopes(Collections.singleton(CalendarScopes.CALENDAR))
+	 * .setServiceAccountPrivateKeyFromP12File(keyFile)
+	 * 
+	 * .build(); credential.refreshToken(); client = new
+	 * com.google.api.services.calendar.Calendar.Builder(transport, JSON_FACTORY,
+	 * credential) .setApplicationName(APPLICATION_NAME).build();
+	 * log.info("**********************Client******************* \n" + client);
+	 * Events events = client.events(); eventList =
+	 * events.list("primary").setTimeMin(date1).setTimeMax(date2).execute();
+	 * 
+	 * Event event = new Event().setSummary(summary)
+	 * 
+	 * .setDescription(description);
+	 * 
+	 * DateTime startDateTime = new DateTime("2022-05-29T13:00:00+01:00");
+	 * EventDateTime start = new
+	 * EventDateTime().setDateTime(startDateTime).setTimeZone("UTC");
+	 * event.setStart(start);
+	 * 
+	 * DateTime endDateTime = new DateTime("2022-05-29T14:00:00+01:00");
+	 * EventDateTime end = new
+	 * EventDateTime().setDateTime(endDateTime).setTimeZone("UTC");
+	 * event.setEnd(end);
+	 * 
+	 * String[] recurrence = new String[] { "RRULE:FREQ=DAILY;COUNT=1" };
+	 * event.setRecurrence(Arrays.asList(recurrence));
+	 * 
+	 * EventReminder[] reminderOverrides = new EventReminder[] { new
+	 * EventReminder().setMethod("email").setMinutes(24 * 60), new
+	 * EventReminder().setMethod("popup").setMinutes(10), }; Event.Reminders
+	 * reminders = new Event.Reminders().setUseDefault(false)
+	 * .setOverrides(Arrays.asList(reminderOverrides));
+	 * event.setReminders(reminders);
+	 * 
+	 * event = client.events().insert(email, event).execute();
+	 * log.info("Event created: %s\n", event.getHtmlLink());
+	 * 
+	 * }
+	 */
 	@Override
 	public SkillAssessment getSkillAssessmentByTitle(String string) {
 

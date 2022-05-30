@@ -42,7 +42,7 @@ public class Application {
 	@ManyToOne
 	private Vacancy vacancy;
 
-	
+ 	private Boolean done = false;
 	@ManyToOne
 	private SkillAssessment skillAssessment;
 

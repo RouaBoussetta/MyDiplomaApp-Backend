@@ -58,7 +58,7 @@ public class SkillAssessment {
 
 	private Boolean isPublished = false;
 	
-	
+	 
 	@JsonIgnore
 	@ManyToOne
 	private User createdBy;
