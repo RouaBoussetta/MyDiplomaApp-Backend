@@ -10,7 +10,8 @@
 	</parent>
 	<groupId>tn.uae.nawanera.spring</groupId>
 	<artifactId>MyDiplomaApp-Backend</artifactId>
-	<version>1.0</version>
+	<version>2.0</version>
+	<packaging>war</packaging>
 	<name>MyDiplomaApp-Backend</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
