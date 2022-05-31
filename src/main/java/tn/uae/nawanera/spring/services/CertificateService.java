@@ -1,5 +1,6 @@
 package tn.uae.nawanera.spring.services;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -7,13 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import lombok.extern.slf4j.Slf4j;
+import tn.uae.nawanera.spring.config.FileUploadUtil;
 import tn.uae.nawanera.spring.entities.Certificate;
 import tn.uae.nawanera.spring.entities.User;
 import tn.uae.nawanera.spring.repositories.CertificateRepository;
 import tn.uae.nawanera.spring.repositories.ProjectRepository;
 import tn.uae.nawanera.spring.repositories.UserRepository;
 
-
+@Slf4j
 @Service
 public class CertificateService implements ICertificateService{
 	@Autowired
@@ -35,8 +38,21 @@ public class CertificateService implements ICertificateService{
 		
 		certificate.setIntern(intern);
 		certificate.setHrmanager(iuserService.currentUser());
-		certificate.setSignature(signature.getOriginalFilename());
-		certificate.setStamp(stamp.getOriginalFilename());
+		try {
+			FileUploadUtil.saveFile(signature);
+			certificate.setSignature(signature.getOriginalFilename());
+
+		} catch (IOException e) {
+			log.info("e:"+e);
+		}
+		
+		try {
+			FileUploadUtil.saveFile(stamp);
+			certificate.setStamp(stamp.getOriginalFilename());
+
+		} catch (IOException e) {
+			log.info("e:"+e);
+		}
 		certificate.setAttributedAt(LocalDateTime.now());
 		
 		

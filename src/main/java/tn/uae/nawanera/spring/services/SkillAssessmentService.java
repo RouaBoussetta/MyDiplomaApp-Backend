@@ -4,7 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.security.GeneralSecurityException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -256,31 +259,72 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 
 					String description = "you are invited to do a qualification test Due to your interest in the internship offer posted by the company "
 							+ iuserService.currentUser().getCompanyName();
-					/*
-					 * attacheSa(intern.getEmail(), sa.getTitle(), description);
-					 */
+					 
+				// attacheSa(intern.getEmail(), sa.getTitle(), description);
+					 
 					applicationRepository.save(app);
 					inotifService.addNotification(intern, iuserService.currentUser(), subject,
 							"you are invited to do a qualification test Due to your interest in the internship offer posted by "
 									+ iuserService.currentUser().getCompanyName() + " company.");
-					/*
-					 * SimpleMailMessage email = new SimpleMailMessage();
-					 * email.setTo(intern.getEmail()); email.setSubject(subject); email.setText(
-					 * 
-					 * intern.getUserImage() + "Dear " + intern.getFirstname() + ":\n" +
-					 * "Due to your interest in the internship offer posted by the company nawanera llc, you are required to do a qualification test.  \n"
-					 * + "please take your test as soon as possible."
-					 * 
-					 * );
-					 * 
-					 * emailService.sendEmail(email);
-					 */
+				  SimpleMailMessage email = new SimpleMailMessage();
+					  email.setTo(intern.getEmail()); email.setSubject(subject); email.setText(
+					  
+					   intern.getUserImage() + "Dear " + intern.getFirstname() + ":\n" +
+					  "Due to your interest in the internship offer posted by the company nawanera llc, you are required to do a qualification test.  \n"
+					   + "please take your test as soon as possible."
+					  
+					  );
+					  
+					   emailService.sendEmail(email);
+					  
 				}
 			}
 
 		}
 
 	}
+	
+	public void attacheS(String email, String summary, String description,LocalDate date , LocalTime startTime ,LocalTime endTime)
+			throws IOException, GeneralSecurityException {
+		com.google.api.services.calendar.model.Events eventList;
+		
+		DateTimeFormatter
+		  time = DateTimeFormatter.ISO_TIME;
+		
+		Preconditions.checkArgument(!Strings.isNullOrEmpty(APPLICATION_NAME),
+				"applicationName cannot be null or empty!");
+		transport = GoogleNetHttpTransport.newTrustedTransport();
+		credential = new GoogleCredential.Builder().setTransport(transport).setJsonFactory(JSON_FACTORY)
+				.setServiceAccountId(serviceAccount)
+				.setServiceAccountScopes(Collections.singleton(CalendarScopes.CALENDAR))
+				.setServiceAccountPrivateKeyFromP12File(keyFile).build();
+		credential.refreshToken();
+		client = new com.google.api.services.calendar.Calendar.Builder(transport, JSON_FACTORY, credential)
+				.setApplicationName(APPLICATION_NAME).build();
+		log.info("**********************Client******************* \n" + client);
+		Events events = client.events();
+		Event event = new Event().setSummary(summary).setDescription(description);
+		DateTime startDateTime = new DateTime(date.toString()+"T"+startTime.format(time)+"+01:00");
+		EventDateTime start = new EventDateTime().setDateTime(startDateTime).setTimeZone("UTC");
+		event.setStart(start);
+		DateTime endDateTime = new DateTime(date+"T"+endTime.format(time)+"+01:00");
+		EventDateTime end = new EventDateTime().setDateTime(endDateTime).setTimeZone("UTC");
+		event.setEnd(end);
+		String[] recurrence = new String[] { "RRULE:FREQ=DAILY;COUNT=1" };
+		event.setRecurrence(Arrays.asList(recurrence));
+
+		EventReminder[] reminderOverrides = new EventReminder[] {
+				new EventReminder().setMethod("email").setMinutes(24 * 60),
+				new EventReminder().setMethod("popup").setMinutes(10), };
+		Event.Reminders reminders = new Event.Reminders().setUseDefault(false)
+				.setOverrides(Arrays.asList(reminderOverrides));
+		event.setReminders(reminders);
+
+		event = client.events().insert(email, event).execute();
+	
+
+	}
+
 
 	@Transactional
 	@Override

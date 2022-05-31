@@ -118,7 +118,7 @@ public class MydiplomaAppTest {
 
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).apply(springSecurity()).build();
 	}
- 
+ /*
 	@Test
 	public void AAtestsignup() throws Exception {
 		String admin = "{\"firstname\":\"Admin\",\"lastname\":\"admin\",\"username\":\"Admin_Admin\",\"companyName\":\"myDiploma\",\"email\":\"admin@gmail.com\",\"password\":\"azerty123\",\"role\":{\"id\":1,\"roleType\":\"ADMINISTRATOR\"}}";
@@ -133,7 +133,7 @@ public class MydiplomaAppTest {
 		mockMvc.perform(multipart("/api/auth/signup").file(image).file(metadata).accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk());
 	}
- 
+ */
 	@Test
 	public void AtestSignupIntern() throws Exception {
 
@@ -339,7 +339,7 @@ public class MydiplomaAppTest {
 	@WithMockUser(username = "Hr_Manager", password = "azerty123", authorities = "HR_MANAGER")
 	public void GtestCreateVacancy() throws Exception {
 		VacancyCategory category = new VacancyCategory();
-		category.setCategory("testCategory");
+		category.setCategory("testCategoryyy");
 		VacancyCategory vc = icategory.createCateogry(category);
 		assertThat(vc).isNotNull();
 		ObjectMapper Obj = new ObjectMapper();
@@ -1752,7 +1752,7 @@ public class MydiplomaAppTest {
 		assertEquals(200, result.getResponse().getStatus());
 
 	}
-/*
+
 	@Test
 
 	@WithMockUser(username = "Hr_Manager", password = "azerty123", authorities = "HR_MANAGER")
@@ -1767,7 +1767,7 @@ public class MydiplomaAppTest {
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 		assertEquals(200, result.getResponse().getStatus());
 	}
-*/
+/*
 	@Test
 
 	@WithMockUser(username = "Hr_Manager", password = "azerty123", authorities = "HR_MANAGER")
@@ -1784,7 +1784,7 @@ public class MydiplomaAppTest {
 		assertEquals(200, result.getResponse().getStatus());
 
 	}
-
+*/
 	@Test
 
 	@WithMockUser(username = "Trainer_Trainer", password = "azerty123", authorities = "TRAINER")

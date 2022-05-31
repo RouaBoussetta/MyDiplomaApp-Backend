@@ -1,6 +1,8 @@
 package tn.uae.nawanera.spring.entities;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -63,6 +66,8 @@ public class SkillAssessment {
 	@ManyToOne
 	private User createdBy;
 
+	
+	 
 
 
 	

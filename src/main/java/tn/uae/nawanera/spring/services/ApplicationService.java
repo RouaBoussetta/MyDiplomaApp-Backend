@@ -1,6 +1,8 @@
 package tn.uae.nawanera.spring.services;
 
  import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,11 +53,13 @@ public class ApplicationService implements IApplicationService {
  		app.setVacancy(v);
 		app.setIntern(userService.currentUser());
  		app.setIsAffected(false);
+ 		app.setAppliedOn(LocalDate.now());
+ 		app.setAppliedAt(LocalTime.now());
  		
  		applicationRepository.save(app);
  		inotifService.addNotification(app.getVacancy().getTrainedby(), userService.currentUser(), "New Internship Vacancy Application", "Apply for "+app.getVacancy().getTitle()+" internship which you posted.");
 
-		return  app;
+		return  app; 
 
 	}
 	

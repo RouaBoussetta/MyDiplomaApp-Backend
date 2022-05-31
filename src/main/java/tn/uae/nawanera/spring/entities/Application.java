@@ -1,12 +1,17 @@
 package tn.uae.nawanera.spring.entities;
 
   
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -47,6 +52,10 @@ public class Application {
 	private SkillAssessment skillAssessment;
 
 	private int internScore;
+	
+ 	private LocalDate appliedOn;
+	@JsonFormat(pattern="HH:mm:ss")
+ 	private LocalTime appliedAt;
 
 	public Application(User intern, String cv) {
 		super();

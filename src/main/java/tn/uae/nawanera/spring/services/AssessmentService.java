@@ -1,18 +1,21 @@
 package tn.uae.nawanera.spring.services;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import lombok.extern.slf4j.Slf4j;
+import tn.uae.nawanera.spring.config.FileUploadUtil;
 import tn.uae.nawanera.spring.entities.Assessment;
 import tn.uae.nawanera.spring.entities.Notice;
 import tn.uae.nawanera.spring.entities.User;
 import tn.uae.nawanera.spring.repositories.AssessmentRepository;
 import tn.uae.nawanera.spring.repositories.ProjectRepository;
 import tn.uae.nawanera.spring.repositories.UserRepository;
-
+@Slf4j
 @Service
 public class AssessmentService implements IAssessmentService {
 	@Autowired
@@ -29,9 +32,24 @@ public class AssessmentService implements IAssessmentService {
 	public Assessment addAssessment(Assessment assessment, MultipartFile signature, MultipartFile stamp, int intern) {
 		User i=userRepository.findById(intern);
 		assessment.setIntern(i);
-		assessment.setSignature(signature.getOriginalFilename());
-		assessment.setStamp(stamp.getOriginalFilename());
-		assessment.setTrainer(iuserService.currentUser());
+		
+		try {
+			FileUploadUtil.saveFile(signature);
+			assessment.setSignature(signature.getOriginalFilename());
+
+		} catch (IOException e) {
+			log.info("e:"+e);
+		}
+		
+		try {
+			FileUploadUtil.saveFile(stamp);
+			assessment.setStamp(stamp.getOriginalFilename());
+
+		} catch (IOException e) {
+			log.info("e:"+e);
+		}
+		 
+ 		assessment.setTrainer(iuserService.currentUser());
 
 		return assessmentRepository.save(assessment);
 
