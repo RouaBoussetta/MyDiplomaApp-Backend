@@ -71,7 +71,7 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 	INotificationService inotifService;
 	@Autowired
 	private EmailService emailService;
-
+/*
 	private static final String APPLICATION_NAME = "serviceCal";
 	private static final JsonFactory JSON_FACTORY = new JacksonFactory();
 	private static com.google.api.services.calendar.Calendar client;
@@ -86,7 +86,7 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 	private String serviceAccount = "mydiploma@mydiploma-343611.iam.gserviceaccount.com";
 
 	private Set<Event> events = new HashSet<>();
-
+*/
 	@Override
 	public SkillAssessment save(SkillAssessment skillassessment) {
 
@@ -283,7 +283,7 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 		}
 
 	}
-	
+	/*
 	public void attacheS(String email, String summary, String description,LocalDate date , LocalTime startTime ,LocalTime endTime)
 			throws IOException, GeneralSecurityException {
 		com.google.api.services.calendar.model.Events eventList;
@@ -324,7 +324,7 @@ public class SkillAssessmentService implements ISkillAssessmentService {
 	
 
 	}
-
+*/
 
 	@Transactional
 	@Override

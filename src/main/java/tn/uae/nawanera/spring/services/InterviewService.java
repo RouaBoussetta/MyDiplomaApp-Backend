@@ -73,7 +73,7 @@ public class InterviewService implements IinterviewService {
 	VacancyRepository vacancyRepository;
 	@Autowired
 	UserRepository userRepository;
-
+/*
 	private static final String APPLICATION_NAME = "serviceCal";
 	private static final JsonFactory JSON_FACTORY = new JacksonFactory();
 	private static com.google.api.services.calendar.Calendar client;
@@ -88,7 +88,7 @@ public class InterviewService implements IinterviewService {
 	private String serviceAccount = "mydiploma@mydiploma-343611.iam.gserviceaccount.com";
 
 	private Set<Event> events = new HashSet<>();
-
+*/
 	@Autowired
 	private EmailService emailService;
 
@@ -110,8 +110,8 @@ public class InterviewService implements IinterviewService {
 				+ app.getVacancy().getPostedby().getLastname() + "on " + interview.getInterviewDate() + " From"
 				+ interview.getInterviewTime() + " To " + interview.getEndTime()
 				+ " \n Meeting Link : https://meet.google.com/wsm-ekqf-guo";
-		attacheInterviewEvent(app.getIntern().getEmail(), "Interview", description,interview.getInterviewDate(),
-			 interview.getInterviewTime(),interview.getEndTime());
+	//	attacheInterviewEvent(app.getIntern().getEmail(), "Interview", description,interview.getInterviewDate(),
+		//	 interview.getInterviewTime(),interview.getEndTime());
 		 
 		return interview;
 	}
@@ -135,7 +135,7 @@ public class InterviewService implements IinterviewService {
 		Interview intervieww = getInterviewByApplication(id);
 		interviewRepository.delete(intervieww);
 	}
-
+/*
 	public void attacheInterviewEvent(String email, String summary, String description,LocalDate date , LocalTime startTime ,LocalTime endTime)
 			throws IOException, GeneralSecurityException {
 		com.google.api.services.calendar.model.Events eventList;
@@ -176,6 +176,8 @@ public class InterviewService implements IinterviewService {
 	
 
 	}
+	
+	*/
 
 	/*
 	 * public void attacheInteriew(String email, String summary, String description,

@@ -22,9 +22,6 @@ public final class FileUploadUtil {
 			 
  					fout.write(multipartFile.getBytes());
 				 
-				 
-			 
-		 	
 			} catch (IOException e) {
 				  throw new IOException(String.format("Can't process multipart data item, %s", e));
 			} finally {
